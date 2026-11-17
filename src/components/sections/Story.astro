@@ -1,0 +1,52 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Picture from '../ui/Picture.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { story } from '../../lib/data';
+---
+<section id="historia" class="section cv-auto" aria-labelledby="historia-title">
+  <div class="container-vi story-grid">
+    <div>
+      <SectionHeader id="historia-title" eyebrow="O jogo · história" title="O lado mais sombrio do lugar mais ensolarado" />
+      <blockquote class="synopsis reveal">
+        <p class="display text-sunset synopsis-tag">{story.tagline}</p>
+        <p>{story.synopsis}</p>
+        <footer class="flex flex-wrap gap-2 items-center"><Badge status={story.synopsisStatus} /><span class="src-refs">{story.synopsisNote}</span><SourceRefs ids={story.synopsisSources} /></footer>
+      </blockquote>
+      <p class="quote reveal">“{story.quote.text}”</p>
+      <p class="src-refs reveal">Original: “{story.quote.original}” — <Badge status={story.quote.status} scramble={false} /></p>
+    </div>
+    <div class="story-art reveal">
+      <Picture name="break-jl-rooftop" sizes="(min-width: 1024px) 520px, 92vw" ratio="4/5" position="55% 40%" />
+      <p class="credit mt-2">Arte oficial © Rockstar Games</p>
+    </div>
+  </div>
+  <div class="container-vi themes">
+    {story.themes.map((t, i) => (
+      <article class="theme card card-hover reveal" style={`transition-delay:${i * 80}ms`}>
+        <span class="theme-n display">{String(i + 1).padStart(2, '0')}</span>
+        <h3 class="theme-title">{t.title}</h3>
+        <p>{t.text}</p>
+        <div class="flex flex-wrap gap-2 items-center"><Badge status={t.status} /><SourceRefs ids={t.sources} /></div>
+      </article>
+    ))}
+  </div>
+  <p class="container-vi tone muted"><strong class="text-vi-peach">Tom:</strong> {story.tone}</p>
+</section>
+
+<style>
+  .story-grid { display: grid; gap: 28px; align-items: center; }
+  @media (min-width: 1024px) { .story-grid { grid-template-columns: 1.15fr .85fr; gap: 48px; } }
+  .synopsis { margin: 0; padding: 22px 24px; border-radius: 22px; background: var(--vi-surface); border: 1px solid var(--vi-line); display: grid; gap: 12px; font-size: 1.08rem; }
+  .synopsis p { margin: 0; }
+  .synopsis-tag { font-size: clamp(2rem, 1.4rem + 2vw, 3rem); }
+  .quote { font: 800 clamp(1.4rem, 1rem + 1.4vw, 2rem)/1.15 var(--font-display); text-transform: uppercase; color: var(--color-vi-blush); margin: 28px 0 6px; max-width: 30ch; }
+  .story-art :global(.pic) { border-radius: 26px; box-shadow: 0 40px 80px -30px var(--vi-pink-glow); }
+  .themes { display: grid; gap: 14px; margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+  .theme { padding: 20px; display: grid; gap: 8px; align-content: start; }
+  .theme p { margin: 0; font-size: .92rem; }
+  .theme-n { font-size: 2.6rem; color: transparent; -webkit-text-stroke: 1.5px var(--color-vi-pink); }
+  .theme-title { font: 900 1.4rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .tone { margin-top: 18px; font-size: .95rem; }
+</style>

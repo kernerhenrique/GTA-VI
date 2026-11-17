@@ -1,0 +1,537 @@
+{
+  "accessedAtDefault": "2026-11-17",
+  "sources": [
+    {
+      "id": "rs-vi",
+      "type": "oficial",
+      "publisher": "Rockstar Games",
+      "title": "Grand Theft Auto VI — site oficial",
+      "url": "https://www.rockstargames.com/VI"
+    },
+    {
+      "id": "rs-editions",
+      "type": "oficial",
+      "publisher": "Rockstar Games",
+      "title": "GTA VI — Edições",
+      "url": "https://www.rockstargames.com/VI/editions"
+    },
+    {
+      "id": "rs-ultimate",
+      "type": "oficial",
+      "publisher": "Rockstar Games",
+      "title": "GTA VI — Ultimate Edition",
+      "url": "https://www.rockstargames.com/VI/ultimate-edition"
+    },
+    {
+      "id": "rs-leonida",
+      "type": "oficial",
+      "publisher": "Rockstar Games",
+      "title": "GTA VI — Only in Leonida (pessoas e lugares)",
+      "url": "https://www.rockstargames.com/VI/only-in-leonida"
+    },
+    {
+      "id": "rs-music",
+      "type": "oficial",
+      "publisher": "Rockstar Games",
+      "title": "GTA VI — Música (rádios, álbum e trilha)",
+      "url": "https://www.rockstargames.com/VI/music"
+    },
+    {
+      "id": "rs-collection",
+      "type": "oficial",
+      "publisher": "Rockstar Games",
+      "title": "GTA VI — The Vice City Collection",
+      "url": "https://www.rockstargames.com/VI/vice-city-collection"
+    },
+    {
+      "id": "rs-media",
+      "type": "oficial",
+      "publisher": "Rockstar Games",
+      "title": "GTA VI — Mídia e artes oficiais",
+      "url": "https://www.rockstargames.com/VI/media"
+    },
+    {
+      "id": "nw-2022",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "A Message from Rockstar Games (04/02/2022)",
+      "url": "https://www.rockstargames.com/newswire/article/4kok877a13aa32/a-message-from-rockstar-games"
+    },
+    {
+      "id": "nw-trailer1",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI — Watch Trailer 1 Now",
+      "url": "https://www.rockstargames.com/newswire/article/8978kok9385a82/grand-theft-auto-vi-watch-trailer-1-now"
+    },
+    {
+      "id": "nw-delay-may",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI is Now Coming May 26, 2026 (02/05/2025)",
+      "url": "https://www.rockstargames.com/newswire/article/258aa538o412ok/grand-theft-auto-vi-is-now-coming-may-26-2026"
+    },
+    {
+      "id": "nw-trailer2",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI — Watch Trailer 2 Now (06/05/2025)",
+      "url": "https://www.rockstargames.com/newswire/article/3928aaa9471o3a/grand-theft-auto-vi-watch-trailer-2-now"
+    },
+    {
+      "id": "nw-delay-nov",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI is Now Set to Launch November 19, 2026 (06/11/2025)",
+      "url": "https://www.rockstargames.com/newswire/article/ak3ak31a49a221/grand-theft-auto-vi-is-now-set-to-launch-november-19-2026"
+    },
+    {
+      "id": "nw-preorder-jun18",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI Pre-Orders Begin on June 25 (18/06/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/517oa135328155/grand-theft-auto-vi-pre-orders-begin-on-june-25"
+    },
+    {
+      "id": "nw-preorder-jun25",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Pre-Order Grand Theft Auto VI on June 25 (24/06/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/5171972o3ak5oa/pre-order-grand-theft-auto-vi-on-june-25"
+    },
+    {
+      "id": "nw-extended",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI: An Extended Look (06/08/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/9k2kaa1o3297k9/grand-theft-auto-vi-an-extended-look"
+    },
+    {
+      "id": "nw-extended-now",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "An Extended Look — Now Playing (27/08/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/4k138k8okkk483/grand-theft-auto-vi-an-extended-look-now-playing"
+    },
+    {
+      "id": "nw-album",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Announcing Grand Theft Auto VI: The Album (17/09/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/7599a881942544/announcing-grand-theft-auto-vi-the-album-coming-november-19"
+    },
+    {
+      "id": "nw-goodtime",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Pre-Order The Goodtime State – Vice City Collection (24/09/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/9k2a49ook82o57/pre-order-the-goodtime-state-vice-city-collection-now-while-supplies-l"
+    },
+    {
+      "id": "nw-radio",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "The Music of Grand Theft Auto VI: In-Game Radio Stations (08/10/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/o3982oa93a23k4/the-music-of-grand-theft-auto-vi-in-game-radio-stations"
+    },
+    {
+      "id": "nw-store",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI Collection Now at the Rockstar Store (08/10/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/759875393o5253/grand-theft-auto-vi-collection-now-at-the-rockstar-store"
+    },
+    {
+      "id": "nw-launch-trailer",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Watch the Grand Theft Auto VI Launch Trailer (15/10/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/517572321a549a/watch-the-grand-theft-auto-vi-launch-trailer"
+    },
+    {
+      "id": "nw-score",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI: Original Score by Justice (29/10/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/39ak8a12395591/grand-theft-auto-vi-original-score-by-justice"
+    },
+    {
+      "id": "nw-preload-ann",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI Pre-Load Begins on November 10 (03/11/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/k4ak9okk485712/grand-theft-auto-vi-pre-load-begins-on-november-10"
+    },
+    {
+      "id": "nw-gallery",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Explore the Grand Theft Auto VI Launch Gallery (05/11/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/39ak81277255o9/explore-the-grand-theft-auto-vi-launch-gallery"
+    },
+    {
+      "id": "nw-festival",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Grand Theft Auto VI: The Festival (09/11/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/o39o87a435a25a/grand-theft-auto-vi-the-festival"
+    },
+    {
+      "id": "nw-preload-now",
+      "type": "oficial",
+      "publisher": "Rockstar Newswire",
+      "title": "Pre-Load Grand Theft Auto VI Now (10/11/2026)",
+      "url": "https://www.rockstargames.com/newswire/article/89834o94713o21/pre-load-grand-theft-auto-vi-now"
+    },
+    {
+      "id": "rs-support-preload",
+      "type": "oficial",
+      "publisher": "Rockstar Support",
+      "title": "Grand Theft Auto VI Pre-Load FAQ",
+      "url": "https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq"
+    },
+    {
+      "id": "rs-support-times",
+      "type": "oficial",
+      "publisher": "Rockstar Support",
+      "title": "GTA VI — horários regionais de pré-download e lançamento",
+      "url": "https://support.rockstargames.com/articles/29jV3Cv2cCgvwM1XgtMO5o/grand-theft-auto-vi-regional-pre-load-and-release-times-on-playstation-5-and-xbox-series-x-or-s"
+    },
+    {
+      "id": "psstore-br",
+      "type": "oficial",
+      "publisher": "PlayStation Store Brasil",
+      "title": "Grand Theft Auto VI — PS Store BR",
+      "url": "https://store.playstation.com/pt-br/concept/10000730"
+    },
+    {
+      "id": "ps-us",
+      "type": "oficial",
+      "publisher": "PlayStation.com (EUA)",
+      "title": "Grand Theft Auto VI — PS5 Games",
+      "url": "https://www.playstation.com/en-us/games/grand-theft-auto-vi/"
+    },
+    {
+      "id": "xbox-br",
+      "type": "oficial",
+      "publisher": "Xbox Brasil",
+      "title": "Grand Theft Auto VI — Xbox (pt-BR)",
+      "url": "https://www.xbox.com/pt-BR/games/grand-theft-auto-vi"
+    },
+    {
+      "id": "xbox-br-upgrade",
+      "type": "oficial",
+      "publisher": "Microsoft Store Brasil",
+      "title": "GTA VI: Melhoria Ultimate Edition",
+      "url": "https://www.xbox.com/pt-BR/games/store/grand-theft-auto-vi-melhoria-ultimate-edition/9pn4llbr8rch"
+    },
+    {
+      "id": "xbox-wire-cloud",
+      "type": "oficial",
+      "publisher": "Xbox Wire",
+      "title": "GTA VI chega ao Xbox Cloud Gaming em 19/11 (10/11/2026)",
+      "url": "https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/"
+    },
+    {
+      "id": "yt-t1",
+      "type": "oficial",
+      "publisher": "Rockstar Games (YouTube)",
+      "title": "Grand Theft Auto VI Trailer 1",
+      "url": "https://www.youtube.com/watch?v=QdBZY2fkU-0"
+    },
+    {
+      "id": "yt-t2",
+      "type": "oficial",
+      "publisher": "Rockstar Games (YouTube)",
+      "title": "Grand Theft Auto VI Trailer 2",
+      "url": "https://www.youtube.com/watch?v=VQRLujxTm3c"
+    },
+    {
+      "id": "yt-ext",
+      "type": "oficial",
+      "publisher": "Rockstar Games (YouTube)",
+      "title": "Grand Theft Auto VI: An Extended Look",
+      "url": "https://www.youtube.com/watch?v=tJbzMqJGH4k"
+    },
+    {
+      "id": "yt-launch",
+      "type": "oficial",
+      "publisher": "Rockstar Games (YouTube)",
+      "title": "Grand Theft Auto VI Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=rz1B4B2yBZY"
+    },
+    {
+      "id": "gamesbeat-earnings",
+      "type": "imprensa",
+      "publisher": "GamesBeat",
+      "title": "All the takeaways about GTA VI from the Take-Two earnings call (09/11/2026)",
+      "url": "https://gamesbeat.com/all-the-takeaways-on-gta-from-the-take-two-earnings-call-strauss-zelnick/"
+    },
+    {
+      "id": "mensjournal-wallst",
+      "type": "imprensa",
+      "publisher": "Men's Journal",
+      "title": "GTA 6 Launches This Week, and Wall Street Has Already Set a $1.5 Billion Bar (17/11/2026)",
+      "url": "https://www.mensjournal.com/news/gta-6-wall-street-1-5-billion-launch-weekend"
+    },
+    {
+      "id": "tweaktown-pc",
+      "type": "imprensa",
+      "publisher": "TweakTown",
+      "title": "GTA 6 PC and physical disc news will come from Rockstar, confirms Take-Two",
+      "url": "https://www.tweaktown.com/news/114580/grand-theft-auto-6-pc-and-physical-disc-news-will-come-from-rockstar-confirms-take-two/index.html"
+    },
+    {
+      "id": "forbes-times",
+      "type": "imprensa",
+      "publisher": "Forbes",
+      "title": "GTA 6 Unlocks At Midnight On November 19 (horários nos EUA)",
+      "url": "https://www.forbes.com/sites/brianmazique/2026/11/12/gta-6-unlocks-at-midnight-on-november-19-but-millions-of-americans-can-start-playing-the-night-before/"
+    },
+    {
+      "id": "df-times",
+      "type": "imprensa",
+      "publisher": "Digital Foundry",
+      "title": "Rockstar Officially Confirms GTA 6 Regional Release Times",
+      "url": "https://www.digitalfoundry.net/news/2026/11/rockstar-officially-confirms-gta-6-regional-release-times-and-theyre-not-what-we-thought"
+    },
+    {
+      "id": "egw-df",
+      "type": "imprensa",
+      "publisher": "EGW (resumo da análise da Digital Foundry)",
+      "title": "Digital Foundry analisa An Extended Look: 30 fps",
+      "url": "https://egw.news/gaming/news/36959/digital-foundry-made-analysis-of-gta-6-gameplay-14-5lFrmxboA"
+    },
+    {
+      "id": "mte-patch",
+      "type": "imprensa",
+      "publisher": "Make Tech Easier",
+      "title": "GTA 6 patch 01.002.001 size",
+      "url": "https://maketecheasier.com/gta-6-patch-01-002-001-size/"
+    },
+    {
+      "id": "vice-patch",
+      "type": "imprensa",
+      "publisher": "VICE",
+      "title": "GTA 6 Gets a Second Day One Patch on PS5 and Xbox",
+      "url": "https://www.vice.com/en/article/gta-6-second-day-one-patch-ps5-xbox/"
+    },
+    {
+      "id": "insider-embargo",
+      "type": "imprensa",
+      "publisher": "Insider Gaming",
+      "title": "Grand Theft Auto 6 Review Embargo Date & Time Details",
+      "url": "https://insider-gaming.com/grand-theft-auto-6-review-embargo/"
+    },
+    {
+      "id": "vice-embargo",
+      "type": "imprensa",
+      "publisher": "VICE",
+      "title": "GTA 6 Review Embargo Date Explained",
+      "url": "https://www.vice.com/en/article/gta-6-review-embargo-date/"
+    },
+    {
+      "id": "pcenthusiast-mc",
+      "type": "imprensa",
+      "publisher": "The PC Enthusiast",
+      "title": "GTA 6 Reviews Expected Nov 18 as Metacritic Score Vanishes",
+      "url": "https://thepcenthusiast.com/gta-6-reviews-metacritic-score-embargo/"
+    },
+    {
+      "id": "techradar-475",
+      "type": "imprensa",
+      "publisher": "TechRadar",
+      "title": "GTA 6 Trailer 2: 475 milhões de views em 24 horas",
+      "url": "https://www.techradar.com/gaming/the-latest-grand-theft-auto-6-trailer-has-set-a-major-record-by-racking-up-475-million-views-in-just-24-hours"
+    },
+    {
+      "id": "variety-netflix",
+      "type": "imprensa",
+      "publisher": "Variety",
+      "title": "GTA 6 Netflix Extended Look Tops Charts With 31.1 Million Views",
+      "url": "https://variety.com/2026/tv/news/gta-6-netflix-extended-look-views-1236848409/"
+    },
+    {
+      "id": "rockstarintel-streams",
+      "type": "imprensa",
+      "publisher": "RockstarINTEL",
+      "title": "GTA 6 Gameplay Reveal Had Nearly 4 Million Live Viewers",
+      "url": "https://rockstarintel.com/gta-6-gameplay-reveal-had-nearly-4-million-live-viewers-as-it-broke-netflix/"
+    },
+    {
+      "id": "pushsquare-mtx",
+      "type": "imprensa",
+      "publisher": "Push Square",
+      "title": "GTA 6 Contains No Microtransactions or Generative AI, Rockstar Says",
+      "url": "https://www.pushsquare.com/news/2026/08/gta-6-contains-no-microtransactions-or-generative-ai-rockstar-says"
+    },
+    {
+      "id": "nme-mtx",
+      "type": "imprensa",
+      "publisher": "NME",
+      "title": "GTA 6: sem microtransações e sem IA generativa",
+      "url": "https://www.nme.com/news/gaming-news/grand-theft-auto-6-micro-transactions-ai-assets-3966308"
+    },
+    {
+      "id": "engadget-extended",
+      "type": "imprensa",
+      "publisher": "Engadget",
+      "title": "20+ things you may have missed in the GTA 6 extended look",
+      "url": "https://www.engadget.com/2246846/things-you-may-have-missed-gta-6-extended-look/"
+    },
+    {
+      "id": "keengamer-extended",
+      "type": "imprensa",
+      "publisher": "KeenGamer",
+      "title": "GTA 6 Extended Look Recap: All Gameplay Details",
+      "url": "https://www.keengamer.com/articles/news/gta-6-extended-look-recap-all-gameplay-details/"
+    },
+    {
+      "id": "forbes-map",
+      "type": "imprensa",
+      "publisher": "Forbes",
+      "title": "GTA 6's map is about twice the size of GTA 5",
+      "url": "https://www.forbes.com/sites/brianmazique/2026/10/06/gta-6s-map-is-about-twice-the-size-of-gta-5-with-hurricanes-and-170-animal-species/"
+    },
+    {
+      "id": "gameriv-collector",
+      "type": "imprensa",
+      "publisher": "GameRiv",
+      "title": "GTA 6 Vice City Collection por US$ 399,99 (jogo vendido separado)",
+      "url": "https://gameriv.com/gta-6-vice-city-collection-is-up-for-preorder-at-399-99-but-the-game-is-sold-separately/"
+    },
+    {
+      "id": "psu-collector",
+      "type": "imprensa",
+      "publisher": "PSU",
+      "title": "The Goodtime State – Vice City Collection costs $400",
+      "url": "https://www.psu.com/news/grand-theft-auto-vi-the-goodtime-state-vice-city-collection-costs-400-and-doesnt-include-the-game/"
+    },
+    {
+      "id": "twistedvoxel-pegi",
+      "type": "imprensa",
+      "publisher": "Twisted Voxel",
+      "title": "GTA VI PEGI 18 Rating Appears On PlayStation Store",
+      "url": "https://twistedvoxel.com/gta-vi-pegi-18-rating/"
+    },
+    {
+      "id": "digitaltrends-pegi",
+      "type": "imprensa",
+      "publisher": "Digital Trends",
+      "title": "GTA 6 PEGI rating detailed",
+      "url": "https://digitaltrends.com/gaming/gta-6-pegi-rating-detailed-decapitation-drug-use/"
+    },
+    {
+      "id": "cnnbr-precos",
+      "type": "imprensa",
+      "publisher": "CNN Brasil",
+      "title": "GTA 6: pré-venda tem início no Brasil; veja valores",
+      "url": "https://www.cnnbrasil.com.br/economia/money/tecnologia/gta-6-pre-venda-tem-inicio-no-brasil-veja-valores/"
+    },
+    {
+      "id": "einerd-idiomas",
+      "type": "imprensa",
+      "publisher": "Einerd",
+      "title": "GTA 6 terá legendas em PT-BR, mas sem dublagem",
+      "url": "https://www.einerd.com/gta-6-idiomas-portugues-sem-dublagem/"
+    },
+    {
+      "id": "techtudo-horario",
+      "type": "imprensa",
+      "publisher": "TechTudo",
+      "title": "GTA 6: quando é o lançamento e horário no Brasil",
+      "url": "https://www.techtudo.com.br/guia/2026/11/gta-6-veja-quando-e-o-lancamento-horario-no-brasil-e-o-que-voce-precisa-saber-edjogos.ghtml"
+    },
+    {
+      "id": "outlook-gtav",
+      "type": "imprensa",
+      "publisher": "Outlook Respawn",
+      "title": "GTA V crosses 230M sales as GTA VI nears release",
+      "url": "https://respawn.outlookindia.com/gaming/gaming-news/gta-v-crosses-230m-sales-as-gta-vi-nears-release"
+    },
+    {
+      "id": "sixcharts-t2",
+      "type": "imprensa",
+      "publisher": "6charts",
+      "title": "GTA 6 Trailer 2 Views: Record Broken, Record Held",
+      "url": "https://6charts.com/news/gta-6-trailer-2-views-record"
+    },
+    {
+      "id": "wikipedia",
+      "type": "comunidade",
+      "publisher": "Wikipedia (agregador com referências)",
+      "title": "Grand Theft Auto VI — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI"
+    },
+    {
+      "id": "reddit-regional",
+      "type": "comunidade",
+      "publisher": "r/PS5",
+      "title": "Rockstar Confirms a Regional Rollout Release for GTA VI",
+      "url": "https://www.reddit.com/r/PS5/comments/1xn3u3r/rockstar_confirms_a_regional_rollout_release_for/"
+    },
+    {
+      "id": "metacritic",
+      "type": "avaliacao",
+      "publisher": "Metacritic",
+      "title": "Grand Theft Auto VI — Metacritic",
+      "url": "https://www.metacritic.com/game/grand-theft-auto-vi/"
+    },
+    {
+      "id": "opencritic",
+      "type": "avaliacao",
+      "publisher": "OpenCritic",
+      "title": "OpenCritic (busca)",
+      "url": "https://opencritic.com/"
+    },
+    {
+      "id": "rs-vicecity",
+      "type": "oficial",
+      "publisher": "Rockstar Games",
+      "title": "Grand Theft Auto: Vice City — página oficial",
+      "url": "https://www.rockstargames.com/games/vicecity"
+    },
+    {
+      "id": "wiki-vc",
+      "type": "comunidade",
+      "publisher": "Wikipedia",
+      "title": "Grand Theft Auto: Vice City",
+      "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto:_Vice_City"
+    },
+    {
+      "id": "wiki-gtav",
+      "type": "comunidade",
+      "publisher": "Wikipedia",
+      "title": "Grand Theft Auto V",
+      "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto_V"
+    },
+    {
+      "id": "mc-gtaiv",
+      "type": "avaliacao",
+      "publisher": "Metacritic",
+      "title": "Grand Theft Auto IV — Metacritic",
+      "url": "https://www.metacritic.com/game/grand-theft-auto-iv/"
+    },
+    {
+      "id": "mc-gtav",
+      "type": "avaliacao",
+      "publisher": "Metacritic",
+      "title": "Grand Theft Auto V — Metacritic",
+      "url": "https://www.metacritic.com/game/grand-theft-auto-v/"
+    },
+    {
+      "id": "mc-rdr2",
+      "type": "avaliacao",
+      "publisher": "Metacritic",
+      "title": "Red Dead Redemption 2 — Metacritic",
+      "url": "https://www.metacritic.com/game/red-dead-redemption-2/"
+    },
+    {
+      "id": "noobfeed-online",
+      "type": "imprensa",
+      "publisher": "NoobFeed",
+      "title": "GTA 6 Online and PC Release Plans Raise New Questions After Take-Two Earnings Call",
+      "url": "https://www.noobfeed.com/news/gta-6-online-pc-release-questions"
+    }
+  ]
+}

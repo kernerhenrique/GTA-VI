@@ -1,0 +1,79 @@
+---
+const nav = [
+  { href: '#hub', label: 'Lançamento' },
+  { href: '#comprar', label: 'Comprar' },
+  { href: '#historia', label: 'História' },
+  { href: '#personagens', label: 'Personagens' },
+  { href: '#leonida', label: 'Leonida' },
+  { href: '#jogabilidade', label: 'Jogabilidade' },
+  { href: '#trailers', label: 'Trailers' },
+  { href: '#linha-do-tempo', label: 'Linha do tempo' },
+  { href: '#recepcao', label: 'Recepção' },
+  { href: '#faq', label: 'FAQ' },
+];
+---
+<header class="site-header" data-header>
+  <div class="container-vi header-row">
+    <a href="#topo" class="brand">
+      <span class="brand-mark" aria-hidden="true">VI</span>
+      <span class="brand-text">Leonida<span class="text-vi-pink">BR</span></span><span class="sr-only"> — início</span>
+    </a>
+    <a href="#hub" class="mini-count" data-mini-countdown>
+      <span class="mini-dot" aria-hidden="true"></span><span data-mini-text>19.11.2026</span><span class="sr-only"> — ir para a contagem</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-btn>
+      <span class="sr-only">Abrir menu</span>
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Seções" data-nav>
+      <ul>
+        {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50; height: var(--header-h);
+    background: linear-gradient(180deg, rgb(12 13 27 / .92), rgb(12 13 27 / .72));
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--vi-line);
+  }
+  .header-row { height: 100%; display: flex; align-items: center; gap: 12px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--color-vi-cream); margin-right: auto; }
+  .brand-mark {
+    display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px;
+    background: var(--vi-sunset); color: var(--color-vi-night);
+    font: 900 1.25rem/1 var(--font-display); letter-spacing: -.02em;
+  }
+  .brand-text { font: 800 1.35rem/1 var(--font-display); text-transform: uppercase; letter-spacing: .02em; }
+  .mini-count {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font: 600 .78rem/1 var(--font-mono); letter-spacing: .04em; color: var(--color-vi-cream);
+    padding: 8px 12px; border-radius: 999px; border: 1px solid var(--vi-line); white-space: nowrap;
+  }
+  .mini-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-vi-pink); box-shadow: 0 0 10px var(--color-vi-pink); animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  .menu-btn { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--vi-line); background: transparent; color: var(--color-vi-cream); cursor: pointer; }
+  .menu-icon, .menu-icon::before, .menu-icon::after { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; position: relative; transition: transform .25s; }
+  .menu-icon::before, .menu-icon::after { content: ""; position: absolute; left: 0; }
+  .menu-icon::before { top: -6px; } .menu-icon::after { top: 6px; }
+  [aria-expanded="true"] .menu-icon { background: transparent; }
+  [aria-expanded="true"] .menu-icon::before { transform: translateY(6px) rotate(45deg); }
+  [aria-expanded="true"] .menu-icon::after { transform: translateY(-6px) rotate(-45deg); }
+  .site-nav { position: fixed; inset: var(--header-h) 0 auto 0; background: rgb(12 13 27 / .97); border-bottom: 1px solid var(--vi-line); display: none; max-height: calc(100vh - var(--header-h)); overflow: auto; }
+  .site-nav.is-open { display: block; }
+  .site-nav ul { list-style: none; margin: 0; padding: 8px 16px 16px; display: grid; gap: 2px; }
+  .site-nav a { display: block; padding: 12px 8px; color: var(--color-vi-mist); text-decoration: none; font-weight: 600; border-bottom: 1px solid rgb(204 194 245 / .08); }
+  .site-nav a:hover { color: var(--color-vi-cream); }
+  @media (max-width: 380px) { .brand-text { display: none; } }
+  @media (min-width: 1180px) {
+    .menu-btn { display: none; }
+    .site-nav { position: static; display: block; background: none; border: 0; max-height: none; overflow: visible; order: 2; }
+    .mini-count { order: 3; }
+    .site-nav ul { display: flex; gap: 2px; padding: 0; }
+    .site-nav a { padding: 8px 9px; border: 0; font-size: .84rem; border-radius: 999px; white-space: nowrap; }
+    .site-nav a:hover { background: rgb(204 194 245 / .1); }
+  }
+</style>

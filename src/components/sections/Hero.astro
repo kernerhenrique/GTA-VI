@@ -1,0 +1,74 @@
+---
+import Picture from '../ui/Picture.astro';
+import Silhouette from '../layout/Silhouette.astro';
+import { launch } from '../../lib/data';
+const words = ['Vice', 'City,', 'EUA'];
+---
+<section id="topo" class="hero" aria-labelledby="hero-title">
+  <div class="hero-art" aria-hidden="false">
+    <Picture name="hero-keyart" sizes="(min-width: 1024px) 60vw, 100vw" priority class="hero-pic" position="62% 30%" />
+    <p class="credit hero-credit">Arte oficial © Rockstar Games</p>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="container-vi hero-inner">
+    <p class="eyebrow hero-eyebrow">Fan site não oficial<span class="hide-sm"> · Grand Theft Auto VI</span></p>
+    <h1 id="hero-title" class="kinetic display" aria-label="Vice City, EUA.">
+      {words.map((w, wi) => (
+        <span class="k-word" style={`--w:${wi}`} aria-hidden="true">
+          {[...w].map((ch, i) => <span class="k-letter" style={`--i:${i}`}>{ch}</span>)}
+          {wi === words.length - 1 && <span class="k-dot">.</span>}
+        </span>
+      ))}
+    </h1>
+    <p class="hero-sub lead">Jason, Lucia e uma conspiração que atravessa o estado de Leonida — <em>no lado mais sombrio do lugar mais ensolarado dos Estados Unidos</em>.</p>
+    <p class="hero-date">
+      <span class="text-sunset display">19.11.2026</span>
+      <span class="hero-plat">{launch.platforms.join(' · ')}</span>
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-pill" href="#hub">Contagem regressiva</a>
+      <a class="btn btn-ghost" href="#comprar">Edições e preços</a>
+    </div>
+  </div>
+  <Silhouette class="hero-silhouette" />
+</section>
+
+<style>
+  .hero { position: relative; min-height: min(92svh, 980px); display: flex; align-items: flex-end; padding: calc(var(--header-h) + 24px) 0 clamp(120px, 18vw, 220px); overflow: hidden; isolation: isolate; }
+  .hero-art { position: absolute; inset: 0; z-index: -2; }
+  .hero-art :global(.hero-pic) { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto !important; }
+  .hero-credit { position: absolute; right: 16px; bottom: 10px; z-index: 3; }
+  .hero-scrim { position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(180deg, rgb(12 13 27 / .25) 0%, rgb(12 13 27 / .1) 35%, rgb(12 13 27 / .75) 75%, #0C0D1B 100%),
+      linear-gradient(90deg, rgb(12 13 27 / .85) 0%, rgb(12 13 27 / .35) 55%, transparent 80%);
+  }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero-eyebrow { margin-bottom: 1rem; }
+  @media (max-width: 640px) { .hide-sm { display: none; } }
+  .kinetic { margin: 0; font-size: clamp(4rem, min(15vw, 17svh), 11.5rem); color: var(--color-vi-cream); display: flex; flex-direction: column; gap: .02em; }
+  .k-word { display: inline-flex; overflow: hidden; padding-bottom: .04em; transform-origin: left bottom; animation: k-settle 1.1s var(--ease-out-expo) both; animation-delay: calc(var(--w) * 260ms); }
+  .k-word:nth-child(2) { color: transparent; -webkit-text-stroke: 2px var(--color-vi-blush); }
+  .k-word:nth-child(3) { background: var(--vi-sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .k-letter { display: inline-block; transform: translateY(105%); animation: k-rise .9s var(--ease-out-expo) forwards; animation-delay: calc(var(--w) * 260ms + var(--i) * 45ms); }
+  .k-dot { display: inline-block; color: var(--color-vi-pink); -webkit-text-fill-color: var(--color-vi-pink); transform: scale(0); animation: k-dot .6s var(--ease-out-expo) forwards; animation-delay: 1.05s; }
+  @keyframes k-rise { to { transform: translateY(0); } }
+  @keyframes k-settle { from { transform: scale(1.08); } to { transform: scale(1); } }
+  @keyframes k-dot { 60% { transform: scale(1.25); } to { transform: scale(1); } }
+  .hero-sub { max-width: 46ch; margin: 1.25rem 0 0; text-shadow: 0 2px 18px rgb(0 0 0 / .6); }
+  .hero-date { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; margin: 1.5rem 0 0; }
+  .hero-date .display { font-size: clamp(2.4rem, 1.6rem + 3vw, 4rem); }
+  .hero-plat { font: 600 .82rem/1.2 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--color-vi-cream); }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.75rem; }
+  .hero :global(.hero-silhouette) { position: absolute; left: 0; right: 0; bottom: -2px; width: 100%; height: clamp(120px, 20vw, 240px); z-index: 1; pointer-events: none; }
+  @supports (animation-timeline: view()) {
+    .hero :global(.hero-silhouette) { animation: sil-parallax linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+    @keyframes sil-parallax { to { transform: translateY(18%); } }
+    .hero-art { animation: art-parallax linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+    @keyframes art-parallax { to { transform: translateY(10%) scale(1.04); } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .k-letter, .k-word, .k-dot { animation: none; transform: none; }
+    .hero :global(.hero-silhouette), .hero-art { animation: none; }
+  }
+</style>

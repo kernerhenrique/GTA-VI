@@ -1,0 +1,336 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Picture from '../ui/Picture.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import Icon from '../ui/Icon.astro';
+import { editions, platforms, ratings } from '../../lib/data';
+import { formatBRL, formatUSD } from '../../lib/time';
+
+const std = editions.editions.find((e) => e.id === 'standard')!;
+const ult = editions.editions.find((e) => e.id === 'ultimate')!;
+const vintage = editions.items.find((i) => i.id === 'vintage-pack')!;
+const gtaPlus = editions.items.find((i) => i.id === 'gta-plus')!;
+const box = editions.collectorsBox;
+const ueItems = editions.items.filter((i) => !['base-game', 'vintage-pack', 'gta-plus'].includes(i.id));
+const fan = [
+  { n: '01', title: 'Vintage Vice City Pack', kicker: 'Bônus de pré-venda', price: 'Grátis até 20/11', img: 'vintage-pack', href: '#vintage-pack' },
+  { n: '02', title: 'Standard Edition', kicker: 'Digital ou código na caixa', price: formatBRL(std.priceBRL), img: 'edition-standard', href: '#comparar-edicoes' },
+  { n: '03', title: 'Ultimate Edition', kicker: 'A mais completa', price: formatBRL(ult.priceBRL), img: 'edition-ultimate', href: '#ultimate-itens', hot: true },
+  { n: '04', title: 'Vice City Collection', kicker: "Collector's Box", price: `${formatUSD(box.priceUSD)}*`, img: 'collector-box', href: '#collectors-box' },
+  { n: '05', title: '1 mês de GTA+', kicker: 'Bônus digital', price: 'Até 20/11', img: 'gta-plus', href: '#gta-plus' },
+];
+const availLabel: Record<string, string> = { sim: 'Disponível', nuvem: 'Via nuvem', 'nao-anunciado': 'Não anunciado', nao: 'Não terá' };
+const rows = [
+  { label: 'Jogo completo', std: true, ult: true },
+  { label: 'Vintage Vice City Pack (até 20/11)', std: true, ult: true },
+  { label: '1 mês de GTA+ (compra digital até 20/11)', std: true, ult: true },
+  { label: 'Pré-download', std: true, ult: true },
+  { label: 'Mídia física (código na caixa)', std: true, ult: false },
+  ...ueItems.map((i) => ({ label: i.name, std: false, ult: true })),
+];
+---
+<section id="comprar" class="section cv-auto" aria-labelledby="comprar-title">
+  <div class="container-vi">
+    <SectionHeader id="comprar-title" eyebrow="Onde e como comprar" title="Edições, preços e plataformas" lead="Preços oficiais das lojas brasileiras (PS Store e Xbox), o que vem em cada edição, mídia física, classificação e idiomas." />
+
+    <!-- Card Fan -->
+    <div class="fan-stage reveal" data-fan>
+      <ul class="fan" role="list">
+        {fan.map((c, i) => (
+          <li class={`fan-card ${c.hot ? 'is-hot' : ''}`} style={`--i:${i - 2}`}>
+            <a href={c.href} class="fan-link">
+              <span class="fan-num">{c.n}.</span>
+              <Picture name={c.img} sizes="240px" class="fan-pic" decorative />
+              <span class="fan-body">
+                <span class="fan-kicker">{c.kicker}</span>
+                <span class="fan-title">{c.title}</span>
+                <span class="fan-price">{c.price}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="muted text-xs text-center mt-2">* Preço da Collector's Box reportado pela imprensa; não inclui o jogo.</p>
+    </div>
+
+    <!-- Plataformas -->
+    <h3 class="sub-title reveal">Plataformas</h3>
+    <div class="plat-grid">
+      {platforms.items.map((p) => (
+        <article class={`card card-hover plat reveal plat--${p.availability}`} data-tilt>
+          <div class="plat-top">
+            <h4 class="plat-name">{p.name}</h4>
+            <span class={`avail avail--${p.availability}`}>{availLabel[p.availability]}</span>
+          </div>
+          <p class="plat-label">{p.label}</p>
+          <ul class="plat-feat">{p.features.map((f) => <li>{f}</li>)}</ul>
+          <div class="plat-foot"><Badge status={p.status} />{p.rumor && <Badge status="rumor" />}<SourceRefs ids={p.sources} /></div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Comparativo -->
+    <h3 id="comparar-edicoes" class="sub-title reveal">Standard × Ultimate</h3>
+    <div class="ed-prices reveal">
+      {[std, ult].map((e) => (
+        <div class={`ed-price card ${e.highlight ? 'is-hot' : ''}`}>
+          <p class="eyebrow">{e.name}{e.highlight && ' · mais completa'}</p>
+          <p class="ed-brl tabular"><span class="sr-only">{formatBRL(e.priceBRL)}</span><span aria-hidden="true" data-count-to={e.priceBRL} data-decimals="2" data-prefix="R$ ">{formatBRL(e.priceBRL)}</span></p>
+          <p class="ed-usd">{formatUSD(e.priceUSD)} nos EUA · {e.format}</p>
+          <p class="text-sm muted">{e.tagline}</p>
+          <div class="flex flex-wrap gap-2 items-center"><Badge status={e.status} /><SourceRefs ids={e.sources} /></div>
+        </div>
+      ))}
+    </div>
+    <div class="table-wrap reveal" tabindex="0" role="region" aria-label="Tabela comparativa das edições">
+      <table class="cmp">
+        <caption class="sr-only">O que vem em cada edição de GTA VI</caption>
+        <thead><tr><th scope="col">Conteúdo</th><th scope="col">Standard<br /><span class="th-price">{formatBRL(std.priceBRL)}</span></th><th scope="col" class="col-hot">Ultimate<br /><span class="th-price">{formatBRL(ult.priceBRL)}</span></th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <th scope="row">{r.label}</th>
+              <td>{r.std ? <span class="yes"><Icon name="check" class="w-5 h-5" /><span class="sr-only">Sim</span></span> : <span class="no"><span aria-hidden="true">—</span><span class="sr-only">Não</span></span>}</td>
+              <td class="col-hot">{r.ult ? <span class="yes"><Icon name="check" class="w-5 h-5" /><span class="sr-only">Sim</span></span> : <span class="no"><span aria-hidden="true">—</span><span class="sr-only">Não</span></span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="upgrade card reveal">
+      <p><strong class="text-vi-cream">{editions.upgrade.name}: {formatBRL(editions.upgrade.priceBRL)}</strong> — {editions.upgrade.note}</p>
+      <div class="flex flex-wrap gap-2 items-center"><Badge status={editions.upgrade.status} /><SourceRefs ids={editions.upgrade.sources} /></div>
+    </div>
+
+    <!-- Ultimate: itens com imagens -->
+    <h3 id="ultimate-itens" class="sub-title reveal">O que vem na Ultimate Edition</h3>
+    <blockquote class="ult-blurb reveal">{ult.officialBlurb}<footer class="src-refs mt-2">— Texto oficial (PS Store Brasil)</footer></blockquote>
+    <ul class="ue-grid" role="list">
+      {ueItems.map((it) => (
+        <li class="ue card card-hover reveal" data-tilt>
+          <Picture name={it.image} sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 92vw" ratio="16/9" class="ue-pic" />
+          <div class="ue-body">
+            <p class="ue-cat">{it.category}</p>
+            <h4 class="ue-name">{it.name}</h4>
+            <p class="ue-desc">{it.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <p class="credit mt-3">Imagens oficiais © Rockstar Games. <SourceRefs ids={['rs-editions']} class="inline" /></p>
+
+    <!-- Vintage Pack + GTA+ -->
+    <div class="bonus-grid">
+      <article id="vintage-pack" class="card bonus reveal">
+        <Picture name="vintage-pack" sizes="(min-width: 1024px) 560px, 92vw" ratio="16/9" />
+        <div class="bonus-body">
+          <p class="eyebrow">Bônus de pré-venda · todas as edições</p>
+          <h4 class="bonus-title">{vintage.name}</h4>
+          <p>{vintage.description}</p>
+          <div class="bonus-thumbs">
+            {(vintage.gallery ?? []).map((g) => <Picture name={g} sizes="180px" ratio="16/9" class="bonus-thumb" />)}
+          </div>
+          <div class="flex flex-wrap gap-2 items-center"><Badge status={vintage.status} /><SourceRefs ids={vintage.sources} /></div>
+        </div>
+      </article>
+      <article id="gta-plus" class="card bonus bonus-small reveal">
+        <div class="bonus-body">
+          <p class="eyebrow">Bônus digital</p>
+          <h4 class="bonus-title">{gtaPlus.name}</h4>
+          <p>{gtaPlus.description}</p>
+          <div class="flex flex-wrap gap-2 items-center"><Badge status={gtaPlus.status} /><SourceRefs ids={gtaPlus.sources} /></div>
+        </div>
+        <div class="phys">
+          <p class="eyebrow"><Icon name="disc" class="w-4 h-4 inline" /> Mídia física × digital</p>
+          <p>{editions.physical.text}</p>
+          <p class="text-sm muted">{editions.physical.retailNote} <Badge status={editions.physical.retailStatus} /></p>
+          <SourceRefs ids={[...editions.physical.sources, ...editions.physical.retailSources]} />
+        </div>
+      </article>
+    </div>
+
+    <!-- Collector's Box -->
+    <article id="collectors-box" class="card box reveal">
+      <div class="box-art"><Picture name={box.image} sizes="(min-width: 1024px) 360px, 70vw" /></div>
+      <div class="box-body">
+        <p class="eyebrow">Collector's Box · Rockstar Store · chega em 19/11</p>
+        <h4 class="bonus-title">{box.name}</h4>
+        <p class="box-price"><span data-count-to={box.priceUSD} data-decimals="2" data-prefix="US$ ">{formatUSD(box.priceUSD)}</span> <Badge status={box.priceStatus} /> <span class="muted text-sm">— {box.kind}</span></p>
+        <ul class="box-list" role="list">
+          {box.contents.map((c) => (
+            <li>
+              <Picture name={c.image} sizes="96px" ratio="16/9" class="box-thumb" />
+              <span><strong>{c.name}</strong><br /><span class="muted text-sm">{c.detail}</span></span>
+            </li>
+          ))}
+        </ul>
+        <div class="flex flex-wrap gap-2 items-center"><Badge status={box.status} /><SourceRefs ids={[...box.sources, ...box.priceSources]} /></div>
+      </div>
+    </article>
+
+    <!-- Classificação, idiomas, espaço -->
+    <h3 class="sub-title reveal">Classificação, idiomas e espaço</h3>
+    <div class="info-grid">
+      {ratings.ratings.map((r) => (
+        <article class="card info reveal">
+          <div class="rating-badge" aria-hidden="true">{r.rating}</div>
+          <div>
+            <h4 class="info-title">{r.system}</h4>
+            <p class="text-sm">{r.label}</p>
+            <p class="text-xs muted">{r.descriptors.join(' · ')}</p>
+            {r.note && <p class="text-xs muted mt-1">{r.note}</p>}
+            <div class="flex flex-wrap gap-2 items-center mt-2"><Badge status={r.status} /><SourceRefs ids={r.sources} /></div>
+          </div>
+        </article>
+      ))}
+      <article class="card info info-wide reveal">
+        <div class="rating-badge rating-lang" aria-hidden="true">PT</div>
+        <div>
+          <h4 class="info-title">Idiomas</h4>
+          <p class="text-sm"><strong class="text-vi-cream">{ratings.languages.summary}</strong></p>
+          <p class="text-xs muted">Texto/legendas: {ratings.languages.text.join(', ')}. Áudio: {ratings.languages.audio.join(', ')}.</p>
+          <p class="text-xs muted mt-1">{ratings.languages.note}</p>
+          <div class="flex flex-wrap gap-2 items-center mt-2"><Badge status={ratings.languages.status} /><SourceRefs ids={ratings.languages.sources} /></div>
+        </div>
+      </article>
+      <article class="card info reveal">
+        <div class="rating-badge rating-gb" aria-hidden="true">GB</div>
+        <div>
+          <h4 class="info-title">Espaço em disco</h4>
+          <p class="text-sm"><strong class="text-vi-cream" data-count-to="212" data-prefix="até " data-suffix=" GB">até 212 GB</strong></p>
+          <p class="text-xs muted">{ratings.storage.note}</p>
+          <div class="flex flex-wrap gap-2 items-center mt-2"><Badge status={ratings.storage.status} /><SourceRefs ids={ratings.storage.sources} /></div>
+        </div>
+      </article>
+      <article class="card info reveal">
+        <div class="rating-badge rating-gb" aria-hidden="true">$</div>
+        <div>
+          <h4 class="info-title">Microtransações</h4>
+          <p class="text-sm">{ratings.monetization.text}</p>
+          <div class="flex flex-wrap gap-2 items-center mt-2"><Badge status={ratings.monetization.status} /><SourceRefs ids={ratings.monetization.sources} /></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sub-title { font: 900 clamp(1.8rem, 1.2rem + 2.4vw, 3rem)/.9 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: clamp(3rem, 2rem + 3vw, 5rem) 0 1.25rem; }
+
+  /* Card Fan */
+  .fan-stage { position: relative; padding: 10px 0 0; }
+  .fan { list-style: none; margin: 0 auto; padding: 0; position: relative; height: clamp(300px, 52vw, 470px); max-width: 1000px; }
+  .fan-card { --w: clamp(118px, 26vw, 236px); position: absolute; left: 50%; bottom: 0; width: var(--w); height: calc(var(--w) * 1.42); margin-left: calc(var(--w) / -2);
+    transform-origin: 50% 260%; transform: rotate(0deg) translateY(30px); opacity: 0;
+    transition: transform 1s var(--ease-out-expo), opacity .6s; transition-delay: calc((var(--i) + 2) * 60ms); z-index: calc(10 - var(--i) * var(--i)); }
+  .fan-stage.is-open .fan-card, html:not(.js) .fan-card { opacity: 1; transform: rotate(calc(var(--i) * 16deg)) translateY(0); }
+  .fan-link { position: absolute; inset: 0; display: flex; flex-direction: column; border-radius: 26px; overflow: hidden; text-decoration: none; color: inherit;
+    background: #15152a; border: 1px solid rgb(204 194 245 / .25); box-shadow: 0 30px 50px -20px rgb(0 0 0 / .8); transition: transform .35s var(--ease-out-expo), box-shadow .35s; }
+  .fan-link:hover, .fan-link:focus-visible { transform: translateY(-18px) scale(1.04); box-shadow: 0 40px 70px -24px var(--vi-pink-glow); z-index: 20; }
+  .fan-card:has(.fan-link:hover), .fan-card:has(.fan-link:focus-visible) { z-index: 30; }
+  .fan-card.is-hot .fan-link { background: var(--vi-sunset); border-color: transparent; box-shadow: 0 30px 80px -20px var(--vi-pink-glow); }
+  .fan-num { position: absolute; top: 10px; left: 14px; z-index: 2; font: italic 700 1.1rem/1 Georgia, serif; color: var(--color-vi-cream); text-shadow: 0 2px 8px rgb(0 0 0 / .8); }
+  .fan-link :global(.fan-pic) { flex: 1; aspect-ratio: auto !important; }
+  .fan-body { display: grid; gap: 2px; padding: 12px 14px 14px; }
+  .fan-kicker { font: 600 .6rem/1.2 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--color-vi-peach); }
+  .fan-title { font: 900 clamp(1rem, .8rem + .8vw, 1.35rem)/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); }
+  .fan-price { font: 700 .85rem/1.2 var(--font-mono); color: var(--color-vi-lavender); }
+  .fan-card.is-hot .fan-kicker, .fan-card.is-hot .fan-price { color: var(--color-vi-plum-deep); }
+  .fan-card.is-hot .fan-title { color: var(--color-vi-night); }
+  @media (max-width: 640px) {
+    .fan { height: 250px; }
+    .fan-card { transform-origin: 50% 340%; }
+    .fan-stage.is-open .fan-card { transform: rotate(calc(var(--i) * 9deg)); }
+    .fan-body { padding: 8px 10px 10px; }
+    .fan-kicker { font-size: .52rem; }
+    .fan-title { font-size: .95rem; }
+    .fan-price { font-size: .72rem; }
+  }
+
+  /* Plataformas */
+  .plat-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+  .plat { padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .plat-top { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+  .plat-name { font: 900 1.6rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .plat-label { font: 600 .8rem/1 var(--font-mono); color: var(--color-vi-peach); margin: 0; }
+  .plat-feat { margin: 0; padding-left: 1.1rem; font-size: .9rem; color: rgb(226 226 228 / .85); flex: 1; }
+  .plat-foot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .plat-foot :global(.src-refs) { width: 100%; margin: 0; }
+  .avail { font: 700 .62rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; white-space: nowrap; }
+  .avail--sim { background: var(--color-vi-blush); color: var(--color-vi-plum-deep); }
+  .avail--nuvem { background: rgb(204 194 245 / .18); color: var(--color-vi-lavender); }
+  .avail--nao-anunciado { border: 1px dashed var(--color-vi-peach); color: var(--color-vi-peach); }
+  .avail--nao { border: 1px solid rgb(226 226 228 / .3); color: rgb(226 226 228 / .7); }
+  .plat--nao, .plat--nao-anunciado { opacity: .85; }
+
+  /* Preços e tabela */
+  .ed-prices { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); margin-bottom: 16px; }
+  .ed-price { padding: 20px; display: grid; gap: 6px; }
+  .ed-price.is-hot { border-color: rgb(233 99 155 / .7); box-shadow: 0 30px 70px -30px var(--vi-pink-glow); background: linear-gradient(160deg, rgb(75 47 84 / .9), rgb(17 17 23 / .92)); }
+  .ed-brl { font: 900 clamp(2.6rem, 2rem + 3vw, 4rem)/1 var(--font-display); color: var(--color-vi-cream); margin: 4px 0 0; }
+  .ed-usd { font: 600 .82rem/1.3 var(--font-mono); color: var(--color-vi-lavender); margin: 0; }
+  .table-wrap { overflow-x: auto; border-radius: 18px; border: 1px solid var(--vi-line); background: var(--vi-surface); }
+  .cmp { width: 100%; border-collapse: collapse; min-width: 520px; font-size: .92rem; }
+  .cmp th, .cmp td { padding: 11px 14px; border-bottom: 1px solid rgb(204 194 245 / .1); text-align: center; }
+  .cmp tbody th { text-align: left; font-weight: 500; color: var(--color-vi-mist); }
+  .cmp thead th { font: 800 1.1rem/1.1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); position: sticky; top: 0; background: #14141f; }
+  .cmp thead th:first-child { text-align: left; }
+  .th-price { font: 600 .75rem/1 var(--font-mono); color: var(--color-vi-lavender); text-transform: none; }
+  .col-hot { background: rgb(233 99 155 / .08); }
+  .cmp thead .col-hot { background: linear-gradient(180deg, rgb(233 99 155 / .35), rgb(75 47 84 / .6)); }
+  .yes { color: var(--color-vi-pink); display: inline-flex; }
+  .no { color: rgb(226 226 228 / .35); }
+  .upgrade { padding: 16px 18px; margin-top: 14px; display: grid; gap: 8px; }
+  .upgrade p { margin: 0; }
+
+  /* Itens da Ultimate */
+  .ult-blurb { margin: 0 0 20px; padding: 18px 22px; border-left: 3px solid var(--color-vi-pink); background: rgb(75 47 84 / .35); border-radius: 0 16px 16px 0; font-size: 1.02rem; color: var(--color-vi-mist); max-width: 75ch; }
+  .ue-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+  .ue :global(.ue-pic img) { transition: transform .6s var(--ease-out-expo), filter .6s; filter: saturate(.85); }
+  .ue:hover :global(.ue-pic img), .ue:focus-within :global(.ue-pic img) { transform: scale(1.06); filter: saturate(1.15); }
+  .ue-body { padding: 14px 16px 16px; }
+  .ue-cat { font: 600 .62rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--color-vi-peach); margin: 0 0 6px; }
+  .ue-name { font: 900 1.3rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0 0 6px; }
+  .ue-desc { font-size: .88rem; color: rgb(226 226 228 / .82); margin: 0; }
+
+  /* Bônus */
+  .bonus-grid { display: grid; gap: 16px; margin-top: clamp(2.5rem, 2rem + 2vw, 4rem); }
+  @media (min-width: 1000px) { .bonus-grid { grid-template-columns: 1.4fr 1fr; } }
+  .bonus-body { padding: 18px 20px 20px; display: grid; gap: 10px; }
+  .bonus-body p { margin: 0; }
+  .bonus-title { font: 900 clamp(1.6rem, 1.2rem + 1.5vw, 2.3rem)/.95 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .bonus-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .bonus-thumbs :global(.bonus-thumb) { border-radius: 10px; }
+  .phys { padding: 18px 20px 20px; border-top: 1px solid var(--vi-line); display: grid; gap: 8px; }
+  .phys p { margin: 0; }
+
+  /* Collector's box */
+  .box { margin-top: 16px; display: grid; gap: 0; }
+  @media (min-width: 900px) { .box { grid-template-columns: 340px 1fr; } }
+  .box-art { background: radial-gradient(circle at 50% 40%, rgb(233 99 155 / .35), transparent 70%); display: grid; place-items: center; padding: 20px; }
+  .box-art :global(.pic) { width: min(320px, 100%); background: transparent !important; }
+  .box-art :global(img) { object-fit: contain; }
+  .box-body { padding: 20px; display: grid; gap: 12px; }
+  .box-price { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 900 1.8rem/1 var(--font-display); color: var(--color-vi-cream); }
+  .box-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); }
+  .box-list li { display: grid; grid-template-columns: 84px 1fr; gap: 10px; align-items: center; font-size: .9rem; }
+  .box-list :global(.box-thumb) { border-radius: 10px; background-color: #1a1a2c !important; }
+  .box-list :global(.box-thumb img) { object-fit: contain; }
+
+  /* Info */
+  .info-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+  .info { padding: 18px; display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: start; }
+  .info p { margin: 0; }
+  .info-wide { grid-column: 1 / -1; }
+  .info-title { font: 900 1.25rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0 0 6px; }
+  .rating-badge { width: 64px; height: 64px; border-radius: 14px; display: grid; place-items: center; font: 900 1.8rem/1 var(--font-display); background: #111; color: #fff; border: 2px solid rgb(226 226 228 / .3); }
+  .rating-lang { background: var(--vi-sunset); color: var(--color-vi-night); border: 0; }
+  .rating-gb { background: var(--color-vi-plum); color: var(--color-vi-cream); border: 0; font-size: 1.5rem; }
+</style>
+
+<script>
+  import { whenVisible } from '../../scripts/clock';
+  const stage = document.querySelector<HTMLElement>('[data-fan]');
+  if (stage) whenVisible(stage, () => requestAnimationFrame(() => stage.classList.add('is-open')), '-15% 0px');
+</script>

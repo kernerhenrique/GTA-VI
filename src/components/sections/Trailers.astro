@@ -1,0 +1,85 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Picture from '../ui/Picture.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { trailers } from '../../lib/data';
+import { formatDate } from '../../lib/time';
+---
+<section id="trailers" class="section cv-auto" aria-labelledby="trailers-title">
+  <div class="container-vi">
+    <SectionHeader id="trailers-title" eyebrow="Vídeos oficiais" title="Trailers" lead="Os vídeos só carregam o player do YouTube quando você clica — a página continua leve." />
+    <ul class="tr-grid" role="list">
+      {trailers.items.map((t, i) => (
+        <li id={`trailer-${t.id}`} class={`tr card reveal ${i === trailers.items.length - 1 ? 'tr-feature' : ''}`}>
+          <div class="yt" data-yt={t.youtubeId} data-title={`GTA VI — ${t.title}`}>
+            <button type="button" class="yt-btn" aria-label={`Reproduzir ${t.title} (carrega o player do YouTube)`}>
+              <Picture name={t.thumb} sizes="(min-width: 1024px) 600px, 92vw" ratio="16/9" class="yt-thumb" decorative />
+              <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E9639B"/><path d="M45 24 27 14v20z" fill="#FFF9CB"/></svg></span>
+              <span class="yt-dur">{t.duration}</span>
+            </button>
+          </div>
+          <div class="tr-body">
+            <p class="eyebrow">{formatDate(t.date)}</p>
+            <h3 class="tr-title">{t.title}</h3>
+            <p class="tr-desc">{t.description}</p>
+            {t.dateNote && <p class="text-xs muted">⚠ {t.dateNote}</p>}
+            <ul class="tr-records" role="list">
+              {t.records.map((r) => (
+                <li>
+                  <span class="rec-v tabular" aria-hidden="true" data-count-to={r.value}>{r.display}</span>
+                  <span class="sr-only">{r.display}</span>
+                  <span class="rec-l">{r.label}</span>
+                  <Badge status={r.status} scramble={false} />
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-wrap gap-2 items-center"><Badge status={t.status} /><SourceRefs ids={[...t.sources, ...t.records.flatMap((r) => r.sources)]} /></div>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <p class="credit mt-3">Vídeos © Rockstar Games, exibidos pelo player oficial do YouTube (youtube-nocookie.com).</p>
+  </div>
+</section>
+
+<style>
+  .tr-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  @media (min-width: 900px) { .tr-grid { grid-template-columns: 1fr 1fr; } }
+  .tr { display: flex; flex-direction: column; }
+  .yt { position: relative; aspect-ratio: 16/9; background: #000; }
+  .yt-btn { all: unset; position: absolute; inset: 0; cursor: pointer; display: block; }
+  .yt-btn :global(.yt-thumb) { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .yt-btn :global(img) { transition: transform .6s var(--ease-out-expo), filter .4s; }
+  .yt-btn:hover :global(img), .yt-btn:focus-visible :global(img) { transform: scale(1.04); filter: brightness(1.1); }
+  .yt-btn:focus-visible { outline: 3px solid var(--color-vi-peach); outline-offset: -3px; }
+  .yt-play { position: absolute; left: 50%; top: 50%; width: 76px; transform: translate(-50%, -50%); filter: drop-shadow(0 6px 20px rgb(0 0 0 / .6)); transition: transform .3s; }
+  .yt-btn:hover .yt-play { transform: translate(-50%, -50%) scale(1.1); }
+  .yt-dur { position: absolute; right: 10px; bottom: 10px; font: 700 .75rem/1 var(--font-mono); background: rgb(12 13 27 / .85); color: var(--color-vi-cream); padding: 5px 8px; border-radius: 6px; }
+  .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .tr-body { padding: 16px 18px 18px; display: grid; gap: 8px; }
+  .tr-body p { margin: 0; }
+  .tr-title { font: 900 1.8rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .tr-desc { font-size: .92rem; }
+  .tr-records { list-style: none; padding: 0; margin: 4px 0; display: grid; gap: 8px; }
+  .tr-records li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+  .rec-v { font: 900 2.2rem/1 var(--font-display); background: var(--vi-sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .rec-l { font-size: .82rem; color: rgb(226 226 228 / .8); }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-yt]').forEach((box) => {
+    const btn = box.querySelector('button');
+    btn?.addEventListener('click', () => {
+      const id = box.dataset.yt!;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+      iframe.title = box.dataset.title ?? 'Vídeo do YouTube';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      box.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
+</script>

@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "id": "ps5", "name": "PlayStation 5", "availability": "sim", "label": "19/11/2026", "features": ["Hápticos do DualSense integrados (ajustáveis nas opções de acessibilidade)", "Gatilhos adaptáveis e alto-falante do controle", "Áudio 3D Tempest", "Carregamento mais rápido", "Remote Play"], "status": "confirmado", "sources": ["nw-preload-now", "ps-us"] },
+    { "id": "ps5pro", "name": "PlayStation 5 Pro", "availability": "sim", "label": "PS5 Pro Aprimorado", "features": ["PSSR (PlayStation Spectral Super Resolution) para mais nitidez", "Sombras com ray tracing exclusivas do PS5 Pro", "Mesma meta de 30 fps"], "status": "confirmado", "sources": ["nw-preload-now", "psstore-br"] },
+    { "id": "xsx", "name": "Xbox Series X|S", "availability": "sim", "label": "19/11/2026", "features": ["Versão nativa nos dois consoles", "Remote Play", "Meta de 30 fps"], "status": "confirmado", "sources": ["rs-vi", "nw-preload-now", "xbox-wire-cloud"] },
+    { "id": "cloud", "name": "Xbox Cloud Gaming", "availability": "nuvem", "label": "19/11 · 3h (Brasília)", "features": ["Streaming no Xbox One e no Series X|S", "Usa as configurações gráficas do Series S", "Qualidade depende da conexão"], "status": "confirmado", "sources": ["xbox-wire-cloud", "nw-preload-now"] },
+    { "id": "pc", "name": "PC", "availability": "nao-anunciado", "label": "Sem data", "features": ["Take-Two: novidades sobre PC virão da própria Rockstar", "Rumor: 1º trimestre de 2027 (não confirmado)"], "status": "confirmado", "sources": ["tweaktown-pc", "wikipedia"], "rumor": { "text": "Fontes da indústria citam PC no 1º trimestre de 2027.", "status": "rumor", "sources": ["wikipedia"] } },
+    { "id": "ps4", "name": "PS4 / Xbox One (nativo)", "availability": "nao", "label": "Não terá", "features": ["Não roda no PS4", "Xbox One só via nuvem"], "status": "confirmado", "sources": ["ps-us", "xbox-wire-cloud"] }
+  ]
+}

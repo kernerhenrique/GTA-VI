@@ -1,0 +1,214 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Picture from '../ui/Picture.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { timeline } from '../../lib/data';
+import { formatDate } from '../../lib/time';
+
+const typeLabel: Record<string, string> = {
+  anuncio: 'Anúncio', trailer: 'Trailer', adiamento: 'Adiamento', vazamento: 'Vazamento', venda: 'Vendas',
+  musica: 'Música', lancamento: 'Lançamento', evento: 'Evento', tecnico: 'Técnico', review: 'Reviews',
+};
+const filters = [
+  { id: 'todos', label: 'Tudo' },
+  { id: 'trailer', label: 'Trailers' },
+  { id: 'adiamento', label: 'Adiamentos' },
+  { id: 'anuncio', label: 'Anúncios' },
+  { id: 'venda', label: 'Vendas' },
+  { id: 'musica', label: 'Música' },
+  { id: 'vazamento', label: 'Vazamentos' },
+];
+const events = timeline.events;
+let lastYear = '';
+---
+<section id="linha-do-tempo" class="section tl-section" aria-labelledby="linha-do-tempo-title">
+  <div class="container-vi">
+    <SectionHeader id="linha-do-tempo-title" eyebrow="De 2022 a 2026" title="A estrada até Leonida" lead="Anúncio, vazamentos, trailers recordistas, dois adiamentos e o lançamento. Role a página: a rodovia se desenha até o ponto em que estamos hoje." />
+    <div class="tl-filters reveal" role="toolbar" aria-label="Filtrar eventos por tipo">
+      {filters.map((f, i) => <button type="button" class="chip" aria-pressed={i === 0 ? 'true' : 'false'} data-tl-filter={f.id}>{f.label}</button>)}
+    </div>
+
+    <div class="tl" data-tl>
+      <svg class="tl-svg" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="tl-grad" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#FEC497" />
+            <stop offset=".55" stop-color="#E9639B" />
+            <stop offset="1" stop-color="#CCC2F5" />
+          </linearGradient>
+          <filter id="tl-glow" x="-50%" y="-5%" width="200%" height="110%"><feGaussianBlur stdDeviation="4" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+        </defs>
+        <path class="tl-road" d="" />
+        <path class="tl-future" d="" />
+        <path class="tl-draw" d="" stroke="url(#tl-grad)" filter="url(#tl-glow)" />
+      </svg>
+      <span class="tl-marker" data-tl-marker aria-hidden="true"></span>
+
+      <ol class="tl-list" data-tl-list>
+        {events.map((e, i) => {
+          const year = e.date.slice(0, 4);
+          const showYear = year !== lastYear;
+          lastYear = year;
+          const dateText = e.dateLabel ?? formatDate(e.date, { day: '2-digit', month: 'long', year: 'numeric' });
+          return (
+            <>
+              {showYear && <li class="tl-year" data-year={year} aria-hidden="true"><span class="display">{year}</span></li>}
+              <li class={`tl-item tl--${e.type} ${e.isLaunch ? 'tl-launch' : ''}`} data-tl-item data-date={e.date} data-type={e.type} data-side={i % 2 === 0 ? 'left' : 'right'}>
+                <span class="tl-node" aria-hidden="true"></span>
+                <article class={`tl-card ${e.type === 'vazamento' ? 'scanlines' : ''}`}>
+                  <header class="tl-card-head">
+                    <time datetime={e.date} class="tl-date"><span data-tl-scramble>{dateText}</span></time>
+                    <span class="tl-type">{typeLabel[e.type]}</span>
+                  </header>
+                  <h3 class="tl-title">{e.title}</h3>
+                  {e.type === 'adiamento' && (
+                    <p class="tl-delay">
+                      <span class="tl-old">{e.oldDate}</span>
+                      <span aria-hidden="true">→</span>
+                      <span class="tl-new">{e.newDate}</span>
+                      <span class="tl-stamp" aria-hidden="true">Adiado</span>
+                    </p>
+                  )}
+                  <p class="tl-text">{e.text}</p>
+                  {e.count && (
+                    <p class="tl-count">
+                      <span class="tl-count-v tabular" data-count-to={e.count.value} data-duration="1800" aria-hidden="true">{e.count.display}</span>
+                      <span class="sr-only">{e.count.display}</span>
+                      <span class="tl-count-l">{e.count.label} <Badge status={e.count.status} scramble={false} /></span>
+                    </p>
+                  )}
+                  {e.image && (
+                    e.trailerId
+                      ? <a class="tl-thumb" href={`#trailer-${e.trailerId}`} aria-label={`Assistir: ${e.title}`}><Picture name={e.image} sizes="(min-width: 900px) 360px, 80vw" ratio="16/9" decorative /><span class="tl-play" aria-hidden="true">▶</span></a>
+                      : <div class="tl-thumb"><Picture name={e.image} sizes="(min-width: 900px) 360px, 80vw" ratio="16/9" /></div>
+                  )}
+                  {e.isLaunch && (
+                    <p class="tl-launch-state">
+                      <span data-show-when="pre">Próxima parada · <strong>em breve</strong></span>
+                      <span data-show-when="launching live"><strong>Lançado!</strong> Bem-vindo a Leonida.</span>
+                    </p>
+                  )}
+                  <footer class="tl-foot">
+                    <span class="tl-soon" aria-hidden="true">Em breve</span>
+                    <Badge status={e.status} scramble={false} />
+                    <SourceRefs ids={e.sources} />
+                  </footer>
+                </article>
+              </li>
+            </>
+          );
+        })}
+      </ol>
+      <div class="tl-here" data-tl-here hidden>
+        <span class="tl-here-dot" aria-hidden="true"></span>
+        <span class="tl-here-label">Você está aqui · <span data-tl-here-date></span></span>
+      </div>
+    </div>
+    <p class="text-sm muted mt-4">Eventos futuros aparecem tracejados com o selo "Em breve" e viram parte da estrada automaticamente quando a data chega — sem precisar republicar o site.</p>
+  </div>
+</section>
+
+<style>
+  .tl-section { overflow: hidden; }
+  .tl-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .chip { min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--vi-line); background: transparent; color: var(--color-vi-mist); font: 700 .88rem/1 var(--font-sans); cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--color-vi-blush); color: var(--color-vi-plum-deep); border-color: transparent; }
+
+  .tl { position: relative; --axis: 22px; }
+  @media (min-width: 900px) { .tl { --axis: 50%; } }
+  .tl-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .tl-road { fill: none; stroke: rgb(204 194 245 / .12); stroke-width: 14; stroke-linecap: round; }
+  .tl-future { fill: none; stroke: rgb(204 194 245 / .45); stroke-width: 2.5; stroke-dasharray: 8 9; stroke-linecap: round; }
+  .tl-draw { fill: none; stroke-width: 4; stroke-linecap: round; }
+  .tl-marker { position: absolute; left: 0; top: 0; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #FFF9CB; z-index: 4;
+    box-shadow: 0 0 0 4px rgb(233 99 155 / .55), 0 0 24px 8px rgb(233 99 155 / .65), 0 0 60px 18px rgb(254 196 151 / .35); opacity: 0; transition: opacity .3s; }
+  .tl.is-ready .tl-marker { opacity: 1; }
+
+  .tl-list { list-style: none; margin: 0; padding: 0; position: relative; z-index: 2; }
+  .tl-year { padding: 34px 0 14px calc(var(--axis) + 30px); }
+  .tl-year .display { font-size: clamp(3rem, 2rem + 5vw, 6.5rem); color: transparent; -webkit-text-stroke: 1.5px rgb(254 196 151 / .7); }
+  @media (min-width: 900px) { .tl-year { padding-left: 0; text-align: center; } .tl-year .display { display: inline-block; background: rgb(12 13 27 / .72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 20px; padding: 6px 22px 0; position: relative; } }
+
+  .tl-item { position: relative; padding: 10px 0 10px calc(var(--axis) + 30px); }
+  .tl-node { position: absolute; left: var(--axis); top: 34px; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: #0C0D1B; border: 3px solid rgb(204 194 245 / .5); z-index: 3; transition: background .4s, border-color .4s, box-shadow .4s, transform .4s; }
+  .tl-item.is-lit .tl-node { background: var(--color-vi-pink); border-color: #FFF9CB; box-shadow: 0 0 18px 4px rgb(233 99 155 / .7); transform: scale(1.15); }
+  .tl-item.is-future .tl-node { border-style: dashed; background: transparent; }
+  @media (min-width: 900px) {
+    .tl-item { width: 50%; padding: 14px 44px 14px 0; }
+    .tl-item[data-side="right"] { margin-left: 50%; padding: 14px 0 14px 44px; }
+    .tl-item[data-side="left"] .tl-node { left: auto; right: -9px; margin-left: 0; }
+    .tl-item[data-side="right"] .tl-node { left: 0; }
+    .tl-item[data-side="left"] .tl-card { margin-left: auto; }
+  }
+  .tl-card { position: relative; max-width: 520px; padding: 18px 20px; border-radius: 20px; background: var(--vi-surface); border: 1px solid var(--vi-line);
+    opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease-out-expo), transform .7s var(--ease-out-expo), border-color .4s, box-shadow .4s; }
+  @media (min-width: 900px) {
+    .tl-item[data-side="left"] .tl-card { transform: translateX(-40px); }
+    .tl-item[data-side="right"] .tl-card { transform: translateX(40px); }
+  }
+  .tl-item.is-in .tl-card, html:not(.js) .tl-card, .tl.no-motion .tl-card { opacity: 1; transform: none; }
+  .tl-item.is-lit .tl-card { border-color: rgb(233 99 155 / .45); box-shadow: 0 24px 60px -30px var(--vi-pink-glow); }
+  .tl-item.is-future .tl-card { border-style: dashed; border-color: rgb(254 196 151 / .5); background: rgb(17 17 23 / .7); }
+  .tl-card-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .tl-date { font: 700 .78rem/1.2 var(--font-mono); letter-spacing: .06em; color: var(--color-vi-peach); text-transform: uppercase; }
+  .tl-type { font: 700 .6rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--color-vi-lavender); border: 1px solid var(--vi-line); padding: 5px 8px; border-radius: 999px; }
+  .tl-title { font: 900 clamp(1.35rem, 1.1rem + 1vw, 1.8rem)/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0 0 8px; }
+  .tl-text { margin: 0 0 10px; font-size: .92rem; color: rgb(226 226 228 / .86); }
+  .tl-foot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tl-foot :global(.src-refs) { margin: 0; width: 100%; }
+  .tl-soon { display: none; font: 700 .6rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; padding: 6px 8px; border-radius: 999px; background: var(--color-vi-peach); color: var(--color-vi-night); }
+  .tl-item.is-future .tl-soon { display: inline-block; }
+
+  /* Adiamento: data antiga riscada + carimbo */
+  .tl-delay { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 2px 0 10px; font: 800 1.15rem/1 var(--font-display); text-transform: uppercase; }
+  .tl-old { color: rgb(226 226 228 / .5); position: relative; }
+  .tl-old::after { content: ""; position: absolute; left: -2px; right: -2px; top: 50%; height: 2px; background: var(--color-vi-pink); transform: scaleX(0); transform-origin: left; transition: transform .6s .3s var(--ease-out-expo); }
+  .tl-item.is-in .tl-old::after, .tl.no-motion .tl-old::after { transform: scaleX(1); }
+  .tl-new { color: var(--color-vi-cream); }
+  .tl-stamp { position: absolute; right: 0; top: -38px; font: 900 1.4rem/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: #E9639B; border: 3px solid #E9639B; padding: 4px 10px; border-radius: 6px; opacity: 0; transform: rotate(-30deg) scale(2.2); mix-blend-mode: screen; }
+  .tl-item.is-in .tl-stamp { animation: stamp .55s .45s cubic-bezier(.2, 1.6, .4, 1) forwards; }
+  .tl.no-motion .tl-stamp { opacity: .9; transform: rotate(-10deg); animation: none; }
+  @keyframes stamp { to { opacity: .9; transform: rotate(-10deg) scale(1); } }
+
+  /* Recordes */
+  .tl-count { display: grid; gap: 2px; margin: 0 0 10px; }
+  .tl-count-v { font: 900 clamp(2.4rem, 2rem + 2vw, 3.4rem)/1 var(--font-display); background: var(--vi-sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tl-count-l { font-size: .78rem; color: rgb(226 226 228 / .75); display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+  /* Trailers e imagens */
+  .tl-thumb { position: relative; display: block; margin: 0 0 12px; border-radius: 14px; overflow: hidden; }
+  .tl-thumb :global(img) { transition: transform .6s var(--ease-out-expo); }
+  a.tl-thumb:hover :global(img), a.tl-thumb:focus-visible :global(img) { transform: scale(1.05); }
+  .tl-play { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2rem; color: #FFF9CB; text-shadow: 0 0 20px rgb(233 99 155 / .9); background: radial-gradient(circle, rgb(12 13 27 / .5) 0 30px, transparent 31px); }
+
+  /* Vazamentos: glitch VHS sutil */
+  .tl--vazamento.is-in .tl-title { animation: glitch 1.2s steps(2) 1; }
+  @keyframes glitch {
+    0%, 100% { text-shadow: none; transform: none; }
+    20% { text-shadow: -2px 0 #E9639B, 2px 0 #CCC2F5; transform: translateX(1px); }
+    40% { text-shadow: 2px 0 #E9639B, -2px 0 #CCC2F5; transform: translateX(-1px); }
+    60% { text-shadow: -1px 0 #FEC497, 1px 0 #CCC2F5; }
+  }
+
+  /* Destino final: lançamento */
+  .tl-launch .tl-card { background: linear-gradient(160deg, rgb(233 99 155 / .3), rgb(17 17 23 / .9)); border-color: rgb(233 99 155 / .6); }
+  .tl-launch .tl-node { width: 28px; height: 28px; margin-left: -14px; top: 30px; background: var(--vi-sunset); border: 0; }
+  html[data-launch="pre"] .tl-launch .tl-node { animation: dest-pulse 1.6s ease-in-out infinite; }
+  @media (min-width: 900px) { .tl-launch[data-side="left"] .tl-node { right: -14px; } }
+  @keyframes dest-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgb(233 99 155 / .7); } 50% { box-shadow: 0 0 0 14px rgb(233 99 155 / 0); } }
+  .tl-launch-state { margin: 0 0 10px; font: 700 .9rem/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--color-vi-cream); }
+
+  /* "Você está aqui" */
+  .tl-here { position: absolute; left: var(--axis); z-index: 5; transform: translate(-9px, -50%); display: flex; align-items: center; gap: 10px; pointer-events: none; }
+  .tl-here-dot { width: 18px; height: 18px; border-radius: 50%; background: #FEC497; box-shadow: 0 0 0 6px rgb(254 196 151 / .25), 0 0 26px rgb(254 196 151 / .8); }
+  .tl-here-label { font: 700 .72rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--color-vi-night); background: #FEC497; padding: 7px 10px; border-radius: 999px; white-space: nowrap; }
+  .tl-item.is-hidden, .tl-year.is-hidden { display: none; }
+  @media (prefers-reduced-motion: reduce) { .tl-card { opacity: 1; transform: none; } .tl-marker { display: none; } }
+</style>
+
+<script>
+  import { whenVisible } from '../../scripts/clock';
+  const root = document.querySelector<HTMLElement>('[data-tl]');
+  if (root) whenVisible(root, () => import('../../scripts/timeline').then((m) => m.initTimeline(root)), '600px');
+</script>

@@ -1,0 +1,321 @@
+{
+  "_comment": "Linha do tempo animada. type: anuncio | trailer | adiamento | vazamento | venda | musica | lancamento | evento | tecnico | review. Datas no formato ISO (com fuso quando a hora importa). Eventos futuros viram 'EM BREVE' automaticamente até a data passar.",
+  "events": [
+    {
+      "id": "confirm-2022",
+      "date": "2022-02-04",
+      "type": "anuncio",
+      "title": "A Rockstar confirma o novo GTA",
+      "text": "\"O desenvolvimento do próximo título da série Grand Theft Auto está bem encaminhado.\"",
+      "status": "confirmado",
+      "sources": [
+        "nw-2022"
+      ]
+    },
+    {
+      "id": "leak-2022",
+      "date": "2022-09-18",
+      "type": "vazamento",
+      "title": "O grande vazamento",
+      "text": "Cerca de 90 vídeos de uma versão em desenvolvimento vazam no GTAForums — um dos maiores vazamentos da história dos games.",
+      "status": "reportado",
+      "sources": [
+        "wikipedia"
+      ]
+    },
+    {
+      "id": "trailer-1",
+      "date": "2023-12-04",
+      "type": "trailer",
+      "title": "Trailer 1 e o nome oficial",
+      "text": "Antecipado após vazar, o primeiro trailer revela Lucia, Jason, Vice City e a janela de 2025.",
+      "trailerId": "t1",
+      "image": "thumb-t1",
+      "count": {
+        "value": 90421491,
+        "display": "90,4 mi",
+        "label": "views em 24 h (Guinness)",
+        "status": "reportado",
+        "sources": [
+          "wikipedia"
+        ]
+      },
+      "status": "confirmado",
+      "sources": [
+        "nw-trailer1",
+        "rs-vi"
+      ]
+    },
+    {
+      "id": "delay-1",
+      "date": "2025-05-02",
+      "type": "adiamento",
+      "title": "Primeiro adiamento",
+      "text": "\"Precisamos desse tempo extra para entregar no nível de qualidade que vocês esperam e merecem.\"",
+      "oldDate": "Fim de 2025",
+      "newDate": "26/05/2026",
+      "status": "confirmado",
+      "sources": [
+        "nw-delay-may"
+      ]
+    },
+    {
+      "id": "trailer-2",
+      "date": "2025-05-06",
+      "type": "trailer",
+      "title": "Trailer 2 quebra a internet",
+      "text": "Novo trailer, novo site com personagens e regiões — e o maior lançamento de vídeo da história segundo a Rockstar.",
+      "trailerId": "t2",
+      "image": "thumb-t2",
+      "count": {
+        "value": 475000000,
+        "display": "475 mi",
+        "label": "views em 24 h (todas as plataformas)",
+        "status": "reportado",
+        "sources": [
+          "techradar-475"
+        ]
+      },
+      "status": "confirmado",
+      "sources": [
+        "nw-trailer2"
+      ]
+    },
+    {
+      "id": "delay-2",
+      "date": "2025-11-06",
+      "type": "adiamento",
+      "title": "Segundo adiamento",
+      "text": "\"Esses meses extras vão nos permitir terminar o jogo com o nível de polimento que vocês esperam e merecem.\"",
+      "oldDate": "26/05/2026",
+      "newDate": "19/11/2026",
+      "status": "confirmado",
+      "sources": [
+        "nw-delay-nov"
+      ]
+    },
+    {
+      "id": "cover",
+      "date": "2026-06-18",
+      "type": "anuncio",
+      "title": "Capa oficial e edições",
+      "text": "Revelados a arte de capa, a Ultimate Edition e o Vintage Vice City Pack.",
+      "image": "cover-art",
+      "status": "confirmado",
+      "sources": [
+        "nw-preorder-jun18"
+      ]
+    },
+    {
+      "id": "preorder",
+      "date": "2026-06-25",
+      "type": "venda",
+      "title": "Pré-venda aberta",
+      "text": "Meia-noite local no mundo todo. No Brasil: R$ 449,90 (Standard) e R$ 549,90 (Ultimate).",
+      "status": "confirmado",
+      "sources": [
+        "nw-preorder-jun25",
+        "psstore-br"
+      ]
+    },
+    {
+      "id": "cyberleek",
+      "date": "2026-08-15",
+      "dateLabel": "Agosto de 2026",
+      "type": "vazamento",
+      "title": "Vazamentos do \"CyberLeek\"",
+      "text": "Uma conta vaza o mapa e vídeos do jogo; a Take-Two vai à Justiça para identificar o responsável.",
+      "status": "reportado",
+      "sources": [
+        "wikipedia"
+      ]
+    },
+    {
+      "id": "extended",
+      "date": "2026-08-27",
+      "type": "trailer",
+      "title": "An Extended Look",
+      "text": "Quase meia hora de gameplay estreia na Netflix e depois no YouTube.",
+      "trailerId": "ext",
+      "image": "thumb-ext",
+      "count": {
+        "value": 31100000,
+        "display": "31,1 mi",
+        "label": "views na Netflix em 4 dias",
+        "status": "reportado",
+        "sources": [
+          "variety-netflix"
+        ]
+      },
+      "status": "confirmado",
+      "sources": [
+        "nw-extended-now"
+      ]
+    },
+    {
+      "id": "album",
+      "date": "2026-09-17",
+      "type": "musica",
+      "title": "GTA VI: The Album",
+      "text": "34 faixas inéditas com Travis Scott, Morgan Wallen, Rauw Alejandro, Keith Richards e mais.",
+      "image": "album-cover",
+      "status": "confirmado",
+      "sources": [
+        "nw-album"
+      ]
+    },
+    {
+      "id": "collector",
+      "date": "2026-09-24",
+      "type": "venda",
+      "title": "Collector's Box do Macca the Gator",
+      "text": "The Goodtime State – Vice City Collection: estatueta, Oakley, boné e mapa. O jogo é vendido à parte.",
+      "image": "cb-macca",
+      "status": "confirmado",
+      "sources": [
+        "nw-goodtime"
+      ]
+    },
+    {
+      "id": "radio",
+      "date": "2026-10-08",
+      "type": "musica",
+      "title": "As rádios de Leonida",
+      "text": "Seis estações reveladas — e podcasts para ouvir a pé, com fones, pela primeira vez na série.",
+      "status": "confirmado",
+      "sources": [
+        "nw-radio"
+      ]
+    },
+    {
+      "id": "launch-trailer",
+      "date": "2026-10-15",
+      "type": "trailer",
+      "title": "Launch Trailer",
+      "text": "O trailer de lançamento estreia \"Flower in a Hurricane\", do Justice.",
+      "trailerId": "launch",
+      "image": "thumb-launch",
+      "count": {
+        "value": 80000000,
+        "display": "80 mi+",
+        "label": "views no YouTube em 1 mês",
+        "status": "reportado",
+        "sources": [
+          "yt-launch"
+        ]
+      },
+      "status": "confirmado",
+      "sources": [
+        "nw-launch-trailer"
+      ]
+    },
+    {
+      "id": "score",
+      "date": "2026-10-29",
+      "type": "musica",
+      "title": "Trilha original do Justice",
+      "text": "Trilha adaptativa; álbum com 30 faixas em 11/12.",
+      "image": "score-cover",
+      "status": "confirmado",
+      "sources": [
+        "nw-score",
+        "rs-music"
+      ]
+    },
+    {
+      "id": "preload-ann",
+      "date": "2026-11-03",
+      "type": "tecnico",
+      "title": "Pré-download: 10/11, até 212 GB",
+      "text": "A Rockstar antecipa o pré-download e confirma pôster e mapa oficiais grátis no dia do lançamento.",
+      "status": "confirmado",
+      "sources": [
+        "nw-preload-ann"
+      ]
+    },
+    {
+      "id": "gallery",
+      "date": "2026-11-05",
+      "type": "anuncio",
+      "title": "Launch Gallery",
+      "text": "Novas capturas de Vice City e de Leonida no site oficial.",
+      "status": "confirmado",
+      "sources": [
+        "nw-gallery"
+      ]
+    },
+    {
+      "id": "earnings",
+      "date": "2026-11-09",
+      "type": "anuncio",
+      "title": "Take-Two: pré-vendas recorde",
+      "text": "Na teleconferência com investidores, a Take-Two diz que as pré-vendas superaram muito as expectativas e que o jogo está finalizado; o Festival de lançamento é anunciado para Miami.",
+      "status": "confirmado",
+      "sources": [
+        "gamesbeat-earnings",
+        "mensjournal-wallst",
+        "nw-festival"
+      ]
+    },
+    {
+      "id": "preload",
+      "date": "2026-11-10",
+      "type": "tecnico",
+      "title": "Pré-download liberado",
+      "text": "30 fps nos consoles, PS5 Pro com PSSR e sombras em ray tracing, Xbox Cloud com Xbox One.",
+      "status": "confirmado",
+      "sources": [
+        "nw-preload-now",
+        "xbox-wire-cloud"
+      ]
+    },
+    {
+      "id": "embargo",
+      "date": "2026-11-18T06:00:00-05:00",
+      "type": "review",
+      "title": "Embargo das reviews",
+      "text": "Data atribuída a um insider e repercutida pela imprensa. A Rockstar não confirmou.",
+      "status": "rumor",
+      "sources": [
+        "insider-embargo",
+        "vice-embargo"
+      ]
+    },
+    {
+      "id": "launch",
+      "date": "2026-11-19T00:00:00-03:00",
+      "type": "lancamento",
+      "title": "Lançamento de GTA VI",
+      "text": "Meia-noite local em cada região — 0h de Brasília no Brasil. Pôster e mapa de Leonida grátis no site oficial.",
+      "isLaunch": true,
+      "status": "confirmado",
+      "sources": [
+        "rs-support-times",
+        "psstore-br",
+        "nw-preload-ann"
+      ]
+    },
+    {
+      "id": "festival",
+      "date": "2026-11-21",
+      "type": "evento",
+      "title": "GTA VI: The Festival",
+      "text": "Mana Wynwood, Miami: Travis Scott, Cardi B, Justice e mais.",
+      "status": "confirmado",
+      "sources": [
+        "nw-festival"
+      ]
+    },
+    {
+      "id": "score-album",
+      "date": "2026-12-11",
+      "type": "musica",
+      "title": "Álbum da trilha do Justice",
+      "text": "GTA VI: Original Score chega ao streaming, vinil e CD.",
+      "status": "confirmado",
+      "sources": [
+        "rs-music"
+      ]
+    }
+  ]
+}

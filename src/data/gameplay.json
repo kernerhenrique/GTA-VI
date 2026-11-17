@@ -1,0 +1,19 @@
+{
+  "_comment": "Mecânicas e sistemas. icon = nome de ícone interno (ver src/components/ui/Icon.astro).",
+  "items": [
+    { "id": "duo", "title": "Dois protagonistas", "icon": "duo", "text": "Jogue como Jason ou Lucia. No mundo aberto dá para separar a dupla em atividades próprias ou mantê-los juntos — e o relacionamento responde às suas ações.", "status": "reportado", "sources": ["wikipedia"] },
+    { "id": "reputation", "title": "Criminal Profile", "icon": "badge", "text": "Um sistema de reputação registra se o casal age \"profissionalmente\" ou com violência gratuita, com consequências no jogo — parecido com a honra de Red Dead Redemption 2.", "status": "reportado", "sources": ["wikipedia", "engadget-extended"] },
+    { "id": "wanted", "title": "Polícia e fuga", "icon": "siren", "text": "Sistema de procurado reformulado: fugas a pé por becos e quintais ganharam destaque, e roubos colocam você entre ser rápido e lucrar mais.", "status": "reportado", "sources": ["keengamer-extended", "wikipedia"] },
+    { "id": "loadout", "title": "Arsenal realista", "icon": "weapon", "text": "Você carrega duas armas principais e duas secundárias; o resto fica guardado no veículo. A mira marca pontos letais e pontos para desarmar sem matar.", "status": "reportado", "sources": ["wikipedia", "engadget-extended"] },
+    { "id": "vehicles", "title": "Carros, barcos e roubo high-tech", "icon": "car", "text": "Carros mais sofisticados, com trava eletrônica, exigem clonadores de chave. Lanchas, aerobarcos, motos e aviões cobrem terra, pântano e mar.", "status": "reportado", "sources": ["engadget-extended"] },
+    { "id": "body", "title": "Corpo que muda", "icon": "body", "text": "Jason e Lucia podem ganhar ou perder peso, e passar dias sem dormir aparece no rosto. Cabelo, roupas e acessórios são personalizáveis.", "status": "reportado", "sources": ["wikipedia"] },
+    { "id": "social", "title": "Snapmatic e redes sociais", "icon": "phone", "text": "Um app de rede social integrado parodia TikTok e Instagram — Leonida vive de vídeos virais (vide as Real Dimez).", "status": "reportado", "sources": ["wikipedia"] },
+    { "id": "radio", "title": "Rádio e podcasts a pé", "icon": "headphones", "text": "Pela primeira vez na série: podcasts sob demanda e rádio ouvidos fora do carro, com fones conectados ao celular.", "status": "confirmado", "sources": ["nw-radio"] },
+    { "id": "weather", "title": "Clima tropical de verdade", "icon": "storm", "text": "Furacões e tempestades tropicais, chuva localizada, poças que persistem e até arco-íris com a luz certa.", "status": "reportado", "sources": ["wikipedia"] },
+    { "id": "wildlife", "title": "Fauna de Leonida", "icon": "gator", "text": "Jacarés nos Grassrivers, flamingos, iguanas pelas ruas dos Keys e vida marinha para mergulhar.", "status": "confirmado", "sources": ["rs-leonida"] },
+    { "id": "activities", "title": "Mundo para viver", "icon": "palm", "text": "Paraquedismo, luta, basquete, academia, caiaque, mergulho, minigolfe, zoológico e sinuca, entre outras atividades.", "status": "reportado", "sources": ["wikipedia", "engadget-extended"] },
+    { "id": "npcs", "title": "NPCs mais vivos", "icon": "crowd", "text": "Mais de 600 mil animações de NPC (55 mil no GTA V). Pedestres reagem a quem bisbilhota conversas ou saca uma arma. A Rockstar Los Angeles foi criada só para isso.", "status": "reportado", "sources": ["wikipedia"] },
+    { "id": "safehouses", "title": "Safehouses com vida", "icon": "home", "text": "Os esconderijos funcionam como os acampamentos de RDR2: lugares para fortalecer o vínculo entre os personagens.", "status": "reportado", "sources": ["wikipedia", "engadget-extended"] },
+    { "id": "camera", "title": "Terceira pessoa", "icon": "camera", "text": "Sem modo em primeira pessoa no lançamento (exceto ao mirar certas armas) — a prioridade foi a qualidade das animações em terceira pessoa.", "status": "reportado", "sources": ["wikipedia"] }
+  ]
+}

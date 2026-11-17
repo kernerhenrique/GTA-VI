@@ -1,0 +1,72 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Picture from '../ui/Picture.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { music } from '../../lib/data';
+import { formatDate } from '../../lib/time';
+---
+<section id="musica" class="section cv-auto" aria-labelledby="musica-title">
+  <div class="container-vi">
+    <SectionHeader id="musica-title" eyebrow="O jogo · música" title="Rádios de Leonida" lead={music.intro.text} />
+    <ul class="stations" role="list">
+      {music.stations.map((s) => (
+        <li class="station card card-hover reveal" data-tilt>
+          <Picture name={s.image} sizes="120px" ratio="1/1" class="station-logo" />
+          <div>
+            <h3 class="station-name">{s.name}</h3>
+            <p class="station-genre">{s.genre} · {s.hosts}</p>
+            <p class="station-text">{s.text}</p>
+            <div class="flex flex-wrap gap-2 items-center"><Badge status={s.status} /><SourceRefs ids={s.sources} /></div>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <p class="text-sm muted mt-3 reveal">{music.hostsNote.text} <Badge status={music.hostsNote.status} scramble={false} /> <SourceRefs ids={music.hostsNote.sources} class="inline" /></p>
+
+    <div class="albums">
+      {[music.album, music.score].map((a) => (
+        <article class="album card reveal">
+          <Picture name={a.image} sizes="(min-width: 900px) 220px, 40vw" ratio="1/1" class="album-cover" />
+          <div class="album-body">
+            <p class="eyebrow">Chega em {formatDate(a.date)}</p>
+            <h3 class="album-name">{a.name}</h3>
+            <p>{a.text}</p>
+            <ul class="singles">{a.singles.map((s) => <li>{s}</li>)}</ul>
+            <div class="flex flex-wrap gap-2 items-center"><Badge status={a.status} /><SourceRefs ids={a.sources} /></div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <article class="festival reveal">
+      <p class="eyebrow text-vi-night">{formatDate(music.festival.date)} · {music.festival.place}</p>
+      <h3 class="festival-name display">{music.festival.name}</h3>
+      <p>{music.festival.text}</p>
+      <div class="flex flex-wrap gap-2 items-center"><Badge status={music.festival.status} /><SourceRefs ids={music.festival.sources} /></div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .stations { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+  .station { padding: 16px; display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: start; }
+  .station :global(.station-logo) { border-radius: 16px; }
+  .station-name { font: 900 1.5rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0 0 4px; }
+  .station-genre { font: 600 .72rem/1.3 var(--font-mono); color: var(--color-vi-peach); margin: 0 0 6px; text-transform: uppercase; letter-spacing: .06em; }
+  .station-text { margin: 0 0 8px; font-size: .9rem; }
+  .albums { display: grid; gap: 16px; margin-top: 32px; }
+  @media (min-width: 1000px) { .albums { grid-template-columns: 1fr 1fr; } }
+  .album { padding: 18px; display: grid; gap: 18px; grid-template-columns: minmax(110px, 200px) 1fr; align-items: start; }
+  @media (max-width: 520px) { .album { grid-template-columns: 1fr; } .album :global(.album-cover) { max-width: 220px; } }
+  .album :global(.album-cover) { border-radius: 14px; box-shadow: 0 20px 50px -20px var(--vi-pink-glow); }
+  .album-body { display: grid; gap: 8px; }
+  .album-body p { margin: 0; }
+  .album-name { font: 900 1.6rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .singles { margin: 0; padding-left: 1.1rem; font-size: .86rem; color: rgb(226 226 228 / .82); display: grid; gap: 2px; }
+  .festival { margin-top: 18px; padding: 24px; border-radius: 24px; background: var(--vi-sunset); color: var(--color-vi-night); display: grid; gap: 10px; }
+  .festival p { margin: 0; }
+  .festival .eyebrow { color: var(--color-vi-plum-deep); }
+  .festival-name { font-size: clamp(2rem, 1.4rem + 3vw, 3.6rem); margin: 0; color: var(--color-vi-night); }
+  .festival :global(.src-refs), .festival :global(.src-refs a) { color: var(--color-vi-plum-deep); }
+</style>

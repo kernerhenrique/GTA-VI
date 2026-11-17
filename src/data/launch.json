@@ -1,0 +1,38 @@
+{
+  "_comment": "ARQUIVO ÚNICO de data/hora/fuso do lançamento. Para mudar o alvo do contador, altere releaseISO (sempre com o fuso, ex.: -03:00).",
+  "gameTitle": "Grand Theft Auto VI",
+  "releaseISO": "2026-11-19T00:00:00-03:00",
+  "releaseTimeZone": "America/Sao_Paulo",
+  "releaseTimeZoneLabel": "horário de Brasília",
+  "localMidnightDate": "2026-11-19",
+  "unlockRule": "Meia-noite no horário local de cada região, no PS5 e no Xbox Series X|S.",
+  "launchAnimationSeconds": 12,
+  "platforms": ["PlayStation 5", "Xbox Series X|S"],
+  "cloud": {
+    "label": "Xbox Cloud Gaming (Xbox One e Series X|S)",
+    "iso": "2026-11-19T01:00:00-05:00",
+    "note": "Começa às 1h ET (3h de Brasília) e usa as configurações gráficas do Xbox Series S.",
+    "status": "confirmado",
+    "sources": ["xbox-wire-cloud", "nw-preload-now"]
+  },
+  "preload": {
+    "startISO": "2026-11-10T00:00:00-03:00",
+    "sizeGB": 212,
+    "note": "PS5: 0h local de 10/11. Xbox: 0h GMT de 10/11 (21h de 09/11 em Brasília). Só para pré-venda digital ou código da caixa.",
+    "status": "confirmado",
+    "sources": ["nw-preload-ann", "rs-support-preload"]
+  },
+  "stores": [
+    { "id": "psstore", "label": "PlayStation Store", "url": "https://store.playstation.com/pt-br/concept/10000730" },
+    { "id": "xbox", "label": "Xbox / Microsoft Store", "url": "https://www.xbox.com/pt-BR/games/grand-theft-auto-vi" },
+    { "id": "rockstar", "label": "Site oficial (edições)", "url": "https://www.rockstargames.com/VI/editions" }
+  ],
+  "officialDownloads": {
+    "label": "Pôster da capa + mapa de Leonida (download grátis no site oficial a partir de 19/11)",
+    "url": "https://www.rockstargames.com/VI",
+    "status": "confirmado",
+    "sources": ["nw-preload-ann"]
+  },
+  "status": "confirmado",
+  "sources": ["rs-vi", "rs-support-times", "psstore-br", "nw-delay-nov"]
+}

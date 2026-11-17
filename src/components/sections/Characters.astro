@@ -1,0 +1,86 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Picture from '../ui/Picture.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { characters } from '../../lib/data';
+const byId = Object.fromEntries(characters.items.map((c) => [c.id, c]));
+// Posições (0–100) dos nós no diagrama de relações
+const pos: Record<string, [number, number]> = {
+  jason: [36, 46], lucia: [14, 30], cal: [36, 14], brian: [60, 26], boobie: [72, 64], drequan: [88, 40], realdimez: [90, 82], raul: [14, 78],
+};
+---
+<section id="personagens" class="section cv-auto" aria-labelledby="personagens-title">
+  <div class="container-vi">
+    <SectionHeader id="personagens-title" eyebrow="O jogo · personagens" title="Quem é quem em Leonida" lead="Passe o mouse (ou foque) em cada card para ver outra cena. Textos traduzidos do site oficial." />
+    <ul class="chars" role="list">
+      {characters.items.map((c, i) => (
+        <li class="char card card-hover reveal" style={`--accent:${c.accent};transition-delay:${(i % 4) * 70}ms`} tabindex="0" data-tilt>
+          <div class="char-media">
+            <Picture name={c.images[0]} sizes="(min-width: 1100px) 290px, (min-width: 640px) 45vw, 92vw" ratio="4/5" class="char-a" />
+            {c.images[1] && <Picture name={c.images[1]} sizes="(min-width: 1100px) 290px, (min-width: 640px) 45vw, 92vw" ratio="4/5" class="char-b" />}
+            <span class="char-role">{c.role}</span>
+          </div>
+          <div class="char-body">
+            <h3 class="char-name">{c.name}</h3>
+            <p class="char-tag">{c.tagline}</p>
+            <p class="char-bio">{c.bio}</p>
+            {c.quotes[0] && <p class="char-quote">“{c.quotes[0]}”</p>}
+            {c.voice && <p class="text-xs muted">{c.voice.text} <Badge status={c.voice.status} scramble={false} /></p>}
+            <div class="flex flex-wrap gap-2 items-center mt-auto"><Badge status={c.status} /><SourceRefs ids={c.sources} /></div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="rel reveal">
+      <h3 class="rel-title">Conexões</h3>
+      <div class="rel-wrap">
+        <svg class="rel-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {characters.relations.map((r) => {
+            const [x1, y1] = pos[r.from]; const [x2, y2] = pos[r.to];
+            return <line x1={x1} y1={y1} x2={x2} y2={y2} class={r.from === 'jason' && r.to === 'lucia' ? 'hot' : ''} />;
+          })}
+        </svg>
+        {Object.entries(pos).map(([id, [x, y]]) => (
+          <span class={`rel-node ${id === 'jason' || id === 'lucia' ? 'is-main' : ''}`} style={`left:${x}%;top:${y}%`} aria-hidden="true">{byId[id]?.name.split(' ')[0]}</span>
+        ))}
+      </div>
+      <ul class="rel-list" role="list">
+        {characters.relations.map((r) => (
+          <li><strong>{byId[r.from]?.name}</strong> <span aria-hidden="true">→</span><span class="sr-only">e</span> <strong>{byId[r.to]?.name}</strong>: {r.label}</li>
+        ))}
+      </ul>
+      {characters.relationsNote && <p class="text-sm muted mt-2">{characters.relationsNote}</p>}
+      <SourceRefs ids={['rs-leonida']} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .chars { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+  .char { display: flex; flex-direction: column; outline: none; }
+  .char:focus-visible { outline: 3px solid var(--color-vi-peach); outline-offset: 3px; }
+  .char-media { position: relative; }
+  .char-media :global(.char-b) { position: absolute; inset: 0; opacity: 0; transition: opacity .6s var(--ease-out-expo); }
+  .char:hover .char-media :global(.char-b), .char:focus-within .char-media :global(.char-b), .char:focus .char-media :global(.char-b) { opacity: 1; }
+  .char-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgb(12 13 27 / .9)); pointer-events: none; }
+  .char-role { position: absolute; left: 12px; bottom: 12px; z-index: 2; font: 700 .62rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--color-vi-night); background: var(--accent); padding: 6px 9px; border-radius: 999px; }
+  .char-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .char-body p { margin: 0; }
+  .char-name { font: 900 1.9rem/.95 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .char-tag { font-weight: 700; color: var(--accent); font-size: .95rem; }
+  .char-bio { font-size: .88rem; color: rgb(226 226 228 / .85); }
+  .char-quote { font: italic 600 .92rem/1.4 var(--font-sans); color: var(--color-vi-blush); border-left: 2px solid var(--accent); padding-left: 10px; }
+  .rel { margin-top: 48px; padding: 22px; border-radius: 22px; background: var(--vi-surface); border: 1px solid var(--vi-line); }
+  .rel-title { font: 900 2rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0 0 14px; }
+  .rel-wrap { position: relative; height: clamp(260px, 40vw, 380px); margin-bottom: 18px; display: none; }
+  @media (min-width: 720px) { .rel-wrap { display: block; } }
+  .rel-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .rel-svg line { stroke: rgb(204 194 245 / .45); stroke-width: .35; stroke-dasharray: 1.2 1; vector-effect: non-scaling-stroke; stroke-width: 1.5px; }
+  .rel-svg line.hot { stroke: var(--color-vi-pink); stroke-dasharray: none; stroke-width: 3px; }
+  .rel-node { position: absolute; transform: translate(-50%, -50%); font: 800 1rem/1 var(--font-display); text-transform: uppercase; letter-spacing: .04em; padding: 9px 14px; border-radius: 999px; background: #1b1b2d; border: 1px solid var(--vi-line); color: var(--color-vi-cream); white-space: nowrap; }
+  .rel-node.is-main { background: var(--vi-sunset); color: var(--color-vi-night); border: 0; box-shadow: var(--vi-glow-shadow); }
+  .rel-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: .9rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+  .rel-list strong { color: var(--color-vi-cream); }
+</style>

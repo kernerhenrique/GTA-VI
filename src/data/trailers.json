@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "id": "t1", "title": "Trailer 1", "youtubeId": "QdBZY2fkU-0", "date": "2023-12-04", "duration": "1:31",
+      "description": "A revelação: Lucia na prisão, a dupla e o retorno a Vice City. Música: \"Love Is a Long Road\", de Tom Petty.",
+      "thumb": "thumb-t1",
+      "records": [
+        { "label": "views em 24 h no YouTube (recorde Guinness para revelação de game)", "value": 90421491, "display": "90,4 mi", "status": "reportado", "sources": ["wikipedia"] }
+      ],
+      "dateNote": "O site oficial marca 04/12/2023 (o trailer foi antecipado após vazar); a Newswire marca 05/12/2023.",
+      "status": "confirmado", "sources": ["yt-t1", "nw-trailer1", "rs-vi"]
+    },
+    {
+      "id": "t2", "title": "Trailer 2", "youtubeId": "VQRLujxTm3c", "date": "2025-05-06", "duration": "2:47",
+      "description": "Personagens, Leonida e muito mais Vice City — gravado em um PS5. Música: \"Hot Together\", das Pointer Sisters.",
+      "thumb": "thumb-t2",
+      "records": [
+        { "label": "views em 24 h somando todas as plataformas", "value": 475000000, "display": "475 mi", "status": "reportado", "sources": ["techradar-475"] }
+      ],
+      "status": "confirmado", "sources": ["yt-t2", "nw-trailer2"]
+    },
+    {
+      "id": "ext", "title": "An Extended Look", "youtubeId": "tJbzMqJGH4k", "date": "2026-08-27", "duration": "26:48",
+      "description": "Quase meia hora de jogo capturada no PS5 — estreou na Netflix e depois no YouTube.",
+      "thumb": "thumb-ext",
+      "records": [
+        { "label": "views na Netflix em 4 dias", "value": 31100000, "display": "31,1 mi", "status": "reportado", "sources": ["variety-netflix"] },
+        { "label": "pico de espectadores simultâneos em lives", "value": 3970738, "display": "3,97 mi", "status": "reportado", "sources": ["rockstarintel-streams"] }
+      ],
+      "status": "confirmado", "sources": ["yt-ext", "nw-extended-now"]
+    },
+    {
+      "id": "launch", "title": "Launch Trailer", "youtubeId": "rz1B4B2yBZY", "date": "2026-10-15", "duration": "≈1:30",
+      "description": "O trailer de lançamento, com a estreia de \"Flower in a Hurricane\" (Justice feat. Tame Impala, SZA e King Gizzard & The Lizard Wizard).",
+      "thumb": "thumb-launch",
+      "records": [
+        { "label": "views no YouTube em ~1 mês (contador público)", "value": 80000000, "display": "80 mi+", "status": "reportado", "sources": ["yt-launch"] }
+      ],
+      "status": "confirmado", "sources": ["yt-launch", "nw-launch-trailer"]
+    }
+  ]
+}

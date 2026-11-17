@@ -1,0 +1,72 @@
+{
+  "_comment": "Manchetes da faixa estilo telejornal. Coloque as mais novas no topo. Cada uma precisa de selo e fonte.",
+  "items": [
+    {
+      "date": "2026-11-17",
+      "text": "Notas da crítica ainda não publicadas — embargo apontado para 18/11 não é oficial",
+      "status": "rumor",
+      "sources": [
+        "insider-embargo",
+        "vice-embargo"
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "text": "Atualização 01.002.001 começa a chegar no PS5 e no Xbox",
+      "status": "reportado",
+      "sources": [
+        "mte-patch"
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "text": "Pré-download liberado: até 212 GB · 30 fps nos consoles · PS5 Pro com PSSR e sombras em ray tracing",
+      "status": "confirmado",
+      "sources": [
+        "nw-preload-now"
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "text": "GTA VI no Xbox Cloud Gaming a partir de 19/11 — jogável até no Xbox One",
+      "status": "confirmado",
+      "sources": [
+        "xbox-wire-cloud"
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "text": "GTA VI: The Festival em Miami no dia 21/11 com Travis Scott, Cardi B, Justice e mais",
+      "status": "confirmado",
+      "sources": [
+        "nw-festival"
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "text": "Take-Two: pré-vendas de GTA VI muito acima das expectativas; data de 19/11 mantida",
+      "status": "confirmado",
+      "sources": [
+        "gamesbeat-earnings",
+        "mensjournal-wallst"
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "text": "Rockstar publica a Launch Gallery com novas capturas de Leonida",
+      "status": "confirmado",
+      "sources": [
+        "nw-gallery"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "text": "Justice assina a trilha original; álbum com 30 faixas chega em 11/12",
+      "status": "confirmado",
+      "sources": [
+        "nw-score",
+        "rs-music"
+      ]
+    }
+  ]
+}

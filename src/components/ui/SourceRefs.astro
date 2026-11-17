@@ -1,0 +1,16 @@
+---
+import { getSources } from '../../lib/data';
+interface Props { ids?: string[]; label?: string; class?: string }
+const { ids = [], label = 'Fonte', class: cls = '' } = Astro.props;
+const list = getSources(ids);
+---
+{list.length > 0 && (
+  <p class={`src-refs ${cls}`}>
+    <span>{list.length > 1 ? `${label}s` : label}: </span>
+    {list.map((s, i) => (
+      <>
+        <a href={s.url} target="_blank" rel="noopener noreferrer" title={s.title}>{s.publisher}</a>{i < list.length - 1 ? ' · ' : ''}
+      </>
+    ))}
+  </p>
+)}

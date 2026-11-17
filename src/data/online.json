@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "title": "GTA VI é single player",
+      "text": "A Rockstar descreve o jogo como \"uma experiência single player\". Não há modo multiplayer anunciado para o lançamento.",
+      "status": "confirmado",
+      "sources": [
+        "nw-preorder-jun25",
+        "psstore-br",
+        "ps-us"
+      ]
+    },
+    {
+      "title": "GTA Online atual segue no ar",
+      "text": "Segundo a imprensa, a Take-Two disse a investidores que pretende continuar dando suporte ao GTA Online (do GTA V) \"por enquanto\". Não há anúncio oficial sobre o futuro dele depois do lançamento do VI.",
+      "status": "reportado",
+      "sources": [
+        "noobfeed-online"
+      ]
+    },
+    {
+      "title": "GTA+ incluso na pré-venda digital",
+      "text": "O mês grátis de GTA+ vem com a compra digital (Standard ou Ultimate) feita antes de 20/11. O resgate vai até 31/03/2027 e, depois do mês grátis, a assinatura renova sozinha até ser cancelada.",
+      "status": "confirmado",
+      "sources": [
+        "psstore-br",
+        "ps-us"
+      ]
+    },
+    {
+      "title": "Sem microtransações no lançamento",
+      "text": "Rob Nelson (Rockstar North) afirmou que o modo história não tem monetização no lançamento. A Rockstar não comentou o futuro modo online.",
+      "status": "reportado",
+      "sources": [
+        "pushsquare-mtx",
+        "nme-mtx"
+      ]
+    },
+    {
+      "title": "Novo online depois?",
+      "text": "Especula-se que um novo modo online chegue após o lançamento, mas não há anúncio, data nem detalhes.",
+      "status": "rumor",
+      "sources": [
+        "nme-mtx"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "rows": [
+    { "platform": "PS5", "fps": "30 fps (meta)", "resolution": "≈1440p nativo + upscale para 4K", "rt": "Reflexos e iluminação global com RT", "extras": "Hápticos, Tempest 3D, carregamento rápido", "status": "confirmado", "sources": ["nw-preload-now"], "notes": [ { "text": "Resolução e RT segundo análise da Digital Foundry do Extended Look.", "status": "reportado", "sources": ["egw-df"] } ] },
+    { "platform": "PS5 Pro", "fps": "30 fps (meta)", "resolution": "PSSR (mais nitidez)", "rt": "+ Sombras com ray tracing (exclusivo)", "extras": "Selo \"PS5 Pro Aprimorado\"", "status": "confirmado", "sources": ["nw-preload-now", "psstore-br"] },
+    { "platform": "Xbox Series X", "fps": "30 fps (meta)", "resolution": "Não divulgada", "rt": "Não divulgado", "extras": "Remote Play", "status": "confirmado", "sources": ["nw-preload-now"] },
+    { "platform": "Xbox Series S", "fps": "30 fps (meta)", "resolution": "Não divulgada", "rt": "Não divulgado", "extras": "Referência para a versão em nuvem", "status": "confirmado", "sources": ["nw-preload-now"] },
+    { "platform": "Xbox Cloud (inclui Xbox One)", "fps": "Depende da conexão", "resolution": "Configurações do Series S", "rt": "—", "extras": "Começa às 3h de Brasília", "status": "confirmado", "sources": ["xbox-wire-cloud"] }
+  ],
+  "statement": { "text": "\"GTA VI foi desenvolvido do zero para a geração atual de consoles, mirando 30 quadros por segundo e levando as duas plataformas ao limite para dar vida ao vasto e rico mundo de Leonida.\"", "status": "confirmado", "sources": ["nw-preload-now"] }
+}

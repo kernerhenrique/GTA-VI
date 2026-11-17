@@ -1,0 +1,175 @@
+{
+  "items": [
+    {
+      "q": "Quando GTA VI será lançado?",
+      "a": "Em 19 de novembro de 2026, para PlayStation 5 e Xbox Series X|S.",
+      "status": "confirmado",
+      "sources": [
+        "rs-vi",
+        "nw-delay-nov"
+      ]
+    },
+    {
+      "q": "Que horas o jogo libera no Brasil?",
+      "a": "À 0h (meia-noite) de 19/11, no horário de Brasília. A Rockstar libera à meia-noite local em cada região; na PS Store Brasil o horário aparece como 19/11/2026 12:00 AM GMT-3. No Xbox Cloud Gaming, começa às 3h de Brasília.",
+      "status": "confirmado",
+      "sources": [
+        "rs-support-times",
+        "psstore-br",
+        "xbox-wire-cloud"
+      ]
+    },
+    {
+      "q": "Dá para jogar antes, com o pré-download?",
+      "a": "Não. O pré-download (desde 10/11) só adianta a instalação; o jogo destrava apenas no horário de lançamento.",
+      "status": "confirmado",
+      "sources": [
+        "nw-preload-ann",
+        "rs-support-preload"
+      ]
+    },
+    {
+      "q": "Quanto espaço preciso?",
+      "a": "Até 212 GB, dependendo do console — e mais espaço para atualizações (a 01.002.001 tem cerca de 602,5 MB no PS5 e 1,6 GB no Xbox).",
+      "status": "confirmado",
+      "sources": [
+        "nw-preload-ann",
+        "mte-patch"
+      ]
+    },
+    {
+      "q": "Quanto custa no Brasil?",
+      "a": "Na PS Store e na loja do Xbox: R$ 449,90 (Standard) e R$ 549,90 (Ultimate). O upgrade de Standard para Ultimate custa R$ 100,00 na loja do Xbox.",
+      "status": "confirmado",
+      "sources": [
+        "psstore-br",
+        "xbox-br",
+        "xbox-br-upgrade"
+      ]
+    },
+    {
+      "q": "A versão física tem disco?",
+      "a": "Não. A caixa traz um código de download da Standard Edition, à venda desde 12/11.",
+      "status": "confirmado",
+      "sources": [
+        "nw-preorder-jun25",
+        "nw-preload-ann"
+      ]
+    },
+    {
+      "q": "Qual edição vale a pena?",
+      "a": "A Standard já é o jogo completo com o Vintage Vice City Pack (até 20/11). A Ultimate adiciona veículos, armas, roupas, lojas e missões exclusivas espalhadas pela história. Dá para começar na Standard e fazer o upgrade depois (no Xbox, R$ 100,00).",
+      "status": "confirmado",
+      "sources": [
+        "rs-editions",
+        "xbox-br-upgrade"
+      ]
+    },
+    {
+      "q": "Vai ter versão para PC?",
+      "a": "Ainda não foi anunciada. A Take-Two diz que a novidade virá da Rockstar. Fala-se em 1º trimestre de 2027, mas é rumor.",
+      "status": "confirmado",
+      "sources": [
+        "tweaktown-pc",
+        "wikipedia"
+      ]
+    },
+    {
+      "q": "Roda no PS4 ou no Xbox One?",
+      "a": "No PS4, não. No Xbox One, só pelo Xbox Cloud Gaming (streaming).",
+      "status": "confirmado",
+      "sources": [
+        "ps-us",
+        "xbox-wire-cloud"
+      ]
+    },
+    {
+      "q": "Tem 60 fps? E no PS5 Pro?",
+      "a": "Não. A meta é 30 fps em todos os consoles. O PS5 Pro melhora a imagem com PSSR e adiciona sombras com ray tracing exclusivas.",
+      "status": "confirmado",
+      "sources": [
+        "nw-preload-now"
+      ]
+    },
+    {
+      "q": "Tem dublagem em português?",
+      "a": "Não. O jogo terá menus, interface e legendas em português do Brasil, mas as vozes ficam em inglês.",
+      "status": "reportado",
+      "sources": [
+        "einerd-idiomas"
+      ]
+    },
+    {
+      "q": "Tem GTA Online ou multiplayer?",
+      "a": "GTA VI é uma experiência single player, segundo a Rockstar. Um modo online para o GTA VI não foi anunciado.",
+      "status": "confirmado",
+      "sources": [
+        "nw-preorder-jun25",
+        "psstore-br"
+      ]
+    },
+    {
+      "q": "Preciso de PS Plus ou Game Pass?",
+      "a": "No PS5, a PS Store indica \"Jogo offline habilitado\" e \"1 jogador\" — o modo história não depende de PS Plus. Para jogar pelo Xbox Cloud Gaming, confira as exigências do serviço no anúncio do Xbox Wire.",
+      "status": "confirmado",
+      "sources": [
+        "psstore-br",
+        "xbox-wire-cloud"
+      ]
+    },
+    {
+      "q": "Tem microtransações?",
+      "a": "Segundo Rob Nelson (Rockstar North), o modo história não tem monetização no lançamento.",
+      "status": "reportado",
+      "sources": [
+        "pushsquare-mtx",
+        "nme-mtx"
+      ]
+    },
+    {
+      "q": "Qual a classificação indicativa?",
+      "a": "18 anos no Brasil (ClassInd: conteúdo sexual, drogas, linguagem imprópria e violência). ESRB M (17+) nos EUA e PEGI 18 (reportado) na Europa.",
+      "status": "confirmado",
+      "sources": [
+        "psstore-br",
+        "rs-vi",
+        "twistedvoxel-pegi"
+      ]
+    },
+    {
+      "q": "Quem são os protagonistas?",
+      "a": "Jason Duval e Lucia Caminos, um casal de criminosos que se vê no meio de uma conspiração por todo o estado de Leonida.",
+      "status": "confirmado",
+      "sources": [
+        "rs-leonida",
+        "psstore-br"
+      ]
+    },
+    {
+      "q": "O mapa é maior que o do GTA V?",
+      "a": "Sim — cerca de 2× o tamanho, segundo a Rockstar em entrevista à Game Informer (via Forbes). Não existe número oficial em km².",
+      "status": "reportado",
+      "sources": [
+        "forbes-map"
+      ]
+    },
+    {
+      "q": "Quando saem as reviews?",
+      "a": "A data mais citada é 18/11 (manhã no Brasil), mas vem de um insider; a Rockstar não confirmou. Vamos atualizar as notas aqui assim que saírem.",
+      "status": "rumor",
+      "sources": [
+        "insider-embargo",
+        "vice-embargo"
+      ]
+    },
+    {
+      "q": "Como resgato o mês grátis de GTA+?",
+      "a": "Compre a versão digital (Standard ou Ultimate) antes de 20/11 e resgate até 31/03/2027. Depois de um mês, a assinatura renova sozinha — cancele se não quiser continuar.",
+      "status": "confirmado",
+      "sources": [
+        "psstore-br",
+        "ps-us"
+      ]
+    }
+  ]
+}

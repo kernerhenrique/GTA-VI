@@ -1,0 +1,66 @@
+{
+  "_comment": "QUANDO AS REVIEWS SAÍREM: preencha aggregates.*.score/count/url, adicione quotes (máx. 1 frase curta cada, com veículo e link), e liste prós/contras mais citados. Mude 'embargo.status' para 'confirmado' se houver confirmação.",
+  "updatedAt": "2026-11-17T18:00:00-03:00",
+  "embargo": {
+    "text": "Embargo apontado para 18/11, por volta das 8h de Brasília (6h ET). Não confirmado pela Rockstar.",
+    "status": "rumor",
+    "sources": [
+      "insider-embargo",
+      "vice-embargo"
+    ]
+  },
+  "aggregates": [
+    {
+      "id": "metacritic",
+      "name": "Metacritic",
+      "score": null,
+      "max": 100,
+      "count": null,
+      "url": "https://www.metacritic.com/game/grand-theft-auto-vi/",
+      "note": "Sem Metascore em 17/11. Uma nota de usuário de 6,5 (5 votos) apareceu e sumiu em 16/11 — não é nota da crítica.",
+      "status": "reportado",
+      "sources": [
+        "pcenthusiast-mc"
+      ]
+    },
+    {
+      "id": "opencritic",
+      "name": "OpenCritic",
+      "score": null,
+      "max": 100,
+      "count": null,
+      "url": "https://opencritic.com/",
+      "note": "Sem nota em 17/11.",
+      "status": "reportado",
+      "sources": [
+        "pcenthusiast-mc"
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "game": "GTA IV",
+      "score": 98,
+      "label": "recorde da série no Metacritic"
+    },
+    {
+      "game": "GTA V",
+      "score": 97,
+      "label": "Metacritic (PS3/X360)"
+    },
+    {
+      "game": "Red Dead Redemption 2",
+      "score": 97,
+      "label": "Metacritic (PS4)"
+    }
+  ],
+  "benchmarksStatus": "reportado",
+  "benchmarksSources": [
+    "mc-gtaiv",
+    "mc-gtav",
+    "mc-rdr2"
+  ],
+  "quotes": [],
+  "pros": [],
+  "cons": []
+}

@@ -1,0 +1,67 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import Icon from '../ui/Icon.astro';
+import LoopClip from '../ui/LoopClip.astro';
+import { gameplay, tech } from '../../lib/data';
+---
+<section id="jogabilidade" class="section cv-auto" aria-labelledby="jogabilidade-title">
+  <div class="container-vi">
+    <SectionHeader id="jogabilidade-title" eyebrow="O jogo · jogabilidade" title="Como se joga em Leonida" lead="Sistemas e mecânicas mostrados pela Rockstar ou contados à imprensa por quem viu o jogo rodando. Repare nos selos." />
+    <ul class="gp-grid" role="list">
+      {gameplay.items.map((g, i) => (
+        <li class="gp card card-hover reveal" style={`transition-delay:${(i % 3) * 60}ms`}>
+          <span class="gp-icon"><Icon name={g.icon} class="w-7 h-7" /></span>
+          <h3 class="gp-title">{g.title}</h3>
+          <p class="gp-text">{g.text}</p>
+          <div class="flex flex-wrap gap-2 items-center mt-auto"><Badge status={g.status} /><SourceRefs ids={g.sources} /></div>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="gp-break reveal" aria-hidden="false">
+    <LoopClip clip="gameplay-break" fallback="break-vc-gas" sizes="100vw" ratio="21/8" class="break-pic" label="Clipe sem som de Vice City (GTA VI)" />
+    <p class="credit container-vi">Captura oficial © Rockstar Games — posto neon em Vice City</p>
+  </div>
+
+  <div class="container-vi">
+    <h3 id="tecnica" class="sub-title reveal">Parte técnica</h3>
+    <blockquote class="tech-quote reveal">{tech.statement.text}<footer class="flex flex-wrap gap-2 items-center mt-2"><Badge status={tech.statement.status} /><SourceRefs ids={tech.statement.sources} /></footer></blockquote>
+    <div class="table-wrap reveal" tabindex="0" role="region" aria-label="Tabela técnica por console">
+      <table class="tech">
+        <caption class="sr-only">Desempenho e recursos de GTA VI por plataforma</caption>
+        <thead><tr><th scope="col">Plataforma</th><th scope="col">Quadros</th><th scope="col">Resolução</th><th scope="col">Ray tracing</th><th scope="col">Extras</th><th scope="col">Selo</th></tr></thead>
+        <tbody>
+          {tech.rows.map((r) => (
+            <tr>
+              <th scope="row">{r.platform}</th>
+              <td>{r.fps}</td><td>{r.resolution}</td><td>{r.rt}</td><td>{r.extras}</td>
+              <td><Badge status={r.status} scramble={false} />{r.notes?.map((n) => <span class="block mt-1"><Badge status={n.status} scramble={false} /></span>)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {tech.rows.flatMap((r) => r.notes ?? []).map((n) => <p class="text-sm muted mt-2">* {n.text} <SourceRefs ids={n.sources} class="inline" /></p>)}
+    <SourceRefs ids={[...new Set(tech.rows.flatMap((r) => r.sources))]} class="mt-2" />
+  </div>
+</section>
+
+<style>
+  .gp-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+  .gp { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .gp-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(140deg, rgb(233 99 155 / .3), rgb(75 47 84 / .6)); color: var(--color-vi-cream); box-shadow: 0 10px 30px -12px var(--vi-pink-glow); }
+  .gp-title { font: 900 1.45rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .gp-text { margin: 0; font-size: .92rem; color: rgb(226 226 228 / .85); }
+  .gp-break { margin: clamp(3rem, 2rem + 4vw, 6rem) 0 0; }
+  .gp-break :global(.break-pic) { width: 100%; max-height: 520px; mask-image: linear-gradient(180deg, transparent, #000 15%, #000 85%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, #000 15%, #000 85%, transparent); }
+  .sub-title { font: 900 clamp(1.8rem, 1.2rem + 2.4vw, 3rem)/.9 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: clamp(2.5rem, 2rem + 2vw, 4rem) 0 1.25rem; }
+  .tech-quote { margin: 0 0 18px; padding: 18px 22px; border-left: 3px solid var(--color-vi-peach); background: rgb(36 49 82 / .45); border-radius: 0 16px 16px 0; font-size: 1.02rem; max-width: 80ch; }
+  .table-wrap { overflow-x: auto; border-radius: 18px; border: 1px solid var(--vi-line); background: var(--vi-surface); }
+  .tech { width: 100%; border-collapse: collapse; min-width: 760px; font-size: .9rem; }
+  .tech th, .tech td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgb(204 194 245 / .1); vertical-align: top; }
+  .tech thead th { font: 700 .7rem/1.2 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--color-vi-peach); background: #14141f; }
+  .tech tbody th { font: 800 1.05rem/1.1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); }
+</style>

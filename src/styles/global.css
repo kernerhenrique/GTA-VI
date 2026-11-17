@@ -1,0 +1,251 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/big-shoulders-display";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* ============================================================
+   Design tokens — paleta OFICIAL extraída de rockstargames.com/VI
+   (ver research/VISUAL.md para a origem de cada hex)
+   ============================================================ */
+@theme {
+  --color-vi-night: #0C0D1B;
+  --color-vi-ink: #111117;
+  --color-vi-dusk: #243152;
+  --color-vi-plum: #4B2F54;
+  --color-vi-plum-deep: #543654;
+  --color-vi-lavender: #CCC2F5;
+  --color-vi-cream: #FFF9CB;
+  --color-vi-peach: #FEC497;
+  --color-vi-pink: #E9639B;
+  --color-vi-blush: #FEC9D8;
+  --color-vi-glow: #FFB3C7;
+  --color-vi-mist: #E2E2E4;
+
+  --font-display: "Big Shoulders Display Variable", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --radius-pill: 34px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-glide: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+:root {
+  /* derivados (não oficiais) — misturas/opacidades dos tokens acima */
+  --vi-surface: rgb(17 17 23 / 0.88);
+  --vi-surface-2: rgb(36 49 82 / 0.55);
+  --vi-line: rgb(204 194 245 / 0.18);
+  --vi-pink-glow: rgb(233 99 155 / 0.45);
+  --vi-glow-shadow: 0 2px 66px rgb(255 179 199 / 0.345);
+  --vi-sunset: linear-gradient(0deg, #FEC497 10%, #E9639B 100%); /* oficial */
+  --sky-progress: 0;
+  --header-h: 60px;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+  background: var(--color-vi-night);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent; /* o fundo fica no <html> para o céu fixo (z-index negativo) aparecer */
+  color: var(--color-vi-mist);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-vi-pink); color: var(--color-vi-night); }
+
+a { color: var(--color-vi-lavender); text-underline-offset: 3px; }
+a:hover { color: var(--color-vi-cream); }
+
+:focus-visible {
+  outline: 3px solid var(--color-vi-peach);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: fixed; left: 12px; top: -60px; z-index: 100;
+  background: var(--color-vi-cream); color: var(--color-vi-plum-deep);
+  padding: 10px 16px; border-radius: var(--radius-pill); font-weight: 700; text-decoration: none;
+  transition: top .2s;
+}
+.skip-link:focus { top: 12px; }
+
+/* ---------- Tipografia ---------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: -0.005em;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-vi-peach);
+}
+.text-sunset {
+  background: var(--vi-sunset);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.lead { font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem); color: var(--color-vi-mist); }
+.muted { color: rgb(226 226 228 / 0.72); }
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* ---------- Layout ---------- */
+.container-vi { width: min(1200px, 100% - 32px); margin-inline: auto; }
+.section { position: relative; padding-block: clamp(4rem, 3rem + 6vw, 8rem); }
+.section-head { margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); max-width: 60ch; }
+@media (min-width: 1024px) {
+  .section-head:not(.text-center) { max-width: none; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); column-gap: 48px; align-items: end; }
+  .section-head:not(.text-center) > .eyebrow { grid-column: 1 / -1; }
+  .section-head:not(.text-center) > .section-title { grid-column: 1; margin-bottom: 0; }
+  .section-head:not(.text-center) > .lead { grid-column: 2; margin: 0 0 .6rem; padding-left: 20px; border-left: 2px solid var(--color-vi-pink); }
+}
+.section-title {
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(2.6rem, 1.6rem + 6vw, 6.5rem); line-height: .86; margin: .35rem 0 1rem;
+  color: var(--color-vi-cream);
+  text-wrap: balance;
+}
+
+/* ---------- Superfícies ---------- */
+.surface {
+  background: var(--vi-surface);
+  border: 1px solid var(--vi-line);
+  border-radius: 22px;
+}
+/* Seções longas abaixo da dobra: o navegador pula o layout/pintura até chegarem perto da tela */
+.cv-auto { content-visibility: auto; contain-intrinsic-size: auto 1400px; }
+html.cv-off .cv-auto { content-visibility: visible; } /* antes de pular para uma âncora, renderiza tudo para o destino não "fugir" */
+.card {
+  position: relative;
+  background: var(--vi-surface);
+  border: 1px solid var(--vi-line);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform .4s var(--ease-out-expo), box-shadow .4s, border-color .4s;
+}
+.card-hover:hover, .card-hover:focus-within {
+  border-color: rgb(233 99 155 / .55);
+  box-shadow: 0 24px 60px -24px var(--vi-pink-glow), 0 0 0 1px rgb(233 99 155 / .25);
+}
+
+/* tilt sutil (JS define --rx/--ry); sem JS fica parado */
+.tilt { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); will-change: transform; }
+
+/* ---------- Botões / pílulas (estilo oficial) ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 48px; padding: .75rem 1.4rem; border-radius: var(--radius-pill);
+  font-weight: 700; text-decoration: none; letter-spacing: .01em;
+  transition: transform .2s, box-shadow .3s, background .3s;
+}
+.btn-primary { background: var(--color-vi-plum); color: var(--color-vi-cream); box-shadow: var(--vi-glow-shadow); }
+.btn-primary:hover { background: #5d3a68; color: var(--color-vi-cream); transform: translateY(-1px); }
+.btn-pill { background: var(--color-vi-blush); color: var(--color-vi-plum-deep); box-shadow: var(--vi-glow-shadow); }
+.btn-pill:hover { color: var(--color-vi-plum-deep); transform: translateY(-1px); }
+.btn-ghost { border: 1px solid var(--vi-line); color: var(--color-vi-mist); }
+.btn-ghost:hover { border-color: var(--color-vi-lavender); color: var(--color-vi-cream); }
+
+/* ---------- Selos de veracidade ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: .35em;
+  font-family: var(--font-mono); font-size: .66rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; line-height: 1; padding: .38em .7em .36em; border-radius: 999px;
+  white-space: nowrap; vertical-align: middle;
+}
+.badge svg { width: 1em; height: 1em; flex: none; }
+.badge--confirmado { background: var(--color-vi-blush); color: var(--color-vi-plum-deep); }
+.badge--reportado { border: 1px solid var(--color-vi-lavender); color: var(--color-vi-lavender); }
+.badge--rumor { border: 1px dashed var(--color-vi-peach); color: var(--color-vi-peach); }
+
+.src-refs { font-size: .74rem; color: rgb(226 226 228 / .62); line-height: 1.5; }
+.src-refs a { color: rgb(204 194 245 / .85); text-decoration: none; border-bottom: 1px dotted rgb(204 194 245 / .5); }
+.src-refs a:hover { color: var(--color-vi-cream); }
+
+/* ---------- Texturas ---------- */
+.grain {
+  position: fixed; inset: -50%; z-index: 60; pointer-events: none; opacity: .06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: grain 1.2s steps(6) infinite;
+}
+@media (max-width: 900px), (pointer: coarse) { .grain { animation: none; inset: 0; } }
+@keyframes grain {
+  0% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); }
+}
+.scanlines { position: relative; }
+.scanlines::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: repeating-linear-gradient(0deg, rgb(0 0 0 / .18) 0 1px, transparent 1px 3px);
+  mix-blend-mode: multiply;
+}
+.neon { text-shadow: 0 0 18px var(--vi-pink-glow), 0 0 2px rgb(255 255 255 / .6); }
+
+/* ---------- Céu de fundo (pôr do sol → noite com a rolagem) ---------- */
+.sky {
+  position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background: linear-gradient(180deg, #0C0D1B 0%, #243152 40%, #4B2F54 70%, #E9639B 90%, #FEC497 100%);
+  background-size: 100% 300%;
+  background-position: 0 calc(100% - var(--sky-progress) * 100%);
+}
+.sky::after { /* escurece levemente para garantir contraste do conteúdo */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgb(12 13 27 / .55), rgb(12 13 27 / .35) 50%, rgb(12 13 27 / .7));
+}
+@supports (animation-timeline: scroll()) {
+  .sky { animation: sky-scroll linear both; animation-timeline: scroll(root); }
+  @keyframes sky-scroll { from { background-position: 0 100%; } to { background-position: 0 0%; } }
+}
+
+/* ---------- Reveal ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease-out-expo), transform .8s var(--ease-out-expo); }
+.reveal.is-in { opacity: 1; transform: none; }
+html:not(.js) .reveal { opacity: 1; transform: none; }
+
+/* ---------- Estado do lançamento (definido no <head> antes da pintura) ---------- */
+/* esconde só o que NÃO corresponde ao estado atual (preserva o display definido pelo componente) */
+html[data-launch="pre"] [data-show-when]:not([data-show-when~="pre"]),
+html[data-launch="launching"] [data-show-when]:not([data-show-when~="launching"]),
+html[data-launch="live"] [data-show-when]:not([data-show-when~="live"]),
+html:not([data-launch]) [data-show-when]:not([data-show-when~="pre"]) { display: none !important; }
+
+/* ---------- Imagens ---------- */
+.pic { position: relative; overflow: hidden; background-color: var(--color-vi-ink); background-size: cover; background-position: center; }
+.pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pic-placeholder {
+  display: grid; place-items: center; text-align: center; padding: 1rem;
+  background: repeating-linear-gradient(45deg, #1a1a24 0 10px, #15151d 10px 20px);
+  color: rgb(204 194 245 / .7); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em;
+}
+.credit { font-size: .65rem; color: rgb(226 226 228 / .55); letter-spacing: .04em; }
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .grain { animation: none; }
+  .reveal { opacity: 1; transform: none; }
+  .tilt { transform: none !important; }
+}

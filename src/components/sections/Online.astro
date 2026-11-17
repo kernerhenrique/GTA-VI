@@ -1,0 +1,30 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { online } from '../../lib/data';
+---
+<section id="online" class="section cv-auto section-tight" aria-labelledby="online-title">
+  <div class="container-vi">
+    <SectionHeader id="online-title" eyebrow="O jogo · online" title="GTA Online e multiplayer" />
+    <ol class="online" role="list">
+      {online.items.map((o) => (
+        <li class={`card online-item reveal online--${o.status}`}>
+          <div class="online-top"><h3>{o.title}</h3><Badge status={o.status} /></div>
+          <p>{o.text}</p>
+          <SourceRefs ids={o.sources} />
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .section-tight { padding-block: clamp(3rem, 2rem + 4vw, 5rem); }
+  .online { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+  .online-item { padding: 18px 20px; display: grid; gap: 8px; }
+  .online-item p { margin: 0; font-size: .95rem; }
+  .online-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .online-top h3 { font: 900 1.35rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .online--rumor { border-style: dashed; border-color: rgb(254 196 151 / .5); }
+</style>

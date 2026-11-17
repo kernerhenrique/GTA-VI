@@ -1,0 +1,15 @@
+{
+  "tagline": "Vice City, EUA.",
+  "synopsis": "Jason e Lucia sempre souberam que tudo estava contra eles. Mas, depois que um serviço simples dá errado, eles vão parar no lado mais sombrio do lugar mais ensolarado dos Estados Unidos, em meio a uma conspiração criminosa se estendendo por todo o estado de Leonida – e são forçados a depender um do outro mais do que nunca para saírem dessa vivos.",
+  "synopsisNote": "Texto oficial em português (PS Store Brasil).",
+  "synopsisStatus": "confirmado",
+  "synopsisSources": ["psstore-br", "rs-vi"],
+  "quote": { "text": "Quando o sol se põe e o neon acende, todo mundo tem algo a ganhar — e mais a perder.", "original": "When the sun fades and the neon glows, everyone has something to gain — and more to lose.", "status": "confirmado", "sources": ["rs-leonida"] },
+  "themes": [
+    { "title": "Bonnie & Clyde em Leonida", "text": "Um casal de criminosos que precisa confiar um no outro. A dinâmica de Jason e Lucia foi inspirada em Bonnie e Clyde.", "status": "reportado", "sources": ["wikipedia"] },
+    { "title": "Volta a Vice City, nos dias atuais", "text": "A Rockstar fala em \"um retorno à Vice City dos dias de hoje\" — longe dos anos 80 do clássico de 2002.", "status": "confirmado", "sources": ["nw-delay-nov", "rs-leonida"] },
+    { "title": "Sátira dos anos 2020", "text": "Redes sociais, influenciadores, câmeras corporais da polícia e memes como o \"Florida Man\" entram no humor ácido da série.", "status": "reportado", "sources": ["wikipedia"] },
+    { "title": "História em capítulos", "text": "Estrutura dividida em capítulos, como em Red Dead Redemption 2; os itens da Ultimate aparecem \"a cada capítulo\".", "status": "confirmado", "sources": ["psstore-br", "wikipedia"] }
+  ],
+  "tone": "Neo-noir ensolarado: o lado mais sombrio do lugar mais ensolarado dos EUA."
+}

@@ -1,0 +1,29 @@
+---
+/**
+ * Clipe curto (3–8 s) em loop, sem som, playsinline — só carrega/toca quando aparece na tela.
+ * Se o arquivo ainda não existir em public/clips/, mostra a imagem de fallback (ver ASSETS.md).
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import Picture from './Picture.astro';
+interface Props { clip: string; fallback: string; ratio?: string; sizes?: string; class?: string; label?: string }
+const { clip, fallback, ratio = '16/9', sizes = '100vw', class: cls = '', label } = Astro.props;
+const dir = path.join(process.cwd(), 'public', 'clips');
+const hasMp4 = fs.existsSync(path.join(dir, `${clip}.mp4`));
+const hasWebm = fs.existsSync(path.join(dir, `${clip}.webm`));
+const hasPoster = fs.existsSync(path.join(dir, `${clip}.jpg`));
+---
+{hasMp4 || hasWebm ? (
+  <div class={`pic clip ${cls}`} style={`aspect-ratio:${ratio}`}>
+    <video data-lazy-video muted loop playsinline preload="none" poster={hasPoster ? `/clips/${clip}.jpg` : undefined} aria-label={label} disablepictureinpicture>
+      {hasWebm && <source data-src={`/clips/${clip}.webm`} type="video/webm" />}
+      {hasMp4 && <source data-src={`/clips/${clip}.mp4`} type="video/mp4" />}
+    </video>
+  </div>
+) : (
+  <Picture name={fallback} ratio={ratio} sizes={sizes} class={cls} />
+)}
+
+<style>
+  .clip video { width: 100%; height: 100%; object-fit: cover; display: block; }
+</style>

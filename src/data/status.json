@@ -1,0 +1,14 @@
+{
+  "_comment": "Painel de status do hub. state: ok | pending | warn | live. Atualize 'value', 'detail', 'state' e 'updatedAt' conforme as notícias.",
+  "updatedAt": "2026-11-17T18:00:00-03:00",
+  "items": [
+    { "id": "preorder", "label": "Pré-venda", "value": "Aberta desde 25/06", "detail": "PS Store, Xbox e varejo. Bônus: Vintage Vice City Pack (até 20/11).", "state": "ok", "status": "confirmado", "sources": ["nw-preorder-jun25"] },
+    { "id": "preload", "label": "Pré-download", "value": "Liberado desde 10/11", "detail": "Só para pré-venda digital ou código da caixa ativado.", "state": "ok", "status": "confirmado", "sources": ["nw-preload-now", "rs-support-preload"] },
+    { "id": "size", "label": "Tamanho", "value": "até 212 GB", "detail": "Varia por console. Reserve espaço extra para atualizações.", "state": "ok", "status": "confirmado", "sources": ["nw-preload-ann"] },
+    { "id": "patch", "label": "Atualização", "value": "01.002.001", "detail": "≈602,5 MB no PS5 · ≈1,6 GB no Xbox (16/11). Sem notas de patch oficiais.", "state": "warn", "status": "reportado", "sources": ["mte-patch", "vice-patch"] },
+    { "id": "embargo", "label": "Embargo das reviews", "value": "18/11 (não oficial)", "detail": "Data atribuída a um insider. A Rockstar não confirmou.", "state": "pending", "status": "rumor", "sources": ["insider-embargo", "vice-embargo"] },
+    { "id": "scores", "label": "Notas da crítica", "value": "Aguardando", "detail": "Metacritic e OpenCritic ainda sem nota (17/11).", "state": "pending", "status": "reportado", "sources": ["pcenthusiast-mc"] },
+    { "id": "physical", "label": "Mídia física", "value": "Código na caixa", "detail": "Sem disco. À venda no varejo desde 12/11.", "state": "ok", "status": "confirmado", "sources": ["nw-preload-ann", "nw-preorder-jun25"] },
+    { "id": "cloud", "label": "Xbox Cloud", "value": "19/11 · 3h (Brasília)", "detail": "Inclui Xbox One. Gráficos do Series S.", "state": "ok", "status": "confirmado", "sources": ["xbox-wire-cloud"] }
+  ]
+}

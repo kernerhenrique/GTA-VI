@@ -1,0 +1,93 @@
+{
+  "_comment": "Edições, itens e preços. Preços em BRL das lojas oficiais brasileiras (PS Store BR e Xbox BR). Atualize priceBRL/priceUSD se mudarem.",
+  "updatedAt": "2026-11-17",
+  "editions": [
+    {
+      "id": "standard",
+      "name": "Standard Edition",
+      "tagline": "O jogo base + bônus de pré-venda",
+      "format": "Digital ou código na caixa (sem disco)",
+      "priceBRL": 449.90,
+      "priceUSD": 79.99,
+      "image": "edition-standard",
+      "includes": ["base-game", "vintage-pack", "gta-plus"],
+      "highlight": false,
+      "status": "confirmado",
+      "sources": ["psstore-br", "xbox-br", "ps-us", "rs-editions"]
+    },
+    {
+      "id": "ultimate",
+      "name": "Ultimate Edition",
+      "tagline": "Uma coleção exclusiva espalhada por toda a história de Jason e Lucia",
+      "format": "Somente digital",
+      "priceBRL": 549.90,
+      "priceUSD": 99.99,
+      "image": "edition-ultimate",
+      "includes": ["base-game", "vintage-pack", "gta-plus", "grotti-cheetah", "revolvers", "weapon-variants", "vice-city-style", "safehouse-vehicles", "ganado", "rideout", "saras-salon", "squalo", "stock-305", "dominator-buggy", "electric-fang", "one-eyed-willies", "goodtime-gear", "ptt-store", "classic-cars"],
+      "highlight": true,
+      "officialBlurb": "Boas-vindas a Leonida, o estado onde vale tudo. Aproveite tudo o que esse mundo imenso tem para oferecer com Grand Theft Auto VI: Ultimate Edition, uma coleção exclusiva de veículos, armas, roupas premium e ação em todos os cantos. Os bônus da Ultimate Edition estão atrelados a todos os aspectos da história de Jason e Lucia, com novos itens descobertos a cada capítulo.",
+      "status": "confirmado",
+      "sources": ["psstore-br", "xbox-br", "ps-us", "rs-editions"]
+    }
+  ],
+  "upgrade": {
+    "name": "Melhoria Ultimate Edition",
+    "priceBRL": 100.00,
+    "note": "Upgrade da Standard para a Ultimate, listado na Microsoft Store Brasil. Na PS Store, o complemento ainda aparece sem preço (indisponível) em 17/11.",
+    "status": "confirmado",
+    "sources": ["xbox-br-upgrade", "ps-us"]
+  },
+  "physical": {
+    "text": "A versão física é a Standard Edition com um código de download dentro da caixa — não há disco. Chegou ao varejo em 12/11 para permitir o pré-download.",
+    "retailNote": "No varejo brasileiro o preço varia (ex.: Amazon BR, R$ 418,40 à vista / R$ 449,90 parcelado em junho/2026).",
+    "status": "confirmado",
+    "retailStatus": "reportado",
+    "sources": ["nw-preorder-jun25", "nw-preload-ann"],
+    "retailSources": ["cnnbr-precos"]
+  },
+  "items": [
+    { "id": "base-game", "name": "Grand Theft Auto VI", "category": "Jogo", "description": "O jogo completo: a história de Jason e Lucia e o estado de Leonida.", "image": "cover-art", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "vintage-pack", "name": "Vintage Vice City Pack", "category": "Bônus de pré-venda", "description": "Sedã '55 Vapid Stanier com garagem em Shore Court (a um passo de Ocean Beach), terno de linho pastel para Jason, minivestido vermelho de paetês e cachos para Lucia, e o padrão de armas \"Channel the Original Kingpin\", inspirado na camisa de palmeiras de Tommy Vercetti. Vale para pré-vendas e compras até 20/11.", "image": "vintage-pack", "gallery": ["vintage-stanier", "vintage-looks", "vintage-weapon"], "status": "confirmado", "sources": ["rs-vi", "rs-editions", "nw-preorder-jun25"] },
+    { "id": "gta-plus", "name": "1 mês de GTA+", "category": "Bônus digital", "description": "Para compras digitais (Standard ou Ultimate) antes de 20/11. Resgate até 31/03/2027; depois renova automaticamente até ser cancelado.", "image": "gta-plus", "status": "confirmado", "sources": ["psstore-br", "ps-us"] },
+    { "id": "grotti-cheetah", "name": "'95 Grotti Cheetah", "category": "Veículo", "description": "O esportivo de assinatura da Grotti dos anos 90 e homenagem à Shore Drive, com pintura minimalista retrofuturista — disponível nas fases mais avançadas da história.", "image": "ue-cheetah", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "revolvers", "name": "Revólveres Hawk & Little Morgan", "category": "Armas", "description": "Versões \"dele e dela\" de um revólver com estilo clássico de Vice City, vindos do Vercetti Estate: cabos com palmeiras gravadas, detalhes entalhados e luneta de alto desempenho.", "image": "ue-revolvers", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "weapon-variants", "name": "Variantes personalizadas", "category": "Armas", "description": "Gravações detalhadas na pistola Girardi ES9 de Jason e na Klose K17 de Lucia.", "image": "ue-variants", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "vice-city-style", "name": "Vice City Style", "category": "Visual", "description": "Roupas, tatuagens e mais, exclusivas para Jason e Lucia — da piscina à rua.", "image": "ue-style", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "safehouse-vehicles", "name": "Veículos do safehouse do Jason", "category": "Veículos", "description": "Uma moto Dinka Enduro com pegada de farda do Exército e um caiaque Crest.", "image": "ue-safehouse", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "ganado", "name": "Ganado Retro Build", "category": "Customização", "description": "Mods exclusivos com músculo e estilo clássico para a picape rebaixada Vapid Ganado do Jason.", "image": "ue-ganado", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "rideout", "name": "Rideout Customs", "category": "Oficina exclusiva", "description": "Transforme carros comuns em obras de arte com interiores detalhados, rodas exuberantes e estilo \"donk\". Só abre para a Ultimate.", "image": "ue-rideout", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "saras-salon", "name": "Sara's Unisex Salon", "category": "Salão exclusivo", "description": "Estilos de assinatura para Jason e Lucia, incluindo barba para ele e maquiagem e unhas para ela. Só abre para a Ultimate.", "image": "ue-salon", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "squalo", "name": "Shitzu Squalo", "category": "Embarcação", "description": "Lancha em degradê rosa e azul ancorada em Washington Beach, pronta para Gambit Bay e com uma caixa de armas carregada de explosivos.", "image": "ue-squalo", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "stock-305", "name": "Stock 305", "category": "Loja exclusiva", "description": "A loja de streetwear mais famosa de Stockyard, com visuais únicos para Jason e Lucia. Só abre para a Ultimate.", "image": "ue-stock305", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "dominator-buggy", "name": "'67 Vapid Dominator Buggy + garagem", "category": "Veículo e garagem", "description": "Um monstro do Mud Club para as trilhas de Mount Kalaga, guardado na Paradise Garage em Watson Bay — com armário de armas e local para receptar bens roubados.", "image": "ue-buggy", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "electric-fang", "name": "Electric Fang Tattoo", "category": "Tatuagem exclusiva", "description": "O estúdio mais icônico de Stockyard, com mais de 50 tatuagens criadas pelo coletivo de artistas FAILE. Só abre para a Ultimate.", "image": "ue-tattoo", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "one-eyed-willies", "name": "One-Eyed Willie's", "category": "Oficina exclusiva", "description": "Oficina em Lake Leonida especializada em off-road e pintura artesanal. Só abre para a Ultimate.", "image": "ue-willies", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "goodtime-gear", "name": "Goodtime Gear", "category": "Visual", "description": "Coleção de roupas e acessórios inspirada em Macca the Gator, personagem do programa de TV de sucesso do \"Goodtime State\".", "image": "ue-goodtime", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "ptt-store", "name": "PTT Youngin$ — loja ilegal", "category": "Missão / complexo", "description": "Invada o complexo de uma das gangues mais barulhentas (e ativas nas redes) de Southside Vice City e fuja com itens especiais e contrabando.", "image": "ue-ptt", "status": "confirmado", "sources": ["rs-editions"] },
+    { "id": "classic-cars", "name": "Classic Car Collection", "category": "Comissão especial", "description": "Encontre carros clássicos abandonados e projetos inacabados e restaure-os numa comissão especial de Wyman, colecionador excêntrico e \"fixer\" local.", "image": "ue-classics", "status": "confirmado", "sources": ["rs-editions"] }
+  ],
+  "collectorsBox": {
+    "name": "The Goodtime State – Vice City Collection",
+    "kind": "Collector's Box (não inclui o jogo)",
+    "priceUSD": 399.99,
+    "priceStatus": "reportado",
+    "priceSources": ["gameriv-collector", "psu-collector"],
+    "releaseDate": "2026-11-19",
+    "image": "collector-box",
+    "contents": [
+      { "name": "Estatueta de 6\" do Macca the Gator", "detail": "Com compartimento secreto na base.", "image": "cb-macca" },
+      { "name": "Óculos Oakley® Frogskins™", "detail": "Preto fosco, lentes Prizm Sapphire e logo GTAVI rosa.", "image": "cb-oakleys" },
+      { "name": "Boné New Era® 9FORTY A-Frame", "detail": "Bordados de Vice City Leonida.", "image": "cb-cap" },
+      { "name": "Bolsa transversal Leonida Keys", "detail": "Ripstop com forro preto e rosa.", "image": "cb-bag" },
+      { "name": "Espelho magnético Macca the Gator", "detail": "Vidro rosa eletrodepositado.", "image": "cb-mirror" },
+      { "name": "Chaveiro em formato de lâmina", "detail": "Logos GTAVI e Vice City em relevo.", "image": "cb-razor" },
+      { "name": "Colher swizzle Vice City", "detail": "Logo esmaltado.", "image": "cb-spoon" },
+      { "name": "Copo de shot Chunkee the Manatee", "detail": "Logo Rockstar gravado a laser.", "image": "cb-shots" },
+      { "name": "9 pins esmaltados Leonida Keys", "detail": "Em lata personalizada.", "image": "cb-pins" },
+      { "name": "9 adesivos em stash bag", "detail": "Vinil.", "image": "cb-stickers" },
+      { "name": "Pôster dupla face com o mapa de Leonida", "detail": "Ilustração de Macca the Gator na frente, mapa completo no verso.", "image": "cb-map" }
+    ],
+    "status": "confirmado",
+    "sources": ["nw-goodtime", "rs-collection"]
+  }
+}

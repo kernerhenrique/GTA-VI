@@ -1,0 +1,1009 @@
+{
+ "_comment": "Lista das imagens oficiais. Rode npm run assets para baixar (scripts/fetch-assets.mjs) e otimizar (scripts/optimize-images.mjs).",
+ "images": [
+  {
+   "key": "hero-keyart",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_Beach_landscape.0419q._86ukpt.jpg",
+   "alt": "Arte oficial: Jason e Lucia abraçados numa praia de Vice City ao pôr do sol",
+   "widths": [
+    640,
+    1024,
+    1600,
+    2400
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cover-art",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Official_Cover_Art_landscape.12.uu2irr.2_a.jpg",
+   "alt": "Arte de capa oficial de GTA VI: mosaico com Jason, Lucia, Boobie Ike, Raul Bautista, um flamingo sobre uma lancha, um jacaré e o logotipo no centro",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "og-source",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_Beach_landscape.0419q._86ukpt.jpg",
+   "alt": "Jason e Lucia abraçados numa praia de Vice City ao pôr do sol",
+   "widths": [
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-jason-1",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Jason_Duval_02.1486~7_v40cn..jpg",
+   "alt": "Jason Duval ao volante, de regata, com palmeiras ao fundo",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-jason-2",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Jason_Duval_04.16d-z2wa2s~bk.jpg",
+   "alt": "Jason encostado numa árvore à noite, olhando o celular numa rua neon de Vice City",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-lucia-1",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Lucia_Caminos_01.0a7yqvewctkfp.jpg",
+   "alt": "Lucia Caminos de luvas, desferindo um soco num treino de luta",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-lucia-2",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Lucia_Caminos_02.16n.5umvlu_48.jpg",
+   "alt": "Lucia de óculos escuros na borda de uma piscina, com um drinque ao lado",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-cal-1",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Cal_Hampton_01.0xlil231_osh4.jpg",
+   "alt": "Cal Hampton de chapéu e camisa florida num campo de minigolfe com estátua de jacaré",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-cal-2",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Cal_Hampton_03.0.q68~pt1to9z.jpg",
+   "alt": "Cal deitado numa boia rosa na piscina, cercado de latas",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-boobie-1",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Boobie_Ike_03.0neka36~z25b5.jpg",
+   "alt": "Boobie Ike em close, de óculos e corrente de ouro, segurando um copo",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-boobie-2",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Boobie_Ike_01.0-wji2pg5anfs.jpg",
+   "alt": "Boobie sentado numa poltrona, contando dinheiro no escritório",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-drequan-1",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/DreQuan_Priest_03.0zbl4i_x_1biu.jpg",
+   "alt": "Dre'Quan Priest de colete laranja numa casa noturna iluminada",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-drequan-2",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/DreQuan_Priest_04.0n~kj~px_fn8t.jpg",
+   "alt": "Dre'Quan num estúdio de gravação, ao lado da mesa de som",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-realdimez-1",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Real_Dimez_04.0wa3vo07lz4e2.jpg",
+   "alt": "Bae-Luxe e Roxy, as Real Dimez, gravando ao microfone no estúdio",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-realdimez-2",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Real_Dimez_02.1366u9.x.yp0_.jpg",
+   "alt": "As Real Dimez dançando no capô de um carro enquanto o público filma com celulares",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-raul-1",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Raul_Bautista_03.0-x4xbav_6c40.jpg",
+   "alt": "Raul Bautista de camisa branca e braços cruzados num iate ao pôr do sol",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-raul-2",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Raul_Bautista_01.0md1ii-yrn96r.jpg",
+   "alt": "Raul ao telefone diante de monitores, de óculos",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-brian-1",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Brian_Heder_01.0r.ute88os9k-.jpg",
+   "alt": "Brian Heder de óculos escuros, com o braço para fora da janela de um carro",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "char-brian-2",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Brian_Heder_03.10ntuqh2h6upf.jpg",
+   "alt": "Brian apontando para alguém enquanto segura um pacote",
+   "widths": [
+    400,
+    720,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "postcard-vice-city",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Vice_City_Postcard_landscape.0v2njmlk2n-qm.jpg",
+   "alt": "Cartão-postal oficial \"Visit Vice City\"",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "postcard-leonida-keys",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Leonida_Keys_Postcard_landscape.05oezf2h--~ed.jpg",
+   "alt": "Cartão-postal oficial de Leonida Keys",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "postcard-grassrivers",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Grassrivers_Postcard_landscape.15-10i39nhex2.jpg",
+   "alt": "Cartão-postal oficial de Grassrivers",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "postcard-port-gellhorn",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Port_Gellhorn_Postcard_landscape.176c2o75nmcr8.jpg",
+   "alt": "Cartão-postal oficial de Port Gellhorn",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "postcard-ambrosia",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Ambrosia_Postcard_landscape.0gd~9a41ia-rt.jpg",
+   "alt": "Cartão-postal oficial de Ambrosia",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "postcard-mount-kalaga",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Mount_Kalaga_National_Park_Postcard_landscape.0c1cb4ocq16n3.jpg",
+   "alt": "Cartão-postal oficial de Mount Kalaga National Park",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "region-vice-city",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Vice_City_03.0nqz~lrqdmlze.jpg",
+   "alt": "Vista de Vice City com avenidas, palmeiras, uma quadra de basquete e prédios ao fundo",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "region-leonida-keys",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Leonida_Keys_01.0zgz7tveur6y8.jpg",
+   "alt": "Hidroavião sobre o mar de Leonida Keys; ao fundo, uma ponte liga duas ilhas",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "region-grassrivers",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Grassrivers_03.14cuv-vg9orw4.jpg",
+   "alt": "Vista de cima de duas pessoas num aerobarco cercado de jacarés em Grassrivers",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "region-port-gellhorn",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Port_Gellhorn_01.0fmisvza-5-cq.jpg",
+   "alt": "Fachada de um motel em Port Gellhorn com a placa de vagas acesa à noite",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "region-ambrosia",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Ambrosia_02.0wtqs05ozl.ym.jpg",
+   "alt": "Silhueta de Ambrosia à noite, com chaminés industriais ao fundo",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "region-mount-kalaga",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Mount_Kalaga_National_Park_01.0v5fl0f83hjv_.jpg",
+   "alt": "Quatro motos de trilha atravessando a lama em Mount Kalaga, com um quadriciclo saltando atrás",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "edition-standard",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/GTAVI_FOB_StandardEdition_Desktop.09clbpu8-nv8i.jpg",
+   "alt": "Capa da Standard Edition de GTA VI",
+   "widths": [
+    400,
+    800,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "edition-ultimate",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/GTAVI_FOB_UltimateEdition_Desktop_en_us.04i20kdr.r_mm.jpg",
+   "alt": "Capa da Ultimate Edition de GTA VI",
+   "widths": [
+    400,
+    800,
+    1200
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "vintage-pack",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/VINTAGE_VICE_CITY_PACK_01.05zaof7o1uz.3.jpg",
+   "alt": "Jason e Lucia armados diante do Ocean View Hotel, com o '55 Vapid Stanier atrás",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "vintage-stanier",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/VINTAGE_VICE_CITY_PACK_VAPID_STANIER_02.0s2wun4_vzld2.jpg",
+   "alt": "Jason e Lucia dentro do '55 Vapid Stanier estacionado à noite",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "vintage-looks",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/VINTAGE_VICE_CITY_PACK_EXCLUSIVE_LOOKS_01.15zo0h-xdm91b.jpg",
+   "alt": "Jason e Lucia dançando numa boate com os visuais do Vintage Vice City Pack",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "vintage-weapon",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/VINTAGE_VICE_CITY_WEAPON_PATTERN_01.0gybtumgwdcoi.jpg",
+   "alt": "Pistola com o padrão tropical do Vintage Vice City Pack no banco de couro de um carro",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "gta-plus",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/GTA_PLUS_DESKTOP.03ukoicd54pon.png",
+   "alt": "Logotipo do GTA+",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-cheetah",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_GROTTI_CHEETAH_01.0a.wy3s_ogjey.jpg",
+   "alt": "'95 Grotti Cheetah da Ultimate Edition",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-revolvers",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_01.0~3pdc~~sing4.jpg",
+   "alt": "Revólveres Hawk & Little Morgan com cabos gravados com palmeiras",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-variants",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_WEAPON_VARIANTS_01.12licq0_o7mb5.jpg",
+   "alt": "As pistolas personalizadas de Jason e Lucia sobre uma toalha à beira da piscina",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-style",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_VICE_CITY_STYLE_01.0.u1gt~99yzks.jpg",
+   "alt": "Jason e Lucia relaxando à beira da piscina com roupas do Vice City Style",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-safehouse",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_01.0wv6pw3t-mky3.jpg",
+   "alt": "Casa de palafita à beira-mar com um carro amarelo estacionado, nos Keys",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-ganado",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_VAPID_GANADO_RETRO_BUILD_01.062dgvkwdynw5.jpg",
+   "alt": "Picape Vapid Ganado amarela com faixas vermelhas, do kit Retro Build",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-rideout",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_RIDEOUT_CUSTOMS_01.065-ms8~k8vbq.jpg",
+   "alt": "Sedã dourado com rodas gigantes no estilo donk, da Rideout Customs",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-salon",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SARAS_SALON_01.0gn7dwlvcgz17.jpg",
+   "alt": "Jason de jaqueta de couro e Lucia de óculos com novos visuais de salão",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-squalo",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SQUALO_01.0cim7hj58ypb1.jpg",
+   "alt": "Lancha Shitzu Squalo em degradê rosa e azul",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-stock305",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_STOCK_305_01.0vuq0m5_1j-17.jpg",
+   "alt": "Lucia encostada num carro com estampa, vestindo roupas da Stock 305",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-buggy",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_VAPID_BUGGY_01.0jxfiql~371ik.jpg",
+   "alt": "'67 Vapid Dominator Buggy na lama",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-tattoo",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_ELECTRIC_FANG_01.04tsytu7qp2b-.jpg",
+   "alt": "Fachada neon do estúdio Electric Fang Tattoo à noite",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-willies",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_ONE_EYED_WILLIE_01.0n7-__or5f.b6.jpg",
+   "alt": "Picape off-road verde customizada na One-Eyed Willie's",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-goodtime",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_GOODTIME_GEAR_01.0t7de8dow381q.jpg",
+   "alt": "Jason e Lucia com camisetas e bonés da Goodtime Gear de Vice City",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-ptt",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_PTT_STORE_01.0seuocb~7b1-q.jpg",
+   "alt": "Invasão ao complexo da gangue PTT Youngin$, com motos e pessoas armadas",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "ue-classics",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_WYMAN_CAR_COLLECTION_01.0swhrm__iu~6b.jpg",
+   "alt": "Jason entre carros clássicos abandonados à espera de restauração",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "collector-box",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/collectorsMobile.09~60xnm5q~pr.png",
+   "alt": "The Goodtime State – Vice City Collection: caixa de colecionador com Macca the Gator",
+   "widths": [
+    400,
+    800
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-macca",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Maca.158blbrh-wvzv.png",
+   "alt": "Estatueta de Macca the Gator",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-oakleys",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Oakleys.0pnjsicgj3kzo.png",
+   "alt": "Óculos Oakley Frogskins pretos com logo GTAVI rosa",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-cap",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Cap.0ysk2b4egnoj_.png",
+   "alt": "Boné New Era 9FORTY de Vice City Leonida",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-bag",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Bag.0u9s0s0gqklw9.png",
+   "alt": "Bolsa transversal Leonida Keys",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-mirror",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Mirror.0nacs141cjh8q.png",
+   "alt": "Espelho magnético rosa de Macca the Gator",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-razor",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Razor.077.jm-vs58y4.png",
+   "alt": "Chaveiro em formato de lâmina com logos de Vice City",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-spoon",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Spoon.0ie8.fa4lt807.png",
+   "alt": "Colher swizzle com logo de Vice City",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-shots",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Shots.0w9xxbxvq2-bq.png",
+   "alt": "Copo de shot de Chunkee the Manatee",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-pins",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Pins.0o.x6_09~ykv9.png",
+   "alt": "Kit de pins esmaltados de Leonida Keys em lata",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-stickers",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Stickers.0ca1tdvx-q544.png",
+   "alt": "Adesivos de Leonida Keys num saquinho",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "cb-map",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/wm-Map.0jmhhbywjx7n4.png",
+   "alt": "Pôster dupla face com o mapa de Leonida",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "radio-cocoteo",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/UI_ICON_COCOTEO_FM_RADIO_STATION.16fsxcpp600s7.jpg",
+   "alt": "Arte da rádio Cocoteo FM",
+   "widths": [
+    200,
+    400
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "radio-backcountry",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/UI_ICON_BACK_COUNTRY_RADIO_RADIO_STATION.11bdcia2f4s-l.jpg",
+   "alt": "Arte da Back Country Radio",
+   "widths": [
+    200,
+    400
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "radio-afrobank",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/UI_ICON_AFROBANK_FM_RADIO_STATION.0isx5p0~loag1.jpg",
+   "alt": "Arte da AfroBank FM",
+   "widths": [
+    200,
+    400
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "radio-chamber",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/UI_ICON_THE_CHAMBER_106_RADIO_STATION.0sf.i4t38_g9_.jpg",
+   "alt": "Arte da The Chamber 106.6",
+   "widths": [
+    200,
+    400
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "radio-flash",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/UI_ICON_FLASH_FM_RADIO_STATION_MEDIA.0ga1yom4~0.d-.jpg",
+   "alt": "Arte da Flash FM",
+   "widths": [
+    200,
+    400
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "radio-dirtysouth",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/UI_ICON_DIRTY_SOUTH_CLASSICS_RADIO_STATION.0efe1owq0efe5.jpg",
+   "alt": "Arte da Dirty South Classics",
+   "widths": [
+    200,
+    400
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "album-cover",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/GTAVI_MusicPage_AlbumArt.05qucexa8vzgb.jpg",
+   "alt": "Capa de Grand Theft Auto VI: The Album",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "score-cover",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Score_CoverArt_1014_1600x1600.0.5dr9slukqhb.jpg",
+   "alt": "Capa do álbum da trilha original de GTA VI, do Justice",
+   "widths": [
+    320,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "thumb-t1",
+   "url": "https://i.ytimg.com/vi/QdBZY2fkU-0/maxresdefault.jpg",
+   "alt": "Miniatura do Trailer 1 de GTA VI",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "thumb-t2",
+   "url": "https://i.ytimg.com/vi/VQRLujxTm3c/maxresdefault.jpg",
+   "alt": "Miniatura do Trailer 2 de GTA VI",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "thumb-ext",
+   "url": "https://i.ytimg.com/vi/tJbzMqJGH4k/maxresdefault.jpg",
+   "alt": "Miniatura de An Extended Look",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "thumb-launch",
+   "url": "https://i.ytimg.com/vi/rz1B4B2yBZY/maxresdefault.jpg",
+   "alt": "Miniatura do Launch Trailer de GTA VI",
+   "widths": [
+    480,
+    960
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "break-jl-rooftop",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Jason_Lucia_Rooftop_landscape.0c6p5do~-8~7..jpg",
+   "alt": "Jason e Lucia num terraço com o skyline de Vice City ao anoitecer",
+   "widths": [
+    640,
+    1280,
+    1920
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "break-jl-motel",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_Motel_landscape.08edvuwtm-20v.jpg",
+   "alt": "Jason e Lucia diante de um motel neon",
+   "widths": [
+    640,
+    1280,
+    1920
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "break-jl-robbery",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_Robbery_landscape.09c8a~do21h4p.jpg",
+   "alt": "Jason e Lucia mascarados durante um assalto",
+   "widths": [
+    640,
+    1280,
+    1920
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "compare-vc2026",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Vice_City_09.0~ng.c8ack3fp.jpg",
+   "alt": "GTA VI (2026): uma avenida de Vice City com carros, motos de trilha e quadriciclos fazendo manobras",
+   "widths": [
+    480,
+    960,
+    1600
+   ],
+   "credit": "© Rockstar Games",
+   "crop": [
+    16,
+    10
+   ]
+  },
+  {
+   "key": "compare-vc2002",
+   "url": "https://media-rockstargames-com.akamaized.net/mfe-r19/prod/__common/img/7c3466bd07d09ec14c9555505ea4e6af.jpg",
+   "alt": "GTA Vice City (2002): um sedã vermelho em uma avenida com palmeiras",
+   "widths": [
+    480,
+    640
+   ],
+   "credit": "© Rockstar Games",
+   "crop": [
+    16,
+    10
+   ]
+  },
+  {
+   "key": "break-vc-twilight",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Vice_City_27.0d2e~w_r93hmh.jpg",
+   "alt": "Vice City ao anoitecer: o trânsito espera dos dois lados de uma ponte levadiça enquanto uma lancha passa",
+   "widths": [
+    640,
+    1280,
+    1920
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "break-vc-gas",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Vice_City_22.0--9jlb822n~g.jpg",
+   "alt": "Posto de gasolina neon ao entardecer em Vice City, com um lowrider iluminado",
+   "widths": [
+    640,
+    1280,
+    1920
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "break-vc-marina",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Vice_City_15.11tb0mz68edqo.jpg",
+   "alt": "Marina ensolarada com lanchas e o skyline de Vice City ao fundo",
+   "widths": [
+    640,
+    1280,
+    1920
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  },
+  {
+   "key": "break-vc-night",
+   "url": "https://www.rockstargames.com/VI/_next/static/media/Vice_City_08.0bbg_xp4hqdvz.jpg",
+   "alt": "Skyline de Vice City à noite com roda-gigante e carros nas avenidas",
+   "widths": [
+    640,
+    1280,
+    1920
+   ],
+   "credit": "© Rockstar Games",
+   "crop": null
+  }
+ ]
+}

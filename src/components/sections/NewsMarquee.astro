@@ -1,0 +1,73 @@
+---
+/** Marquee Bands: duas faixas de manchetes cruzando em ângulos opostos (estilo telejornal). */
+import { news, reviews } from '../../lib/data';
+import { formatDate } from '../../lib/time';
+const statusLabel = { confirmado: 'CONFIRMADO', reportado: 'REPORTADO', rumor: 'RUMOR' } as const;
+const scoreline = reviews.aggregates.map((a) => `${a.name}: ${a.score ?? 'aguardando'}`).join(' · ');
+const band2 = [
+  `NOTAS DA CRÍTICA — ${scoreline}`,
+  'LANÇAMENTO 19/11 · 0H DE BRASÍLIA',
+  'PRÉ-DOWNLOAD LIBERADO · ATÉ 212 GB',
+  'XBOX CLOUD · 3H DE BRASÍLIA',
+];
+---
+<section class="marquee-wrap" aria-labelledby="news-title">
+  <h2 id="news-title" class="sr-only">Últimas manchetes</h2>
+  <div class="band band-1" data-marquee>
+    <div class="band-track">
+      {[0, 1].map((dup) => (
+        <ul class="band-list" aria-hidden={dup === 1 ? 'true' : undefined}>
+          <li class="band-tag"><span class="live-dot"></span> Leonida News</li>
+          {news.items.map((n) => (
+            <li>
+              <span class={`mq-badge mq-${n.status}`}>{statusLabel[n.status]}</span>
+              <span class="mq-date">{formatDate(n.date, { day: '2-digit', month: '2-digit' })}</span>
+              {n.text}
+              <span class="mq-sep" aria-hidden="true">●</span>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+  <div class="band band-2" aria-hidden="true">
+    <div class="band-track reverse">
+      {[0, 1].map(() => (
+        <ul class="band-list">
+          {band2.map((t) => <li>{t}<span class="mq-sep">✦</span></li>)}
+        </ul>
+      ))}
+    </div>
+  </div>
+  <p class="container-vi mq-hint muted">Passe o mouse ou foque a faixa para pausar. Cada manchete tem fonte na <a href="#fontes">seção Fontes</a>.</p>
+</section>
+
+<style>
+  .marquee-wrap { position: relative; padding: 40px 0 8px; overflow: hidden; }
+  .band { position: relative; width: 110%; margin-left: -5%; overflow: hidden; box-shadow: 0 18px 40px -18px rgb(0 0 0 / .7); }
+  .band-1 { background: #0C0D1B; border-block: 1px solid rgb(204 194 245 / .25); transform: rotate(-2.2deg); z-index: 2; }
+  .band-2 { background: var(--vi-sunset); transform: rotate(1.6deg); margin-top: -10px; z-index: 1; }
+  .band-track { display: flex; width: max-content; animation: mq 70s linear infinite; }
+  .band-track.reverse { animation-direction: reverse; animation-duration: 50s; }
+  .band:hover .band-track, .band:focus-within .band-track { animation-play-state: paused; }
+  @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .band-list { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 14px 14px; white-space: nowrap; }
+  .band-1 .band-list { font: 600 clamp(.95rem, .8rem + .6vw, 1.2rem)/1.2 var(--font-sans); color: var(--color-vi-cream); }
+  .band-2 .band-list { font: 900 clamp(1.1rem, .9rem + 1vw, 1.7rem)/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-night); letter-spacing: .02em; padding-block: 12px; }
+  .band-list li { display: inline-flex; align-items: center; gap: 10px; }
+  .band-tag { font: 700 .75rem/1 var(--font-mono) !important; letter-spacing: .2em; text-transform: uppercase; background: var(--color-vi-pink); color: var(--color-vi-night); padding: 8px 12px; border-radius: 999px; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-vi-night); animation: blink 1.2s infinite; }
+  @keyframes blink { 50% { opacity: .2; } }
+  .mq-badge { font: 700 .6rem/1 var(--font-mono); letter-spacing: .12em; padding: 5px 7px; border-radius: 999px; }
+  .mq-confirmado { background: var(--color-vi-blush); color: var(--color-vi-plum-deep); }
+  .mq-reportado { border: 1px solid var(--color-vi-lavender); color: var(--color-vi-lavender); }
+  .mq-rumor { border: 1px dashed var(--color-vi-peach); color: var(--color-vi-peach); }
+  .mq-date { font: 600 .78rem/1 var(--font-mono); color: var(--color-vi-peach); }
+  .mq-sep { color: var(--color-vi-pink); font-size: .7em; margin-left: 10px; }
+  .band-2 .mq-sep { color: var(--color-vi-plum-deep); }
+  .mq-hint { font-size: .75rem; margin-top: 18px; }
+  @media (prefers-reduced-motion: reduce) {
+    .band-track { animation: none; }
+    .band-1 { overflow-x: auto; }
+  }
+</style>

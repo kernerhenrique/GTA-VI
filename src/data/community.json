@@ -1,0 +1,11 @@
+{
+  "items": [
+    { "id": "streams", "title": "Recorde de lives", "text": "A estreia do Extended Look teve pico de 3.970.738 espectadores simultâneos somando 9.038 streamers — o maior momento gamer do ano nas lives.", "stat": { "value": 3970738, "display": "3,97 mi", "label": "pico simultâneo" }, "status": "reportado", "sources": ["rockstarintel-streams"] },
+    { "id": "netflix", "title": "Top 1 da Netflix", "text": "O Extended Look somou 31,1 milhões de views em quatro dias e liderou o ranking de filmes em inglês em 87 de 93 países.", "stat": { "value": 31100000, "display": "31,1 mi", "label": "views em 4 dias" }, "status": "reportado", "sources": ["variety-netflix"] },
+    { "id": "preorders", "title": "Pré-venda histórica", "text": "Estimativa da Sensor Tower: cerca de 16 milhões de pré-vendas e US$ 1,5 bilhão — cerca de 75% no PS5.", "stat": { "value": 16000000, "display": "~16 mi", "label": "pré-vendas (estimativa)" }, "status": "reportado", "sources": ["wikipedia"] },
+    { "id": "criticism-30fps", "title": "Debate dos 30 fps", "text": "A meta de 30 fps, inclusive no PS5 Pro, virou um dos assuntos mais discutidos pelos fãs.", "status": "reportado", "sources": ["wikipedia"] },
+    { "id": "criticism-disc", "title": "Sem disco na caixa", "text": "A versão física com código em vez de disco e os itens exclusivos da Ultimate foram criticados por jogadores e jornalistas; alguns varejistas se recusaram a vender.", "status": "reportado", "sources": ["wikipedia"] },
+    { "id": "criticism-expansion", "title": "\"Expansão cara do V\"?", "text": "Parte do público das lives comparou o que viu no Extended Look a \"uma expansão cara do GTA V\".", "status": "reportado", "sources": ["rockstarintel-streams"] },
+    { "id": "awards", "title": "O mais aguardado", "text": "Jogo Mais Aguardado no The Game Awards 2024 e 2025 e Golden Joysticks; indicado a 8 categorias no TGA 2026, incluindo Jogo do Ano.", "status": "reportado", "sources": ["wikipedia"] }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "gta-vi-fan-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fan site não oficial sobre GTA VI em português do Brasil.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "assets": "node scripts/fetch-assets.mjs && node scripts/optimize-images.mjs",
+    "assets:optimize": "node scripts/optimize-images.mjs",
+    "report:data": "node scripts/data-report.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "e2e": "node scripts/e2e.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/big-shoulders-display": "5.3.0",
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "astro": "5.18.2",
+    "gsap": "3.15.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@tailwindcss/vite": "4.3.5",
+    "@types/node": "^22.19.1",
+    "sharp": "0.34.5",
+    "tailwindcss": "4.3.5",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}

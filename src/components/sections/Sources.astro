@@ -1,0 +1,45 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { sourcesFile, usedSourceIds } from '../../lib/data';
+const used = usedSourceIds();
+const groups = [
+  { type: 'oficial', label: 'Oficiais (Rockstar, Take-Two, PlayStation, Xbox)' },
+  { type: 'imprensa', label: 'Imprensa' },
+  { type: 'avaliacao', label: 'Agregadores de notas' },
+  { type: 'comunidade', label: 'Comunidade e referência' },
+] as const;
+const access = (d?: string) => (d ?? sourcesFile.accessedAtDefault).split('-').reverse().join('/');
+---
+<section id="fontes" class="section cv-auto" aria-labelledby="fontes-title">
+  <div class="container-vi">
+    <SectionHeader id="fontes-title" eyebrow="Transparência" title="Fontes" lead={`Todas as ${used.size} fontes citadas no site, com data de acesso. Quando fontes discordam, vale a oficial — os conflitos aparecem marcados com ⚠ nas seções.`} />
+    <div class="src-groups">
+      {groups.map((g) => {
+        const list = sourcesFile.sources.filter((s) => s.type === g.type && used.has(s.id));
+        return list.length > 0 && (
+          <div class="src-group reveal">
+            <h3>{g.label} <span class="muted">({list.length})</span></h3>
+            <ol>
+              {list.map((s) => (
+                <li id={`fonte-${s.id}`}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a>
+                  <span class="src-meta">{s.publisher} · acesso em {access(s.accessedAt)}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .src-groups { display: grid; gap: 28px; }
+  @media (min-width: 1000px) { .src-groups { grid-template-columns: 1fr 1fr; } }
+  .src-group h3 { font: 900 1.4rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0 0 12px; }
+  .src-group ol { margin: 0; padding-left: 1.4rem; display: grid; gap: 8px; font-size: .88rem; }
+  .src-group li::marker { color: var(--color-vi-pink); font-family: var(--font-mono); }
+  .src-group a { word-break: break-word; }
+  .src-meta { display: block; font-size: .74rem; color: rgb(226 226 228 / .6); }
+</style>

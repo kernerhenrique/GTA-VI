@@ -1,0 +1,88 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Picture from '../ui/Picture.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { comparisons } from '../../lib/data';
+const ba = comparisons.beforeAfter;
+---
+<section id="comparacoes" class="section cv-auto" aria-labelledby="comparacoes-title">
+  <div class="container-vi">
+    <SectionHeader id="comparacoes-title" eyebrow="Antes e depois" title={ba.title} lead="Arraste a alça (ou use as setas do teclado) para comparar as ruas de Vice City em 2002 e em 2026." />
+    <div class="ba reveal" data-ba style="--pos: 50%">
+      <div class="ba-layer ba-after"><Picture name={ba.after.image} sizes="(min-width: 1200px) 1200px, 100vw" ratio="16/10" /></div>
+      <div class="ba-layer ba-before"><Picture name={ba.before.image} sizes="(min-width: 1200px) 1200px, 100vw" ratio="16/10" /></div>
+      <div class="ba-handle" aria-hidden="true"><span class="ba-knob">‹ ›</span></div>
+      <span class="ba-pill ba-pill-l">{ba.before.label}</span>
+      <span class="ba-pill ba-pill-r">{ba.after.label}</span>
+      <label class="sr-only" for="ba-range">Posição da comparação entre 2002 e 2026</label>
+      <input id="ba-range" class="ba-range" type="range" min="0" max="100" value="50" data-ba-range aria-valuetext="50% Vice City 2002" />
+    </div>
+    <p class="credit mt-2">{ba.note} <Badge status={ba.status} scramble={false} /> <SourceRefs ids={ba.sources} class="inline" /></p>
+
+    <div class="table-wrap reveal mt-10" tabindex="0" role="region" aria-label="Comparação entre Vice City, GTA V e GTA VI">
+      <table class="vs">
+        <caption class="sr-only">Vice City (2002), GTA V (2013) e GTA VI (2026) lado a lado</caption>
+        <thead><tr><th scope="col"></th>{comparisons.table.columns.map((c, i) => <th scope="col" class={i === 2 ? 'col-hot' : ''}>{c}</th>)}<th scope="col">Selo</th></tr></thead>
+        <tbody>
+          {comparisons.table.rows.map((r) => (
+            <tr>
+              <th scope="row">{r.label}</th>
+              {r.values.map((v, i) => <td class={i === 2 ? 'col-hot' : ''}>{v}</td>)}
+              <td><Badge status={r.status} scramble={false} /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <SourceRefs ids={[...new Set(comparisons.table.rows.flatMap((r) => r.sources))]} class="mt-2" />
+  </div>
+</section>
+
+<style>
+  .ba { position: relative; max-width: 1000px; margin-inline: auto; border-radius: 24px; overflow: hidden; border: 1px solid var(--vi-line); box-shadow: 0 40px 80px -40px var(--vi-pink-glow); user-select: none; touch-action: pan-y; }
+  .ba-layer :global(.pic) { display: block; }
+  .ba-before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+  .ba-before :global(img) { filter: saturate(1.05); image-rendering: auto; }
+  .ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px; background: #FFF9CB; box-shadow: 0 0 20px rgb(233 99 155 / .8); pointer-events: none; }
+  .ba-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 52px; height: 52px; border-radius: 50%; background: #FFF9CB; color: var(--color-vi-plum-deep); display: grid; place-items: center; font: 900 1rem/1 var(--font-mono); box-shadow: 0 6px 24px rgb(0 0 0 / .5); }
+  .ba-pill { position: absolute; bottom: 14px; font: 700 .7rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; padding: 8px 12px; border-radius: 999px; pointer-events: none; }
+  .ba-pill-l { left: 14px; background: rgb(12 13 27 / .85); color: var(--color-vi-cream); }
+  .ba-pill-r { right: 14px; background: var(--color-vi-blush); color: var(--color-vi-plum-deep); }
+  .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .ba-range:focus-visible + * , .ba:focus-within .ba-knob { outline: 3px solid var(--color-vi-peach); outline-offset: 3px; }
+  .table-wrap { overflow-x: auto; border-radius: 18px; border: 1px solid var(--vi-line); background: var(--vi-surface); }
+  .vs { width: 100%; border-collapse: collapse; min-width: 720px; font-size: .92rem; }
+  .vs th, .vs td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgb(204 194 245 / .1); vertical-align: top; }
+  .vs thead th { font: 800 1.05rem/1.1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); background: #14141f; }
+  .vs tbody th { font: 600 .75rem/1.2 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--color-vi-peach); }
+  .col-hot { background: rgb(233 99 155 / .08); color: var(--color-vi-cream); }
+</style>
+
+<script>
+  import { reducedMotion, whenVisible } from '../../scripts/clock';
+  const ba = document.querySelector<HTMLElement>('[data-ba]');
+  const range = ba?.querySelector<HTMLInputElement>('[data-ba-range]');
+  if (ba && range) {
+    const set = (v: number) => {
+      ba.style.setProperty('--pos', `${v}%`);
+      range.value = String(Math.round(v));
+      range.setAttribute('aria-valuetext', `${Math.round(v)}% Vice City 2002, ${100 - Math.round(v)}% GTA VI`);
+    };
+    let touched = false;
+    range.addEventListener('input', () => { touched = true; set(Number(range.value)); });
+    // Intro: a alça desliza de 8% para 80% quando aparece (Before After)
+    whenVisible(ba, () => {
+      if (reducedMotion() || touched) return;
+      const start = performance.now(), from = 8, to = 80, dur = 1800;
+      const ease = (x: number) => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+      const step = (t: number) => {
+        if (touched) return;
+        const p = Math.min(1, (t - start) / dur);
+        set(from + (to - from) * ease(p));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, '-20% 0px');
+  }
+</script>

@@ -1,0 +1,43 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { faq } from '../../lib/data';
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<section id="faq" class="section cv-auto" aria-labelledby="faq-title">
+  <div class="container-vi faq-wrap">
+    <SectionHeader id="faq-title" eyebrow="Perguntas frequentes" title="FAQ" lead="As dúvidas mais comuns de quem vai jogar no lançamento." />
+    <div class="faq">
+      {faq.items.map((f, i) => (
+        <details class="faq-item reveal" open={i === 0}>
+          <summary><span>{f.q}</span><span class="faq-ico" aria-hidden="true"></span></summary>
+          <div class="faq-a">
+            <p>{f.a}</p>
+            <div class="flex flex-wrap gap-2 items-center"><Badge status={f.status} scramble={false} /><SourceRefs ids={f.sources} /></div>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+</section>
+
+<style>
+  .faq-wrap { max-width: 920px; }
+  .faq { display: grid; gap: 10px; }
+  .faq-item { border-radius: 18px; background: var(--vi-surface); border: 1px solid var(--vi-line); overflow: hidden; }
+  .faq-item[open] { border-color: rgb(233 99 155 / .45); }
+  summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; min-height: 56px; font-weight: 700; font-size: 1.02rem; color: var(--color-vi-cream); }
+  summary::-webkit-details-marker { display: none; }
+  .faq-ico { position: relative; width: 16px; height: 16px; flex: none; }
+  .faq-ico::before, .faq-ico::after { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: var(--color-vi-pink); transition: transform .3s; }
+  .faq-ico::after { transform: rotate(90deg); }
+  .faq-item[open] .faq-ico::after { transform: rotate(0); }
+  .faq-a { padding: 0 20px 18px; display: grid; gap: 10px; }
+  .faq-a p { margin: 0; }
+</style>

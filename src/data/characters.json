@@ -1,0 +1,120 @@
+{
+  "_comment": "Textos traduzidos do site oficial (Only in Leonida). 'quotes' são falas oficiais traduzidas; o original fica em 'quotesOriginal'.",
+  "items": [
+    {
+      "id": "jason",
+      "name": "Jason Duval",
+      "role": "Protagonista",
+      "tagline": "Jason quer uma vida fácil, mas as coisas só ficam mais difíceis.",
+      "bio": "Jason cresceu cercado de golpistas e bandidos. Depois de uma passagem pelo Exército tentando deixar para trás uma adolescência problemática, foi parar nos Keys fazendo o que sabe melhor: trabalhar para traficantes locais. Talvez seja hora de tentar algo novo. Conhecer Lucia pode ser a melhor ou a pior coisa que já aconteceu com ele.",
+      "quotes": ["Se acontecer qualquer coisa, eu tô logo atrás de você.", "Mais um dia no paraíso, né?"],
+      "quotesOriginal": ["If anything happens, I'm right behind you.", "Another day in paradise, right?"],
+      "images": ["char-jason-1", "char-jason-2"],
+      "accent": "#E9639B",
+      "status": "confirmado",
+      "sources": ["rs-leonida"]
+    },
+    {
+      "id": "lucia",
+      "name": "Lucia Caminos",
+      "role": "Protagonista",
+      "tagline": "O pai de Lucia a ensinou a lutar assim que ela aprendeu a andar.",
+      "bio": "A vida vem batendo nela desde então. Lutar pela família a levou para a Leonida Penitentiary; pura sorte a tirou de lá. Mais do que tudo, Lucia quer a vida boa com que a mãe sonha desde os tempos em Liberty City — e, em vez de fantasias, está pronta para resolver as coisas com as próprias mãos. Uma vida com Jason pode ser a saída.",
+      "quotes": ["A única coisa que importa é quem você conhece e o que você tem."],
+      "quotesOriginal": ["The only thing that matters is who you know and what you got."],
+      "voice": { "text": "Voz e captura: Manni L. Perez", "status": "reportado", "sources": ["wikipedia"] },
+      "images": ["char-lucia-1", "char-lucia-2"],
+      "accent": "#FEC497",
+      "status": "confirmado",
+      "sources": ["rs-leonida"]
+    },
+    {
+      "id": "cal",
+      "name": "Cal Hampton",
+      "role": "Amigo de Jason",
+      "tagline": "E se tudo na internet fosse verdade?",
+      "bio": "Amigo de Jason e também associado de Brian, Cal se sente mais seguro em casa, bisbilhotando as comunicações da Guarda Costeira com umas cervejas e algumas abas anônimas abertas. Está na maré baixa da América — e feliz ali. A paranoia casual adora companhia, mas o amigo Jason tem planos maiores.",
+      "quotes": ["Tem passarinho demais voando em formação perfeita.", "Os psicopatas estão no comando. Acostume-se."],
+      "quotesOriginal": ["There are way too many birds flying around in perfect formation.", "The psychopaths are in charge. Get used to it."],
+      "images": ["char-cal-1", "char-cal-2"],
+      "accent": "#CCC2F5",
+      "status": "confirmado",
+      "sources": ["rs-leonida"]
+    },
+    {
+      "id": "boobie",
+      "name": "Boobie Ike",
+      "role": "Empresário de Vice City",
+      "tagline": "É tudo uma questão de coração — o Valete de Copas.",
+      "bio": "Boobie é uma lenda local de Vice City — e age como tal. Um dos poucos a transformar o tempo nas ruas num império legítimo de imóveis, uma casa de strip e um estúdio de gravação. É só sorrisos até a hora de falar de negócios. O que mais importa para ele é a sociedade com o jovem Dre'Quan na Only Raw Records — agora só falta um hit.",
+      "quotes": ["O dinheiro do clube paga o estúdio, e o dinheiro das drogas paga tudo."],
+      "quotesOriginal": ["The club money pay for the studio, and the drug money pay for it all."],
+      "images": ["char-boobie-1", "char-boobie-2"],
+      "accent": "#E9639B",
+      "status": "confirmado",
+      "sources": ["rs-leonida"]
+    },
+    {
+      "id": "drequan",
+      "name": "Dre'Quan Priest",
+      "role": "Only Raw Records",
+      "tagline": "Only Raw... Records.",
+      "bio": "Dre'Quan sempre foi mais hustler do que gângster. Mesmo quando vendia nas ruas para pagar as contas, o objetivo era entrar na música. Agora que contratou o Real Dimez, seus dias agendando shows na casa de strip do Boobie podem estar contados — ele está de olho na cena de Vice City.",
+      "quotes": ["As dançarinas são meus A&Rs. Se a música for hit, os DJs vão tocar.", "Agora você é da gravadora."],
+      "quotesOriginal": ["Dancers are like my A&Rs. If the record's a hit, DJs gonna be spinnin' it.", "You're with the label now."],
+      "images": ["char-drequan-1", "char-drequan-2"],
+      "accent": "#FEC497",
+      "status": "confirmado",
+      "sources": ["rs-leonida"]
+    },
+    {
+      "id": "realdimez",
+      "name": "Real Dimez",
+      "role": "Bae-Luxe & Roxy",
+      "tagline": "Vídeos virais. Refrões virais.",
+      "bio": "Bae-Luxe e Roxy, as Real Dimez, são amigas desde o colégio — com a esperteza de transformar o tempo extorquindo traficantes locais em dinheiro vivo, via rap apimentado e presença incansável nas redes. Um hit com o rapper local DWNPLY as levou longe; agora, depois de cinco anos e muita confusão, assinaram com a Only Raw Records esperando que o raio caia duas vezes.",
+      "quotes": ["A um hit da fama."],
+      "quotesOriginal": ["One hit away from fame."],
+      "images": ["char-realdimez-1", "char-realdimez-2"],
+      "accent": "#CCC2F5",
+      "status": "confirmado",
+      "sources": ["rs-leonida"]
+    },
+    {
+      "id": "raul",
+      "name": "Raul Bautista",
+      "role": "Assaltante de bancos",
+      "tagline": "Experiência conta.",
+      "bio": "Confiança, charme e astúcia: Raul é um assaltante de bancos experiente, sempre à procura de talentos dispostos a correr os riscos que trazem as maiores recompensas. Mas a imprudência dele aumenta a aposta a cada golpe — cedo ou tarde, a equipe vai ter que dobrar a aposta ou tirar as fichas da mesa.",
+      "quotes": ["A vida é cheia de surpresas, meu amigo. Seria sábio lembrarmos disso.", "Um profissional se adapta."],
+      "quotesOriginal": ["Life is full of surprises, my friend. I think we'd all be wise to remember that.", "A professional adapts."],
+      "images": ["char-raul-1", "char-raul-2"],
+      "accent": "#FEC497",
+      "status": "confirmado",
+      "sources": ["rs-leonida"]
+    },
+    {
+      "id": "brian",
+      "name": "Brian Heder",
+      "role": "Traficante veterano dos Keys",
+      "tagline": "Nada melhor que um Mudslide ao pôr do sol.",
+      "bio": "Brian é um traficante clássico da era de ouro do contrabando nos Keys. Ainda movimenta mercadoria pelo seu estaleiro com a terceira esposa, Lori, e está nessa há tempo suficiente para deixar o trabalho sujo para os outros. Ele deixa Jason morar de graça num de seus imóveis — desde que ajude nas cobranças locais e apareça de vez em quando para a sangria da Lori.",
+      "quotes": ["Parece um vagabundo de praia de Leonida — e se move como um tubarão-branco."],
+      "quotesOriginal": ["Looks like a Leonida beach bum — moves like a great white shark."],
+      "voice": { "text": "Voz: Stephen Root", "status": "reportado", "sources": ["wikipedia"] },
+      "images": ["char-brian-1", "char-brian-2"],
+      "accent": "#E9639B",
+      "status": "confirmado",
+      "sources": ["rs-leonida"]
+    }
+  ],
+  "relations": [
+    { "from": "jason", "to": "lucia", "label": "parceiros no crime (e na vida)", "status": "confirmado", "sources": ["rs-vi", "rs-leonida"] },
+    { "from": "jason", "to": "cal", "label": "melhores amigos", "status": "confirmado", "sources": ["rs-leonida"] },
+    { "from": "cal", "to": "brian", "label": "associado", "status": "confirmado", "sources": ["rs-leonida"] },
+    { "from": "brian", "to": "jason", "label": "senhorio em troca de \"serviços\"", "status": "confirmado", "sources": ["rs-leonida"] },
+    { "from": "boobie", "to": "drequan", "label": "sócios na Only Raw Records", "status": "confirmado", "sources": ["rs-leonida"] },
+    { "from": "drequan", "to": "realdimez", "label": "contratou para a gravadora", "status": "confirmado", "sources": ["rs-leonida"] }
+  ],
+  "relationsNote": "Raul Bautista ainda não tem ligação oficial divulgada com os outros personagens."
+}

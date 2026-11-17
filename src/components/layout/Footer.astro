@@ -1,0 +1,39 @@
+---
+import Badge from '../ui/Badge.astro';
+import { status, sourcesFile } from '../../lib/data';
+const updated = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle: 'short', timeZone: 'America/Sao_Paulo' }).format(Date.parse(status.updatedAt));
+---
+<footer class="site-footer">
+  <div class="container-vi footer-grid">
+    <div>
+      <p class="footer-brand">Leonida<span class="text-vi-pink">BR</span></p>
+      <p class="muted text-sm max-w-prose">
+        <strong>Fan site não oficial.</strong> Este site não é afiliado, patrocinado nem endossado pela Rockstar Games ou pela Take-Two Interactive.
+        Grand Theft Auto, GTA VI, Vice City, Leonida e todas as marcas, imagens, trailers e artes relacionadas são propriedade de seus respectivos donos.
+        Imagens e vídeos oficiais © Rockstar Games, usados aqui com crédito e para fins informativos.
+      </p>
+    </div>
+    <div>
+      <p class="eyebrow mb-3">Selos de veracidade</p>
+      <ul class="legend">
+        <li><Badge status="confirmado" scramble={false} /> fonte oficial (Rockstar, Take-Two, PlayStation, Xbox)</li>
+        <li><Badge status="reportado" scramble={false} /> imprensa confiável, sem confirmação oficial</li>
+        <li><Badge status="rumor" scramble={false} /> insiders, vazamentos ou estimativas</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-3">Atualização</p>
+      <p class="muted text-sm">Dados revisados em {updated} (horário de Brasília). Fontes acessadas em {sourcesFile.accessedAtDefault.split('-').reverse().join('/')}.</p>
+      <p class="text-sm mt-3"><a href="#fontes">Ver todas as fontes</a> · <a href="#topo">Voltar ao topo</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--vi-line); background: rgb(12 13 27 / .9); padding: 48px 0 calc(48px + env(safe-area-inset-bottom)); }
+  .footer-grid { display: grid; gap: 32px; }
+  @media (min-width: 900px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+  .footer-brand { font: 900 2rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0 0 12px; }
+  .legend { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: .85rem; color: rgb(226 226 228 / .8); }
+  .legend li { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+</style>

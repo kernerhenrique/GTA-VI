@@ -1,0 +1,75 @@
+---
+/** Painel de embarque split-flap: 8 tiles (DD HH MM SS) que viram "LIBERADO" no T-0. */
+const groups = [
+  { label: 'Dias', key: 'd' },
+  { label: 'Horas', key: 'h' },
+  { label: 'Min', key: 'm' },
+  { label: 'Seg', key: 's' },
+];
+---
+<div class="board scanlines" data-board aria-hidden="true">
+  <div class="board-head">
+    <span>✈ Partidas · Vice City Intl</span>
+    <span class="board-gate">Portão 19</span>
+  </div>
+  <div class="board-row">
+    {groups.map((g, gi) => (
+      <div class="board-group">
+        <div class="board-tiles">
+          {[0, 1].map((i) => (
+            <span class="flap" data-flap data-index={gi * 2 + i}>
+              <span class="flap-half flap-top"><span>–</span></span>
+              <span class="flap-half flap-bottom"><span>–</span></span>
+              <span class="flap-half flap-leaf-top"><span>–</span></span>
+              <span class="flap-half flap-leaf-bottom"><span>–</span></span>
+            </span>
+          ))}
+        </div>
+        <span class="board-label">{g.label}</span>
+      </div>
+    ))}
+  </div>
+  <div class="board-foot">
+    <span class="board-dot" aria-hidden="true"></span>
+    <span data-board-status>No horário · 19/11 · 00:00 (Brasília)</span>
+  </div>
+</div>
+
+<style>
+  .board {
+    --tile-w: clamp(34px, 9.6vw, 92px);
+    --tile-h: calc(var(--tile-w) * 1.42);
+    position: relative; display: inline-flex; flex-direction: column; gap: clamp(10px, 2vw, 18px);
+    padding: clamp(14px, 3vw, 28px); border-radius: 26px;
+    background: linear-gradient(180deg, #16162a, #0e0e1a);
+    border: 1px solid rgb(204 194 245 / .2);
+    box-shadow: 0 30px 80px -30px rgb(233 99 155 / .55), inset 0 1px 0 rgb(255 255 255 / .06);
+    max-width: 100%;
+  }
+  .board-head, .board-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font: 700 clamp(.6rem, .5rem + .5vw, .8rem)/1 var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--color-vi-peach); }
+  .board-gate { color: var(--color-vi-lavender); }
+  .board-foot { justify-content: flex-start; color: var(--color-vi-cream); }
+  .board-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-vi-pink); box-shadow: 0 0 12px var(--color-vi-pink); flex: none; }
+  .board-row { display: flex; gap: clamp(8px, 2.2vw, 22px); justify-content: center; }
+  .board-group { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .board-tiles { display: flex; gap: clamp(3px, .7vw, 6px); }
+  .board-label { font: 600 clamp(.55rem, .45rem + .4vw, .72rem)/1 var(--font-mono); letter-spacing: .2em; text-transform: uppercase; color: rgb(226 226 228 / .7); }
+
+  .flap { position: relative; display: block; width: var(--tile-w); height: var(--tile-h); perspective: 300px; font: 700 calc(var(--tile-h) * .72)/var(--tile-h) var(--font-mono); color: var(--color-vi-cream); text-align: center; }
+  .flap-half { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; background: linear-gradient(180deg, #232338, #1a1a2c); border-radius: 10px 10px 0 0; backface-visibility: hidden; }
+  .flap-half > span { display: block; height: var(--tile-h); }
+  .flap-top, .flap-leaf-top { top: 0; transform-origin: bottom; box-shadow: inset 0 -1px 0 rgb(0 0 0 / .6); }
+  .flap-bottom, .flap-leaf-bottom { bottom: 0; transform-origin: top; border-radius: 0 0 10px 10px; background: linear-gradient(180deg, #1c1c2e, #15152a); }
+  .flap-bottom > span, .flap-leaf-bottom > span { transform: translateY(-50%); }
+  .flap::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; transform: translateY(-1px); background: #07070d; z-index: 5; }
+  .flap-leaf-top, .flap-leaf-bottom { visibility: hidden; z-index: 3; }
+  .flap.is-flipping .flap-leaf-top { visibility: visible; animation: leaf-top var(--flip-ms, 260ms) ease-in forwards; }
+  .flap.is-flipping .flap-leaf-bottom { visibility: visible; transform: rotateX(90deg); animation: leaf-bottom var(--flip-ms, 260ms) ease-out var(--flip-ms, 260ms) forwards; }
+  @keyframes leaf-top { from { transform: rotateX(0); filter: brightness(1); } to { transform: rotateX(-90deg); filter: brightness(.6); } }
+  @keyframes leaf-bottom { from { transform: rotateX(90deg); filter: brightness(1.4); } to { transform: rotateX(0); filter: brightness(1); } }
+  .board:has(.is-letter) .board-label { visibility: hidden; }
+  .flap.is-letter { color: var(--color-vi-pink); text-shadow: 0 0 14px rgb(233 99 155 / .7); }
+  @media (prefers-reduced-motion: reduce) {
+    .flap.is-flipping .flap-leaf-top, .flap.is-flipping .flap-leaf-bottom { animation: none; visibility: hidden; }
+  }
+</style>

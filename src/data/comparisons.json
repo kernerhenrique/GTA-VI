@@ -1,0 +1,120 @@
+{
+  "beforeAfter": {
+    "title": "Vice City, 2002 × 2026",
+    "before": {
+      "image": "compare-vc2002",
+      "label": "GTA Vice City (2002)"
+    },
+    "after": {
+      "image": "compare-vc2026",
+      "label": "GTA VI (2026)"
+    },
+    "note": "Imagens oficiais © Rockstar Games.",
+    "status": "confirmado",
+    "sources": [
+      "rs-vicecity",
+      "rs-vi"
+    ]
+  },
+  "table": {
+    "columns": [
+      "GTA Vice City (2002)",
+      "GTA V (2013)",
+      "GTA VI (2026)"
+    ],
+    "rows": [
+      {
+        "label": "Lançamento",
+        "values": [
+          "29/10/2002",
+          "17/09/2013",
+          "19/11/2026"
+        ],
+        "status": "confirmado",
+        "sources": [
+          "rs-vi",
+          "wiki-vc",
+          "wiki-gtav"
+        ]
+      },
+      {
+        "label": "Cenário",
+        "values": [
+          "Vice City, 1986",
+          "Los Santos e Blaine County (San Andreas)",
+          "Vice City e o estado de Leonida, dias atuais"
+        ],
+        "status": "confirmado",
+        "sources": [
+          "rs-vicecity",
+          "wiki-gtav",
+          "nw-delay-nov"
+        ]
+      },
+      {
+        "label": "Protagonistas",
+        "values": [
+          "Tommy Vercetti",
+          "Michael, Franklin e Trevor",
+          "Jason Duval e Lucia Caminos"
+        ],
+        "status": "confirmado",
+        "sources": [
+          "rs-leonida",
+          "wiki-vc",
+          "wiki-gtav"
+        ]
+      },
+      {
+        "label": "Tamanho do mapa",
+        "values": [
+          "Uma cidade",
+          "Base de comparação",
+          "≈2× o mapa do GTA V"
+        ],
+        "status": "reportado",
+        "sources": [
+          "forbes-map"
+        ]
+      },
+      {
+        "label": "Animações de NPC",
+        "values": [
+          "—",
+          "≈55 mil",
+          "600 mil+"
+        ],
+        "status": "reportado",
+        "sources": [
+          "wikipedia"
+        ]
+      },
+      {
+        "label": "Modo online",
+        "values": [
+          "Não",
+          "GTA Online",
+          "Single player no lançamento"
+        ],
+        "status": "confirmado",
+        "sources": [
+          "nw-preorder-jun25",
+          "wiki-gtav"
+        ]
+      },
+      {
+        "label": "Vendas",
+        "values": [
+          "—",
+          "235 mi+ distribuídas",
+          "~16 mi de pré-vendas (estimativa)"
+        ],
+        "status": "reportado",
+        "sources": [
+          "gamesbeat-earnings",
+          "wikipedia"
+        ]
+      }
+    ]
+  }
+}

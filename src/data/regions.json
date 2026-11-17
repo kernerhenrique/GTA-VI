@@ -1,0 +1,180 @@
+{
+  "_comment": "Textos traduzidos do site oficial. 'map' define a posição no mapa ESQUEMÁTICO feito por fãs (não oficial). 'inspiration' é REPORTADO.",
+  "mapNote": "Mapa esquemático feito por fãs, com posições aproximadas — não é o mapa oficial. O mapa oficial de Leonida será disponibilizado pela Rockstar como download gratuito a partir de 19/11.",
+  "size": {
+    "text": "Cerca de 2× o tamanho do mapa de GTA V, segundo a Rockstar em entrevista à Game Informer (via Forbes).",
+    "status": "reportado",
+    "sources": [
+      "forbes-map"
+    ],
+    "conflict": "Outras fontes falam em \"3× a área jogável de Red Dead Redemption 2\"; não existe número oficial em km² ou milhas².",
+    "conflictSources": [
+      "wikipedia"
+    ]
+  },
+  "items": [
+    {
+      "id": "vice-city",
+      "name": "Vice City",
+      "tagline": "Estamos bem longe dos anos 80, mas Vice City ainda é a capital do sol e da diversão dos EUA.",
+      "description": "O glamour, a correria e a ganância da América capturados numa única cidade. Cada bairro tem algo a oferecer: dos hotéis art déco em tons pastel e areias brancas de Ocean Beach às panaderías movimentadas de Little Cuba e às marcas piratas da feira Tisha-Wocka, até o VC Port, a capital mundial dos cruzeiros.",
+      "highlights": [
+        "Ocean Beach",
+        "Little Cuba",
+        "Tisha-Wocka",
+        "VC Port"
+      ],
+      "inspiration": "Miami",
+      "postcard": "postcard-vice-city",
+      "image": "region-vice-city",
+      "map": {
+        "x": 87,
+        "y": 68,
+        "path": "M80 50 L98 50 L98 94 L80 94 Z"
+      },
+      "status": "confirmado",
+      "sources": [
+        "rs-leonida"
+      ],
+      "inspirationStatus": "reportado",
+      "inspirationSources": [
+        "wikipedia"
+      ]
+    },
+    {
+      "id": "leonida-keys",
+      "name": "Leonida Keys",
+      "tagline": "O dress code é casual, os bares estão cheios.",
+      "description": "A vida neste arquipélago tropical não é chamativa, mas é fácil. Pegue uma bebida e uma espreguiçadeira — mas cuidado: você está na porta de algumas das águas mais lindas e perigosas de toda a América.",
+      "highlights": [
+        "Arquipélago",
+        "Mergulho",
+        "Bares de praia"
+      ],
+      "inspiration": "Florida Keys",
+      "postcard": "postcard-leonida-keys",
+      "image": "region-leonida-keys",
+      "map": {
+        "x": 72,
+        "y": 99,
+        "path": "M84 92.5 l5 1 l-1 2.2 l-5 -1 Z M76.5 95.5 l5.5 0 l-.8 2.2 l-5.5 0 Z M68.5 97.3 l6 .2 l-.8 2.2 l-6 -.2 Z M60.5 98 l6 .9 l-1 2.2 l-6 -.9 Z M54 97.4 l4.4 .6 l-.9 2 l-4.4 -.6 Z"
+      },
+      "status": "confirmado",
+      "sources": [
+        "rs-leonida"
+      ],
+      "inspirationStatus": "reportado",
+      "inspirationSources": [
+        "wikipedia"
+      ]
+    },
+    {
+      "id": "grassrivers",
+      "name": "Grassrivers",
+      "tagline": "A joia indomável da coroa de Leonida.",
+      "description": "Nunca se sabe o que há sob a superfície desta vastidão primordial. Os jacarés podem ser a atração mais famosa, mas há predadores muito mais letais e descobertas mais estranhas entre os manguezais.",
+      "highlights": [
+        "Pântanos",
+        "Aerobarcos",
+        "Jacarés"
+      ],
+      "inspiration": "Everglades",
+      "postcard": "postcard-grassrivers",
+      "image": "region-grassrivers",
+      "map": {
+        "x": 68,
+        "y": 72,
+        "path": "M46 57 L80 57 L80 94 L46 94 Z"
+      },
+      "status": "confirmado",
+      "sources": [
+        "rs-leonida"
+      ],
+      "inspirationStatus": "reportado",
+      "inspirationSources": [
+        "wikipedia"
+      ]
+    },
+    {
+      "id": "port-gellhorn",
+      "name": "Port Gellhorn",
+      "tagline": "Esta é a costa esquecida de Leonida.",
+      "description": "Motéis baratos, atrações fechadas e shoppings vazios não vão trazer os turistas de volta, mas há uma nova economia neste antigo destino de férias — movida a malt liquor, analgésicos e energéticos de posto de estrada. Suba numa moto de trilha e segure a carteira.",
+      "highlights": [
+        "Motéis",
+        "Costa do Golfo",
+        "Motos de trilha"
+      ],
+      "inspiration": "Costa do Golfo / Panhandle da Flórida",
+      "postcard": "postcard-port-gellhorn",
+      "image": "region-port-gellhorn",
+      "map": {
+        "x": 20,
+        "y": 17,
+        "path": "M0 6 L46 6 L46 31 L0 31 Z"
+      },
+      "status": "confirmado",
+      "sources": [
+        "rs-leonida"
+      ],
+      "inspirationStatus": "reportado",
+      "inspirationSources": [
+        "wikipedia"
+      ]
+    },
+    {
+      "id": "ambrosia",
+      "name": "Ambrosia",
+      "tagline": "A batalha pela saúde e pela riqueza de Leonida começa aqui.",
+      "description": "No coração de Leonida, a indústria americana e os valores à moda antiga ainda reinam — custe o que custar. A refinaria de açúcar Allied Crystal garante os empregos, e a gangue de motoqueiros local garante quase todo o resto.",
+      "highlights": [
+        "Refinaria Allied Crystal",
+        "Gangue de motoqueiros",
+        "Interior"
+      ],
+      "inspiration": "Interior da Flórida",
+      "postcard": "postcard-ambrosia",
+      "image": "region-ambrosia",
+      "map": {
+        "x": 66,
+        "y": 42,
+        "path": "M46 31 L90 31 L90 50 L80 50 L80 57 L46 57 Z"
+      },
+      "status": "confirmado",
+      "sources": [
+        "rs-leonida"
+      ],
+      "inspirationStatus": "reportado",
+      "inspirationSources": [
+        "wikipedia"
+      ]
+    },
+    {
+      "id": "mount-kalaga",
+      "name": "Mount Kalaga National Park",
+      "tagline": "Espaço para respirar nos confins do norte do estado.",
+      "description": "Um marco nacional colado à fronteira norte do estado, Mount Kalaga oferece caça, pesca e trilhas off-road de primeira. Nas matas ao redor, místicos caipiras e radicais paranoicos vivem longe dos olhos curiosos do governo.",
+      "highlights": [
+        "Caça e pesca",
+        "Trilhas off-road",
+        "Florestas"
+      ],
+      "inspiration": "Norte da Flórida",
+      "postcard": "postcard-mount-kalaga",
+      "image": "region-mount-kalaga",
+      "map": {
+        "x": 60,
+        "y": 18,
+        "path": "M46 4 L80 4 L80 31 L46 31 Z"
+      },
+      "status": "confirmado",
+      "sources": [
+        "rs-leonida"
+      ],
+      "inspirationStatus": "reportado",
+      "inspirationSources": [
+        "wikipedia"
+      ]
+    }
+  ]
+}

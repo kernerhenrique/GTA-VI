@@ -1,0 +1,15 @@
+{
+  "items": [
+    { "title": "Tommy Vercetti vive", "text": "O Vintage Vice City Pack traz um padrão de armas inspirado na camisa de palmeiras de Tommy Vercetti, protagonista de Vice City (2002) — e os revólveres da Ultimate vêm do \"Vercetti Estate\".", "status": "confirmado", "sources": ["rs-vi", "rs-editions"] },
+    { "title": "\"Just fixing some leaks\"", "text": "No Trailer 2, Jason aparece \"consertando uns vazamentos\" — piada com os vazamentos que perseguiram o jogo.", "status": "reportado", "sources": ["wikipedia"] },
+    { "title": "Trilhas dos trailers", "text": "\"Love Is a Long Road\", de Tom Petty, no Trailer 1; \"Hot Together\", das Pointer Sisters, no Trailer 2; \"Flower in a Hurricane\", do Justice, no Launch Trailer.", "status": "reportado", "sources": ["wikipedia", "nw-launch-trailer"] },
+    { "title": "Macca the Gator", "text": "O jacaré é estrela do programa de TV mais popular de Leonida — e virou estatueta da Collector's Box, ao lado de Chunkee the Manatee.", "status": "confirmado", "sources": ["nw-goodtime", "rs-collection"] },
+    { "title": "\"The Goodtime State\"", "text": "É o apelido oficial de Leonida — a paródia da Flórida, o \"Sunshine State\".", "status": "confirmado", "sources": ["rs-editions", "rs-collection"] },
+    { "title": "Shore Drive e o Cheetah", "text": "O '95 Grotti Cheetah da Ultimate é uma \"ode à Shore Drive\" — a famosa avenida à beira-mar de Vice City.", "status": "confirmado", "sources": ["rs-editions"] },
+    { "title": "Tatuagens de artistas reais", "text": "As mais de 50 tatuagens do Electric Fang foram criadas pelo coletivo de artistas FAILE.", "status": "confirmado", "sources": ["rs-editions"] },
+    { "title": "Florida Man", "text": "O humor do jogo satiriza memes como o \"Florida Man\" e a cultura de vídeos virais.", "status": "reportado", "sources": ["wikipedia"] },
+    { "title": "Miami virou Vice City", "text": "O teto do Kaseya Center ganhou um \"Welcome to Vice City\", o clube E11even virou \"Nine1Nine\" e o Miami Heat jogou como \"Vice City\" em 18/11.", "status": "reportado", "sources": ["wikipedia"] },
+    { "title": "Um estúdio só para NPCs", "text": "A Rockstar Los Angeles foi criada em 2023 dedicada a dar vida aos pedestres de Leonida.", "status": "reportado", "sources": ["wikipedia"] },
+    { "title": "Liberty City na história", "text": "A família de Lucia veio de Liberty City — a mãe sonha com a vida boa desde aquela época.", "status": "confirmado", "sources": ["rs-leonida"] }
+  ]
+}

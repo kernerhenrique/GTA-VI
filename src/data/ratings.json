@@ -1,0 +1,17 @@
+{
+  "ratings": [
+    { "id": "classind", "system": "ClassInd (Brasil)", "rating": "18", "label": "Não recomendado para menores de 18 anos", "descriptors": ["Conteúdo Sexual", "Drogas", "Linguagem Imprópria", "Violência"], "status": "confirmado", "sources": ["psstore-br"] },
+    { "id": "esrb", "system": "ESRB (EUA)", "rating": "M", "label": "Mature 17+", "descriptors": ["Blood and Gore", "Intense Violence", "Mature Humor", "Nudity", "Strong Language", "Strong Sexual Content", "Use of Drugs and Alcohol", "In-Game Purchases"], "status": "confirmado", "sources": ["rs-vi"] },
+    { "id": "pegi", "system": "PEGI (Europa)", "rating": "18", "label": "PEGI 18", "descriptors": ["Violência", "Sexo", "Drogas", "Compras no jogo"], "status": "reportado", "sources": ["twistedvoxel-pegi", "digitaltrends-pegi"], "note": "Uma página do PEGI teria saído do ar; não encontramos registro oficial ativo." }
+  ],
+  "languages": {
+    "summary": "Português do Brasil em menus, interface e legendas. Áudio (vozes) somente em inglês — sem dublagem.",
+    "text": ["Inglês", "Francês", "Italiano", "Alemão", "Espanhol (Espanha)", "Espanhol (México)", "Português (Brasil)", "Polonês", "Russo", "Japonês", "Coreano", "Chinês simplificado", "Chinês tradicional"],
+    "audio": ["Inglês"],
+    "status": "reportado",
+    "sources": ["einerd-idiomas"],
+    "note": "Lista de 13 idiomas divulgada pelas lojas e repercutida pela imprensa. Português de Portugal não aparece."
+  },
+  "storage": { "value": "até 212 GB", "note": "Tamanho do pré-download; varia por console. Atualizações somam mais espaço.", "status": "confirmado", "sources": ["nw-preload-ann", "rs-support-preload"] },
+  "monetization": { "text": "Sem microtransações no lançamento do modo história e sem IA generativa no desenvolvimento, segundo Rob Nelson (Rockstar North).", "status": "reportado", "sources": ["pushsquare-mtx", "nme-mtx"] }
+}

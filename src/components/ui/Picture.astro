@@ -1,0 +1,49 @@
+---
+/**
+ * Imagem responsiva (AVIF/WebP, vários tamanhos) a partir de src/data/images.manifest.json.
+ * Se a imagem não existir no manifest, mostra um placeholder na proporção certa.
+ */
+import manifest from '../../data/images.manifest.json';
+
+interface Props {
+  name: string;
+  alt?: string;
+  sizes?: string;
+  ratio?: string; // ex.: "16/9" — força a proporção do contêiner (object-fit: cover)
+  class?: string;
+  imgClass?: string;
+  loading?: 'lazy' | 'eager';
+  priority?: boolean;
+  decorative?: boolean;
+  position?: string;
+}
+const { name, alt, sizes = '100vw', ratio, class: cls = '', imgClass = '', loading = 'lazy', priority = false, decorative = false, position } = Astro.props;
+const m = (manifest as Record<string, { w: number; h: number; widths: number[]; alt: string; credit: string; blur: string; color: string }>)[name];
+const altText = decorative ? '' : (alt ?? m?.alt ?? '');
+const aspect = ratio ?? (m ? `${m.w}/${m.h}` : '16/9');
+const srcset = (fmt: string) => m!.widths.map((w) => `/assets/${name}-${w}.${fmt} ${w}w`).join(', ');
+const fallback = m ? `/assets/${name}-${m.widths[Math.min(1, m.widths.length - 1)]}.webp` : '';
+---
+{m ? (
+  <div class={`pic ${cls}`} style={`aspect-ratio:${aspect};background-image:url(${m.blur});background-color:${m.color}`}>
+    <picture>
+      <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />
+      <source type="image/webp" srcset={srcset('webp')} sizes={sizes} />
+      <img
+        src={fallback}
+        alt={altText}
+        width={m.w}
+        height={m.h}
+        loading={priority ? 'eager' : loading}
+        decoding={priority ? 'sync' : 'async'}
+        fetchpriority={priority ? 'high' : 'auto'}
+        class={imgClass}
+        style={position ? `object-position:${position}` : undefined}
+      />
+    </picture>
+  </div>
+) : (
+  <div class={`pic pic-placeholder ${cls}`} style={`aspect-ratio:${aspect}`} role={decorative ? undefined : 'img'} aria-label={decorative ? undefined : altText || `Imagem pendente: ${name}`}>
+    <span aria-hidden="true">IMAGEM PENDENTE<br />{name}</span>
+  </div>
+)}

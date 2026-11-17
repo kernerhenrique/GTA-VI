@@ -1,0 +1,17 @@
+---
+import type { StatusT } from '../../lib/data';
+interface Props { status: StatusT; class?: string; scramble?: boolean }
+const { status, class: cls = '', scramble = true } = Astro.props;
+const label = { confirmado: 'Confirmado', reportado: 'Reportado', rumor: 'Rumor' }[status];
+const title = {
+  confirmado: 'Confirmado por fonte oficial (Rockstar, Take-Two, PlayStation ou Xbox)',
+  reportado: 'Reportado pela imprensa confiável — ainda sem confirmação oficial',
+  rumor: 'Rumor: insiders, vazamentos ou estimativas não confirmadas',
+}[status];
+---
+<span class={`badge badge--${status} ${cls}`} title={title}>
+  {status === 'confirmado' && <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+  {status === 'reportado' && <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="8" r="1.8" fill="currentColor"/></svg>}
+  {status === 'rumor' && <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 6a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.6V10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="13" r="1.1" fill="currentColor"/></svg>}
+  <span data-scramble={scramble ? '' : undefined}>{label}</span>
+</span>

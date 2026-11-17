@@ -1,0 +1,48 @@
+{
+  "intro": { "text": "Das estações de rádio de música latina ao metal: a maior e mais variada seleção de rádio e podcasts da série.", "status": "confirmado", "sources": ["rs-music", "nw-radio"] },
+  "stations": [
+    { "id": "cocoteo", "name": "Cocoteo FM", "genre": "Latina moderna", "hosts": "El Martillo e La Gata", "text": "Bachata, merengue, dembow e reggaeton — \"el party que nunca se apaga\".", "image": "radio-cocoteo", "status": "confirmado", "sources": ["nw-radio"] },
+    { "id": "backcountry", "name": "Back Country Radio", "genre": "Country", "hosts": "MW e Delta Dawne", "text": "Country renegado para os Grassrivers e Port Gellhorn, com boletins do repórter Mud Dog Mike direto do aerobarco.", "image": "radio-backcountry", "status": "confirmado", "sources": ["nw-radio"] },
+    { "id": "afrobank", "name": "AfroBank FM", "genre": "Música africana", "hosts": "Burna e Palmsy", "text": "De clássicos do século XX a amapiano e 3-step.", "image": "radio-afrobank", "status": "confirmado", "sources": ["nw-radio"] },
+    { "id": "chamber", "name": "The Chamber 106.6", "genre": "Metal", "hosts": "DJ Kerry e DJ Tom", "text": "Décadas de hinos do metal e as raízes metaleiras de Leonida.", "image": "radio-chamber", "status": "confirmado", "sources": ["nw-radio"] },
+    { "id": "flash", "name": "Flash FM", "genre": "Pop", "hosts": "Robyn e Alex", "text": "A instituição de Vice City volta com o melhor do pop.", "image": "radio-flash", "status": "confirmado", "sources": ["nw-radio"] },
+    { "id": "dirtysouth", "name": "Dirty South Classics", "genre": "Rap do Sul", "hosts": "Trick e Trina", "text": "Hospitalidade sulista com clássicos do rap e hip-hop regional.", "image": "radio-dirtysouth", "status": "confirmado", "sources": ["nw-radio"] }
+  ],
+  "hostsNote": { "text": "Imprensa identifica entre os apresentadores Bad Bunny e RaiNao (Cocoteo FM), Lana Del Rey e Morgan Wallen (Back Country Radio), e Robyn e Alex Consani (Flash FM).", "status": "reportado", "sources": ["wikipedia"] },
+  "album": {
+    "name": "Grand Theft Auto VI: The Album",
+    "date": "2026-11-19",
+    "text": "34 faixas inéditas, em parceria com a Atlantic Records, nos serviços de streaming, em vinil e CD.",
+    "image": "album-cover",
+    "singles": [
+      "Yung Lean — That's It (feat. Future & Metro Boomin)",
+      "Travis Scott — RHYNO",
+      "CA7RIEL & Paco Amoroso, PinkPantheress, Fred again.. & Etienne de Crécy — Sexy Magic",
+      "Morgan Wallen — Last Thing You Need",
+      "Rauw Alejandro — Macacoa 2000",
+      "Keith Richards — Bright Lights, Big City",
+      "Fuerza Regida — Suzuki",
+      "Cardi B — Don't Chart",
+      "Tove Lo — Blood In Your Eyes"
+    ],
+    "status": "confirmado",
+    "sources": ["nw-album", "rs-music"]
+  },
+  "score": {
+    "name": "Grand Theft Auto VI: Original Score — Justice",
+    "date": "2026-12-11",
+    "text": "Trilha adaptativa do duo francês Justice (Gaspard Augé e Xavier de Rosnay), que muda conforme o jeito de jogar. Álbum com 30 faixas em 11/12.",
+    "singles": ["Flower in a Hurricane (feat. Tame Impala, SZA, King Gizzard & The Lizard Wizard)", "Pusher (feat. Gesaffelstein)"],
+    "image": "score-cover",
+    "status": "confirmado",
+    "sources": ["rs-music", "nw-score"]
+  },
+  "festival": {
+    "name": "Grand Theft Auto VI: The Festival",
+    "date": "2026-11-21",
+    "place": "Mana Wynwood, Miami (EUA)",
+    "text": "Evento de lançamento com PlayStation e os criadores do III Points: Cactus Jack apresenta Travis Scott, Don Toliver, Kodak Black e Sofaygo; Cardi B; Ca7riel & Paco Amoroso; Justice (DJ set); Metro Boomin; Rauw & Friends; Tainy e mais.",
+    "status": "confirmado",
+    "sources": ["nw-festival"]
+  }
+}

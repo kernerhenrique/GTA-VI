@@ -1,0 +1,41 @@
+---
+/** Silhuetas de palmeiras + skyline art déco (SVG próprio, decorativo). */
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
+// Skyline: prédios com coroas escalonadas (art déco)
+const buildings = [
+  [0, 70, 40], [38, 52, 26], [62, 80, 34], [94, 44, 22], [114, 96, 30], [142, 64, 40], [180, 110, 26], [204, 58, 34],
+  [236, 84, 22], [256, 130, 34], [288, 72, 28], [314, 102, 38], [350, 60, 24], [372, 142, 30], [400, 88, 36], [434, 66, 26],
+  [458, 118, 32], [488, 76, 40], [526, 54, 22], [546, 98, 30], [574, 70, 34], [606, 124, 28], [632, 62, 36], [666, 92, 24],
+  [688, 150, 32], [718, 80, 38], [754, 58, 26], [778, 108, 34], [810, 72, 30], [838, 96, 28], [864, 60, 40], [902, 86, 26],
+  [926, 132, 34], [958, 70, 30], [986, 100, 36], [1020, 64, 28], [1046, 90, 34], [1078, 56, 26], [1102, 116, 32], [1132, 74, 40],
+  [1170, 60, 30],
+];
+const H = 220;
+const sky = buildings.map(([x, h, w]) => {
+  const top = H - h;
+  const s = Math.max(4, Math.round(w * 0.18));
+  return `M${x} ${H}V${top + 8}h${s}v-6h${s}v-4h${w - 4 * s}v4h${s}v6h${s}V${H}Z`;
+}).join('');
+const palm = (x: number, h: number, flip = 1) => {
+  const top = H - h;
+  const tx = x + 14 * flip;
+  const trunk = `M${x - 3} ${H} C ${x - 2} ${H - h * 0.5}, ${tx - 6 * flip} ${top + 20}, ${tx - 2} ${top} L ${tx + 2} ${top} C ${tx - 2 * flip} ${top + 22}, ${x + 3} ${H - h * 0.5}, ${x + 4} ${H} Z`;
+  const fr = (dx: number, dy: number, cx: number, cy: number) => `M${tx} ${top} Q ${tx + cx} ${top + cy} ${tx + dx} ${top + dy} Q ${tx + cx * 0.6} ${top + cy * 0.4 + 4} ${tx} ${top + 3} Z`;
+  return trunk + fr(-46, 18, -22, -16) + fr(48, 22, 24, -14) + fr(-34, 36, -26, 6) + fr(36, 40, 26, 8) + fr(-8, -30, -18, -26) + fr(14, -26, 18, -24) + fr(-54, 2, -30, -24) + fr(56, 6, 30, -22);
+};
+const palms = palm(60, 200, 1) + palm(150, 160, -1) + palm(1040, 210, -1) + palm(1130, 170, 1) + palm(980, 130, 1);
+---
+<svg class={cls} viewBox={`0 0 1200 ${H}`} preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="skyline-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#243152" stop-opacity=".85" />
+      <stop offset="1" stop-color="#0C0D1B" />
+    </linearGradient>
+  </defs>
+  <path d={sky} fill="url(#skyline-fade)" />
+  <g fill="#0C0D1B">
+    <path d={palms} />
+  </g>
+  <rect x="0" y={H - 6} width="1200" height="6" fill="#0C0D1B" />
+</svg>

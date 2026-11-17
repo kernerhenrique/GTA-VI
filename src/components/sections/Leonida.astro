@@ -1,0 +1,132 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Picture from '../ui/Picture.astro';
+import LoopClip from '../ui/LoopClip.astro';
+import Badge from '../ui/Badge.astro';
+import SourceRefs from '../ui/SourceRefs.astro';
+import { regions } from '../../lib/data';
+const land = 'M2 12 L40 10 L62 9 L71 10 L75 15 L79 25 L83 37 L87 49 L91 61 L93 72 L92 81 L88 87 L82 89 L76 85 L70 78 L64 70 L59 61 L55 51 L52 41 L50 33 L46 27 L40 23 L32 21 L24 23 L16 23 L8 21 L2 18 Z';
+---
+<section id="leonida" class="section cv-auto" aria-labelledby="leonida-title">
+  <div class="container-vi">
+    <SectionHeader id="leonida-title" eyebrow="O jogo · o estado de Leonida" title="Só em Leonida" lead="Seis regiões, de Vice City aos pântanos e às montanhas do norte. Passe o mouse, foque com o teclado ou toque numa região." />
+    <div class="map-layout">
+      <div class="map-box reveal">
+        <svg class="map" viewBox="0 0 100 104" role="group" aria-label="Mapa esquemático de Leonida (feito por fãs, não oficial)">
+          <defs>
+            <clipPath id="land-clip"><path d={land} /></clipPath>
+            <pattern id="halftone-sea" width="2.2" height="2.2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <circle cx="1.1" cy="1.1" r=".32" fill="#243152" />
+            </pattern>
+            <linearGradient id="land-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4B2F54" /><stop offset="1" stop-color="#243152" /></linearGradient>
+          </defs>
+          <rect x="0" y="0" width="100" height="104" fill="url(#halftone-sea)" />
+          <path d={land} fill="url(#land-grad)" stroke="#CCC2F5" stroke-opacity=".35" stroke-width=".3" />
+          {regions.items.map((r) => (
+            <g class="region" data-region={r.id} tabindex="0" role="button" aria-label={`${r.name}: ${r.tagline}`} aria-controls="region-panel">
+              <path d={r.map.path} clip-path={r.id === 'leonida-keys' ? undefined : 'url(#land-clip)'} class="region-shape" />
+              {r.id === 'leonida-keys' && <rect x="50" y="90" width="44" height="13" fill="transparent" />}
+              <text x={r.map.x} y={r.map.y} class="region-label" text-anchor="middle">{r.name.replace(' National Park', '')}</text>
+            </g>
+          ))}
+          <text x="97" y="40" class="sea-label" text-anchor="end">Oceano</text>
+          <text x="20" y="60" class="sea-label">Golfo</text>
+        </svg>
+        <p class="map-note">{regions.mapNote}</p>
+      </div>
+
+      <div id="region-panel" class="region-panel surface reveal" aria-live="polite" data-region-panel>
+        {regions.items.map((r, i) => (
+          <article class="region-card" data-region-card={r.id} hidden={i !== 0}>
+            <Picture name={r.postcard} sizes="(min-width: 1024px) 480px, 92vw" ratio="16/9" class="region-postcard" />
+            <div class="region-body">
+              <p class="eyebrow">Inspiração: {r.inspiration} <Badge status={r.inspirationStatus} scramble={false} /></p>
+              <h3 class="region-name">{r.name}</h3>
+              <p class="region-tag">“{r.tagline}”</p>
+              <p class="region-desc">{r.description}</p>
+              <ul class="region-hl">{r.highlights.map((h) => <li>{h}</li>)}</ul>
+              <LoopClip clip={`leonida-${r.id}`} fallback={r.image} sizes="(min-width: 1024px) 480px, 92vw" ratio="16/9" class="region-shot" label={`Clipe sem som de ${r.name}`} />
+              <div class="flex flex-wrap gap-2 items-center"><Badge status={r.status} /><SourceRefs ids={r.sources} /></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="region-chips reveal" role="tablist" aria-label="Regiões de Leonida">
+      {regions.items.map((r, i) => (
+        <button type="button" class="chip" role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-region-btn={r.id}>{r.name}</button>
+      ))}
+    </div>
+
+    <div class="size card reveal">
+      <p class="size-big display text-sunset">≈2× GTA V</p>
+      <div>
+        <p>{regions.size.text}</p>
+        <p class="text-sm muted">⚠ Conflito: {regions.size.conflict}</p>
+        <div class="flex flex-wrap gap-2 items-center"><Badge status={regions.size.status} /><SourceRefs ids={[...regions.size.sources, ...regions.size.conflictSources]} /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .map-layout { display: grid; gap: 20px; align-items: start; }
+  @media (min-width: 1024px) { .map-layout { grid-template-columns: 1.05fr .95fr; } }
+  .map-box { position: relative; border-radius: 26px; overflow: hidden; border: 1px solid var(--vi-line); background: #10101e; }
+  .map { display: block; width: 100%; height: auto; }
+  .region-shape { fill: rgb(204 194 245 / .06); stroke: rgb(254 196 151 / .55); stroke-width: .35; stroke-dasharray: 1 .8; transition: fill .3s; }
+  .region { cursor: pointer; outline: none; }
+  .region:hover .region-shape, .region:focus-visible .region-shape, .region.is-active .region-shape { fill: rgb(233 99 155 / .55); }
+  .region:focus-visible .region-shape { stroke: #FEC497; stroke-width: .8; stroke-dasharray: none; }
+  .region[data-region="leonida-keys"] .region-shape { fill: rgb(254 196 151 / .5); }
+  .region-label { font: 800 3.1px/1 var(--font-display); text-transform: uppercase; fill: #FFF9CB; letter-spacing: .1px; pointer-events: none; paint-order: stroke; stroke: #0C0D1B; stroke-width: .8px; }
+  .sea-label { font: italic 600 2.6px/1 var(--font-sans); fill: rgb(204 194 245 / .55); letter-spacing: .4px; text-transform: uppercase; }
+  .map-note { position: absolute; left: 12px; right: 12px; bottom: 10px; margin: 0; font-size: .68rem; color: rgb(226 226 228 / .7); background: rgb(12 13 27 / .75); padding: 6px 10px; border-radius: 10px; }
+  .region-panel { overflow: hidden; }
+  .region-card[hidden] { display: none; }
+  .region-card { animation: pop .5s var(--ease-out-expo); }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px); } }
+  .region-body { padding: 18px 20px 20px; display: grid; gap: 10px; }
+  .region-body p { margin: 0; }
+  .region-name { font: 900 clamp(2rem, 1.5rem + 2vw, 3rem)/.9 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0; }
+  .region-tag { font-weight: 700; color: var(--color-vi-blush); font-size: 1.05rem; }
+  .region-desc { font-size: .95rem; }
+  .region-hl { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
+  .region-hl li { font: 600 .7rem/1 var(--font-mono); padding: 7px 10px; border-radius: 999px; background: rgb(204 194 245 / .12); color: var(--color-vi-lavender); }
+  .region-body :global(.region-shot) { border-radius: 14px; }
+  .region-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .chip { min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--vi-line); background: transparent; color: var(--color-vi-mist); font: 700 .9rem/1 var(--font-sans); cursor: pointer; }
+  .chip[aria-selected="true"] { background: var(--color-vi-blush); color: var(--color-vi-plum-deep); border-color: transparent; }
+  .size { margin-top: 24px; padding: 20px 22px; display: grid; gap: 14px; align-items: center; }
+  @media (min-width: 760px) { .size { grid-template-columns: auto 1fr; gap: 28px; } }
+  .size p { margin: 0 0 6px; }
+  .size-big { font-size: clamp(3rem, 2rem + 5vw, 6rem); margin: 0 !important; }
+</style>
+
+<script>
+  const root = document.getElementById('leonida')!;
+  const cards = root.querySelectorAll<HTMLElement>('[data-region-card]');
+  const shapes = root.querySelectorAll<SVGGElement>('[data-region]');
+  const chips = root.querySelectorAll<HTMLButtonElement>('[data-region-btn]');
+  let active = cards[0]?.dataset.regionCard ?? '';
+  const show = (id: string) => {
+    if (!id) return;
+    cards.forEach((c) => (c.hidden = c.dataset.regionCard !== id));
+    setActive(id);
+  };
+  const setActive = (id: string) => {
+    active = id;
+    shapes.forEach((s) => s.classList.toggle('is-active', s.dataset.region === id));
+    chips.forEach((c) => c.setAttribute('aria-selected', String(c.dataset.regionBtn === id)));
+  };
+  setActive(active);
+  shapes.forEach((s) => {
+    const id = s.dataset.region!;
+    s.addEventListener('mouseenter', () => { if (matchMedia('(hover: hover)').matches) show(id); });
+    s.addEventListener('focus', () => show(id));
+    s.addEventListener('click', () => { show(id); if (!matchMedia('(min-width: 1024px)').matches) root.querySelector('[data-region-panel]')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); });
+    s.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(id); } });
+  });
+  chips.forEach((c) => c.addEventListener('click', () => show(c.dataset.regionBtn!)));
+</script>
