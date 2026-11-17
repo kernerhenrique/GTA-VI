@@ -51,7 +51,7 @@ const rows = [
           </li>
         ))}
       </ul>
-      <p class="muted text-xs text-center mt-2">* Preço da Collector's Box reportado pela imprensa; não inclui o jogo.</p>
+      <p class="fan-note muted text-xs text-center">* Preço da Collector's Box reportado pela imprensa; não inclui o jogo.</p>
     </div>
 
     <!-- Plataformas -->
@@ -220,6 +220,7 @@ const rows = [
 
   /* Card Fan */
   .fan-stage { position: relative; padding: 10px 0 0; }
+  .fan-note { position: relative; z-index: 40; margin: clamp(48px, 10vw, 72px) 0 0; }
   .fan { list-style: none; margin: 0 auto; padding: 0; position: relative; height: clamp(300px, 52vw, 470px); max-width: 1000px; }
   .fan-card { --w: clamp(118px, 26vw, 236px); position: absolute; left: 50%; bottom: 0; width: var(--w); height: calc(var(--w) * 1.42); margin-left: calc(var(--w) / -2);
     transform-origin: 50% 260%; transform: rotate(0deg) translateY(30px); opacity: 0;

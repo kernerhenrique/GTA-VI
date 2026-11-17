@@ -32,12 +32,12 @@ let lastYear = '';
     <div class="tl" data-tl>
       <svg class="tl-svg" aria-hidden="true" focusable="false">
         <defs>
-          <linearGradient id="tl-grad" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+          <linearGradient id="tl-grad" x1="0" y1="0" x2="0" y2="2000" gradientUnits="userSpaceOnUse" data-tl-grad>
             <stop offset="0" stop-color="#FEC497" />
             <stop offset=".55" stop-color="#E9639B" />
             <stop offset="1" stop-color="#CCC2F5" />
           </linearGradient>
-          <filter id="tl-glow" x="-50%" y="-5%" width="200%" height="110%"><feGaussianBlur stdDeviation="4" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+          <filter id="tl-glow" filterUnits="userSpaceOnUse" x="-200" y="-200" width="4000" height="40000"><feGaussianBlur stdDeviation="4" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
         </defs>
         <path class="tl-road" d="" />
         <path class="tl-future" d="" />

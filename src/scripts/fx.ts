@@ -31,18 +31,24 @@ export function scramble(el: HTMLElement, duration = 900) {
 /** Count Up com dígitos tabulares e easing out. */
 export function countUp(el: HTMLElement) {
   const to = Number(el.dataset.countTo);
+  if (!Number.isFinite(to)) return;
+  const finalText = el.dataset.finalText ?? (el.textContent ?? '').trim(); // texto exibido sem JS (ex.: "80 mi+")
+  el.dataset.finalText = finalText;
   const decimals = Number(el.dataset.decimals ?? 0);
   const prefix = el.dataset.prefix ?? '';
   const suffix = el.dataset.suffix ?? '';
-  const fmt = (v: number) => prefix + v.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
-  if (!Number.isFinite(to)) return;
-  if (reducedMotion()) { el.textContent = fmt(to); return; }
+  // números grandes contam em "mi" e terminam no texto original, para não sugerir precisão que a fonte não tem
+  const millions = to >= 1_000_000;
+  const fmt = (v: number) => millions
+    ? `${(v / 1_000_000).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} mi`
+    : prefix + v.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+  if (reducedMotion()) { el.textContent = finalText || fmt(to); return; }
   const dur = Number(el.dataset.duration ?? 1600);
   const start = performance.now();
   const ease = (x: number) => 1 - Math.pow(1 - x, 4);
   const frame = (t: number) => {
     const p = Math.min(1, (t - start) / dur);
-    el.textContent = fmt(to * ease(p));
+    el.textContent = p < 1 ? fmt(to * ease(p)) : (finalText || fmt(to));
     if (p < 1) requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);

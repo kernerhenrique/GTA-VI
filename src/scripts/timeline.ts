@@ -67,6 +67,10 @@ export async function initTimeline(root: HTMLElement) {
     const endY = root.offsetHeight;
     d += ` L ${prev.x} ${endY}`;
     [road, future, draw].forEach((p) => p.setAttribute('d', d));
+    // gradiente em coordenadas absolutas: com objectBoundingBox, um caminho reto (largura 0, no celular) não renderiza
+    const grad = root.querySelector<SVGLinearGradientElement>('[data-tl-grad]');
+    grad?.setAttribute('y2', String(endY));
+    root.querySelector('#tl-glow')?.setAttribute('height', String(endY + 400));
     const L = draw.getTotalLength();
     const nodeLens = pts.map((p) => lengthAtY(draw, L, p.y));
 

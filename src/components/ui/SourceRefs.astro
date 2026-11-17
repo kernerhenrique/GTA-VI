@@ -2,7 +2,7 @@
 import { getSources } from '../../lib/data';
 interface Props { ids?: string[]; label?: string; class?: string }
 const { ids = [], label = 'Fonte', class: cls = '' } = Astro.props;
-const list = getSources(ids);
+const list = getSources([...new Set(ids)]);
 ---
 {list.length > 0 && (
   <p class={`src-refs ${cls}`}>
