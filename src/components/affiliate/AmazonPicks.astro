@@ -1,0 +1,57 @@
+---
+/**
+ * "Comprar na Amazon": links de busca com a tag de afiliado (src/data/affiliate.json).
+ * Sem preços nem fotos da Amazon (as regras do programa só permitem isso pela API oficial). Aviso de afiliado obrigatório.
+ */
+import Icon from '../ui/Icon.astro';
+import { affiliate, amazonUrl } from '../../lib/data';
+---
+<section id="comprar-amazon" class="section amazon" aria-labelledby="amazon-title">
+  <div class="container-vi">
+    <header class="am-head reveal">
+      <p class="eyebrow">Mídia física e acessórios</p>
+      <h2 id="amazon-title" class="am-title">Comprar na Amazon</h2>
+      <p class="am-intro">{affiliate.intro}</p>
+      <p class="am-disclosure"><span class="am-tag">Links de afiliado</span> {affiliate.disclosure}</p>
+    </header>
+    <ul class="am-grid" role="list">
+      {affiliate.items.map((it) => (
+        <li id={`amazon-${it.id}`} class="reveal">
+          <a class="am-card" href={amazonUrl(it.query)} target="_blank" rel="sponsored noopener noreferrer">
+            <span class="am-icon" aria-hidden="true"><Icon name={it.icon} class="w-6 h-6" /></span>
+            <span class="am-body">
+              <span class="am-name">{it.title}</span>
+              <span class="am-text">{it.text}</span>
+              <span class="am-cta">Ver na Amazon <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba; link de afiliado)</span></span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="am-note muted">Os preços e a disponibilidade são os da Amazon no momento da compra. A edição Ultimate é só digital: compre direto na PS Store ou na Microsoft Store (veja as edições acima).</p>
+  </div>
+</section>
+
+<style>
+  .amazon { padding-top: clamp(2rem, 1.5rem + 3vw, 4.5rem); }
+  .am-head { max-width: 70ch; margin-bottom: 28px; }
+  .am-title { margin: .35rem 0 .8rem; font: 900 clamp(2.4rem, 1.6rem + 4vw, 4.6rem)/.88 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); }
+  .am-intro { margin: 0 0 12px; color: var(--color-vi-mist); line-height: 1.55; }
+  .am-disclosure { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0; font-size: .85rem; color: rgb(226 226 228 / .78); }
+  .am-tag { font: 700 .66rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--color-vi-night); background: var(--color-vi-peach); padding: 5px 9px; border-radius: 999px; }
+  .am-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .am-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .am-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .am-grid li { display: flex; }
+  .am-card {
+    display: flex; gap: 14px; width: 100%; padding: 20px; border-radius: 20px; text-decoration: none; color: var(--color-vi-mist);
+    background: var(--vi-surface); border: 1px solid var(--vi-line); transition: border-color .3s, transform .3s, box-shadow .3s;
+  }
+  .am-card:hover, .am-card:focus-visible { border-color: rgb(254 196 151 / .6); transform: translateY(-2px); box-shadow: 0 24px 50px -28px rgb(254 196 151 / .6); color: var(--color-vi-mist); }
+  .am-icon { display: grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 14px; background: rgb(254 196 151 / .14); color: var(--color-vi-peach); }
+  .am-body { display: grid; gap: 6px; }
+  .am-name { font: 900 1.35rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); }
+  .am-text { font-size: .88rem; line-height: 1.45; color: rgb(226 226 228 / .8); }
+  .am-cta { margin-top: 4px; font: 700 .72rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--color-vi-peach); }
+  .am-note { margin: 18px 0 0; font-size: .82rem; }
+</style>

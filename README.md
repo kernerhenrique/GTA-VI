@@ -1,6 +1,6 @@
 # Leonida BR — fan site de GTA VI (pt-BR)
 
-Fan site **não oficial** sobre Grand Theft Auto VI. Ele traz a contagem regressiva para o lançamento (19/11/2026, 0h de Brasília), as edições e os preços em R$, personagens, o estado de Leonida, trailers, uma linha do tempo animada, a recepção da crítica, um FAQ e as fontes de tudo, em **11 páginas**. O site funciona **antes, no momento e depois** do lançamento: o hub muda sozinho de estado.
+Fan site **não oficial** sobre Grand Theft Auto VI. Ele traz a contagem regressiva para o lançamento (19/11/2026, 0h de Brasília), as edições e os preços em R$, personagens, o estado de Leonida, trailers, uma linha do tempo animada, a recepção da crítica, um FAQ e as fontes de tudo, em **11 páginas**, mais uma página de apoio. O site funciona **antes, no momento e depois** do lançamento: o hub muda sozinho de estado.
 
 > Sem afiliação com a Rockstar Games ou a Take-Two Interactive. Imagens, vídeos e marcas © Rockstar Games, usados com crédito.
 
@@ -33,7 +33,7 @@ Servir o build localmente:
 npm run preview
 ```
 
-- O resultado estático fica em `dist/`. Hospede em qualquer serviço estático, como Netlify, Vercel, Cloudflare Pages ou GitHub Pages.
+- O resultado estático fica em `dist/`. O site está hospedado na Cloudflare Pages (veja abaixo), mas funciona em qualquer serviço estático.
 - **`SITE_URL`** define as URLs absolutas de canonical, Open Graph e JSON-LD. Sem ele, o build usa um domínio de exemplo.
 
 ## Páginas
@@ -51,19 +51,44 @@ npm run preview
 | `/extras` | Vice City 2002 x 2026, GTA V x VI e curiosidades |
 | `/faq` | Perguntas frequentes |
 | `/fontes` | Todas as fontes |
+| `/apoie` | Apoio via Pix: o que vem por aí e o diário de atualizações (fora da numeração de capítulos) |
 
 - **Cadastro:** título de SEO, descrição, capa, ordem e o que aparece no menu vêm de `src/data/pages.json`. Para mudar o texto de uma capa ou a ordem de leitura, edite esse arquivo.
 - **Página nova:** crie `src/pages/<slug>.astro` com o layout `Page` e cadastre o slug em `pages.json`. O menu do celular, o rodapé, a home, o "anterior / próxima" e o `sitemap.xml` se atualizam sozinhos; para aparecer na barra do desktop, inclua o slug em `header`.
 - **Menu do desktop:** em `pages.json → header`, `game` são os cards do painel "O Jogo", `primary` os links da barra e `shortcuts` os atalhos do painel.
 
-## Publicação na Vercel
+## Publicação na Cloudflare Pages
 
-O projeto da Vercel está ligado a este repositório. **Cada push na branch de produção publica o site sozinho**, sem nenhum passo manual.
+O site fica na **Cloudflare Pages**: o plano grátis não tem limite de tráfego e permite uso comercial, que é o caso de um site com doação via Pix e links de afiliado. O plano grátis da Vercel proíbe isso.
 
-- **Configuração:** está em `vercel.json` (Astro, `npm run build`, pasta `dist`, URLs sem `.html` e cache das imagens). Não precisa mexer no painel.
-- **Logs:** se um deploy falhar, o motivo aparece em vercel.com → projeto → **Deployments** → clique no deploy → **Build Logs**. O build roda o `astro check`, então um JSON com erro também derruba o deploy, com a mensagem dizendo o arquivo e o campo.
-- **Endereço do site:** na Vercel, o canonical, o Open Graph e o sitemap usam sozinhos o domínio de produção do projeto. `SITE_URL` só é necessário fora da Vercel, ou para forçar outro domínio.
-- **Domínio próprio:** vercel.com → projeto → **Settings → Domains** → adicione o domínio e siga as instruções de DNS.
+**Primeira vez (uns 2 minutos):**
+1. Entre em dash.cloudflare.com (a conta é grátis) → **Workers & Pages** → **Create** → aba **Pages** → **Connect to Git**.
+2. Autorize o GitHub e escolha o repositório `kernerhenrique/GTA-VI`.
+3. Em **Production branch**, escolha `claude/gifted-einstein-n2up3b`.
+4. Em **Framework preset**, escolha **Astro**. Confira o **Build command** `npm run build` e o **Build output directory** `dist`.
+5. Clique em **Save and Deploy**. O endereço fica `https://<nome-do-projeto>.pages.dev`.
+
+**Depois disso:**
+- **Publicação:** cada push na branch de produção publica o site sozinho.
+- **Configuração:**
+  - `.node-version` define o Node 22;
+  - `public/_headers` define o cache das imagens e dos arquivos `/_astro`;
+  - a Cloudflare já serve `/comprar` a partir de `comprar.html` e usa o `404.html`.
+- **Endereço do site:** o canonical, o Open Graph e o sitemap usam sozinhos o domínio `*.pages.dev` do projeto. `SITE_URL` só é necessário para forçar outro domínio, por exemplo um domínio próprio.
+- **Logs:** se um deploy falhar, o motivo aparece no projeto → **Deployments** → clique no deploy → **View details**. O build roda o `astro check`, então um JSON com erro também derruba o deploy, com a mensagem dizendo o arquivo e o campo.
+- **Domínio próprio:** no projeto → **Custom domains** → **Set up a custom domain**. Depois, defina `SITE_URL` em **Settings → Variables and Secrets**.
+- **Vercel:** se o projeto antigo ainda estiver ligado ao repositório, apague-o ou desconecte o Git (vercel.com → projeto → **Settings → Git → Disconnect**). Senão cada push continua publicando lá também, e com o Pix isso conta como uso comercial no plano grátis.
+
+## Apoio (Pix) e links de afiliado
+
+| Quero… | Edite | Como |
+|---|---|---|
+| Trocar a chave Pix | `support.json → pix.key` | Use sempre uma **chave aleatória**, nunca CPF, telefone ou e-mail. O bloco de apoio só aparece se houver chave. |
+| Mostrar QR Code e "Pix copia e cola" | `support.json → pix.name` e `pix.city` | O nome e a cidade da sua conta, sem acento, até 25 e 15 letras. Com os dois preenchidos, a página `/apoie` gera o QR Code no build. |
+| Registrar uma novidade do site | `support.json → updates` | Adicione no topo: `{ "date": "2026-11-25", "text": "…" }`. Aparece no "Diário de bordo" da página `/apoie`. |
+| Mudar o texto do convite | `support.json` | `headline`, `pitch` (página `/apoie`), `bandText` (faixa nas outras páginas), `roadmap` e `promises`. |
+| Ganhar comissão da Amazon | `affiliate.json → amazonTag` | A sua tag do Amazon Associados (associados.amazon.com.br), no formato `seunome-20`. Sem tag, os links funcionam, mas não rendem comissão. |
+| Trocar os produtos | `affiliate.json → items` | `title`, `text` e `query` (o termo de busca na Amazon). **Não coloque preço nem foto da Amazon:** as regras do programa só permitem isso pela API oficial. O aviso "Como associado da Amazon…" é obrigatório e já aparece no bloco. |
 
 ## Como atualizar o conteúdo (semana do lançamento)
 
@@ -87,7 +112,7 @@ Todo o conteúdo fica em **`src/data/*.json`**, separado do layout.
 | FAQ | `faq.json` | Pergunta, resposta, selo e fontes. O JSON-LD `FAQPage` é gerado automaticamente. |
 | Título, texto ou imagem da capa de uma página | `pages.json` | `title`, `lead`, `image` (chave de `images.manifest.json`). O build recusa imagem que não existe. |
 
-Depois de editar, faça commit e push: a Vercel publica sozinha. Fora da Vercel, rode `npm run build` e publique o `dist/`. A contagem, a troca de estado e a linha do tempo "você está aqui" rodam no navegador e não precisam de rebuild para virar no horário.
+Depois de editar, faça commit e push: a Cloudflare Pages publica sozinha. Em outra hospedagem, rode `npm run build` e publique o `dist/`. A contagem, a troca de estado e a linha do tempo "você está aqui" rodam no navegador e não precisam de rebuild para virar no horário.
 
 ## Testar datas (antes, no momento e depois)
 

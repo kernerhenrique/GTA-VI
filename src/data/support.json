@@ -1,0 +1,28 @@
+{
+  "_comment": "Apoio ao site via Pix. 'pix.key' é a chave (use uma chave ALEATÓRIA, nunca CPF/telefone/e-mail). 'pix.name' (até 25 letras) e 'pix.city' (até 15 letras), como aparecem na sua conta, são opcionais: se os dois forem preenchidos, a página /apoie mostra também um QR Code e o 'Pix copia e cola'. 'updates' é o registro de atualizações do site (mais recente primeiro).",
+  "pix": {
+    "key": "2cf71980-dbe4-445e-a206-e8d11cb08975",
+    "keyType": "aleatória",
+    "name": "",
+    "city": ""
+  },
+  "headline": "O lançamento é só o começo",
+  "pitch": "GTA VI vai ser explorado por anos — e o Leonida BR vai junto. O site continua sendo atualizado depois do lançamento, em português, com fonte em cada informação. Se ele te ajudou, um Pix de qualquer valor mantém o projeto vivo.",
+  "bandText": "O Leonida BR continua depois do lançamento: detalhes do jogo, easter eggs, atualizações e tudo o que os jogadores encontrarem em Leonida. Ajude o site a crescer com um Pix de qualquer valor.",
+  "roadmap": [
+    { "icon": "gator", "title": "Detalhes do jogo", "text": "Mapa, regiões, atividades, veículos e tudo o que for confirmado depois que o jogo sair." },
+    { "icon": "camera", "title": "Easter eggs e segredos", "text": "Referências escondidas, homenagens à série e mistérios de Leonida, explicados." },
+    { "icon": "siren", "title": "Atualizações e patches", "text": "O que muda a cada atualização do jogo, com as notas oficiais traduzidas." },
+    { "icon": "crowd", "title": "Descobertas dos jogadores", "text": "As coisas mais curiosas encontradas pela comunidade, com o selo de veracidade de sempre." },
+    { "icon": "palm", "title": "Guias e curiosidades", "text": "Dicas para começar, locais para visitar e comparações com Vice City e GTA V." }
+  ],
+  "promises": [
+    "Doação voluntária: não libera nenhum conteúdo extra — o site continua aberto para todo mundo.",
+    "Sem anúncios. Feito por fã, para fãs.",
+    "Todo dado continua com fonte e selo: confirmado, reportado ou rumor."
+  ],
+  "updates": [
+    { "date": "2026-11-18", "text": "O site ganhou 11 páginas, menu novo, página de apoio e links de compra." },
+    { "date": "2026-11-17", "text": "Leonida BR no ar: contagem regressiva, preços em R$, personagens, Leonida, trailers e linha do tempo." }
+  ]
+}

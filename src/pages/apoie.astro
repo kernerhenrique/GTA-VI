@@ -1,0 +1,89 @@
+---
+/** Página de apoio: por que apoiar, o que vem por aí, Pix e registro de atualizações (conteúdo em src/data/support.json). */
+import Page from '../layouts/Page.astro';
+import PixBox from '../components/support/PixBox.astro';
+import Icon from '../components/ui/Icon.astro';
+import { support } from '../lib/data';
+import { formatDate } from '../lib/time';
+---
+<Page slug="apoie">
+  <section class="section pt-tight" aria-labelledby="apoie-why">
+    <div class="container-vi ap-grid">
+      <div class="ap-why reveal">
+        <p class="eyebrow">Por que apoiar</p>
+        <h2 id="apoie-why" class="ap-h2">{support.headline}</h2>
+        <p class="ap-pitch">{support.pitch}</p>
+        <ul class="ap-promises" role="list">
+          {support.promises.map((p) => (
+            <li><Icon name="check" class="w-5 h-5" /><span>{p}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="ap-pix reveal">
+        <PixBox />
+      </div>
+    </div>
+  </section>
+
+  <section class="section ap-next" aria-labelledby="apoie-next">
+    <div class="container-vi">
+      <p class="eyebrow reveal">Depois do lançamento</p>
+      <h2 id="apoie-next" class="ap-h2 reveal">O que vem por aí</h2>
+      <ol class="ap-roadmap" role="list">
+        {support.roadmap.map((r, i) => (
+          <li class="ap-item reveal" style={`transition-delay:${(i % 3) * 70}ms`}>
+            <span class="ap-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="ap-icon" aria-hidden="true"><Icon name={r.icon} class="w-6 h-6" /></span>
+            <h3 class="ap-item-title">{r.title}</h3>
+            <p class="ap-item-text">{r.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section pt-tight" aria-labelledby="apoie-log">
+    <div class="container-vi ap-log-wrap">
+      <div class="reveal">
+        <p class="eyebrow">Diário de bordo</p>
+        <h2 id="apoie-log" class="ap-h2">Últimas atualizações do site</h2>
+        <p class="muted">O site muda com o jogo. Cada novidade entra aqui.</p>
+      </div>
+      <ol class="ap-log reveal" role="list">
+        {support.updates.map((u) => (
+          <li>
+            <time datetime={u.date}>{formatDate(u.date, { day: '2-digit', month: 'short', year: 'numeric' })}</time>
+            <p>{u.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .ap-grid { display: grid; gap: clamp(24px, 4vw, 56px); align-items: start; }
+  @media (min-width: 980px) { .ap-grid { grid-template-columns: 1fr 1.1fr; } }
+  .ap-h2 { margin: .35rem 0 1rem; font: 900 clamp(2.4rem, 1.6rem + 4vw, 4.6rem)/.88 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); text-wrap: balance; }
+  .ap-pitch { margin: 0 0 20px; font-size: clamp(1.02rem, .95rem + .4vw, 1.2rem); line-height: 1.6; color: var(--color-vi-mist); }
+  .ap-promises { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .ap-promises li { display: flex; gap: 10px; align-items: flex-start; font-size: .95rem; color: rgb(226 226 228 / .88); }
+  .ap-promises :global(svg) { flex: none; margin-top: 2px; color: var(--color-vi-pink); }
+
+  .ap-roadmap { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .ap-roadmap { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .ap-roadmap { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .ap-item { position: relative; padding: 22px; border-radius: 20px; background: var(--vi-surface); border: 1px solid var(--vi-line); }
+  .ap-num { position: absolute; top: 18px; right: 18px; font: 700 .72rem/1 var(--font-mono); color: rgb(226 226 228 / .45); }
+  .ap-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: rgb(233 99 155 / .16); color: var(--color-vi-pink); }
+  .ap-item-title { margin: 14px 0 6px; font: 900 1.5rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); }
+  .ap-item-text { margin: 0; font-size: .9rem; line-height: 1.5; color: rgb(226 226 228 / .82); }
+
+  .ap-log-wrap { display: grid; gap: 24px; }
+  @media (min-width: 980px) { .ap-log-wrap { grid-template-columns: 1fr 1.2fr; align-items: start; } }
+  .ap-log { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 2px solid rgb(233 99 155 / .5); display: grid; gap: 18px; }
+  .ap-log li { position: relative; }
+  .ap-log li::before { content: ""; position: absolute; left: -25px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--color-vi-pink); box-shadow: 0 0 12px var(--color-vi-pink); }
+  .ap-log time { font: 700 .74rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--color-vi-peach); }
+  .ap-log p { margin: 6px 0 0; color: var(--color-vi-mist); line-height: 1.5; }
+</style>

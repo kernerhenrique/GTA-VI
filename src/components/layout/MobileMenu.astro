@@ -1,10 +1,10 @@
 ---
 /** Menu do celular em tela cheia (<dialog> nativo: foco preso, Esc fecha, fundo inerte). */
-import { pages, pageHref } from '../../lib/data';
+import { chapters, pageHref } from '../../lib/data';
 
 interface Props { current: string }
 const { current } = Astro.props;
-const items = [{ slug: '', label: 'Início · contagem' }, ...pages.map((p) => ({ slug: p.slug, label: p.label }))];
+const items = [{ slug: '', label: 'Início · contagem' }, ...chapters.map((p) => ({ slug: p.slug, label: p.label }))];
 ---
 <dialog id="mobile-menu" class="m-menu" aria-label="Menu do site" data-mobile-menu>
   <div class="m-inner">
@@ -36,6 +36,10 @@ const items = [{ slug: '', label: 'Início · contagem' }, ...pages.map((p) => (
         ))}
       </ol>
     </nav>
+    <a class="m-support" href="/apoie" aria-current={current === '/apoie' ? 'page' : undefined}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="currentColor" /></svg>
+      <span><strong>Apoie o site</strong> · o Leonida BR continua depois do lançamento</span>
+    </a>
     <p class="m-foot">Fan site não oficial · imagens © Rockstar Games</p>
   </div>
 </dialog>
@@ -87,6 +91,14 @@ const items = [{ slug: '', label: 'Início · contagem' }, ...pages.map((p) => (
   .m-list a:hover .m-label, .m-list a:focus-visible .m-label { color: var(--color-vi-cream); }
   .m-list a[aria-current="page"] .m-label { background: var(--vi-sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .m-list a[aria-current="page"] .m-num { color: var(--color-vi-pink); }
+  .m-support {
+    display: flex; align-items: center; gap: 12px; margin-top: 16px; padding: 14px 16px; border-radius: 16px; text-decoration: none;
+    color: var(--color-vi-mist); font-size: .9rem; line-height: 1.35;
+    background: rgb(233 99 155 / .14); border: 1px solid rgb(233 99 155 / .45);
+  }
+  .m-support svg { flex: none; width: 22px; height: 22px; color: var(--color-vi-pink); }
+  .m-support strong { color: var(--color-vi-cream); }
+  .m-support[aria-current="page"] { border-color: var(--color-vi-cream); }
   .m-foot { margin: auto 0 0; padding-top: 18px; font: 600 .62rem/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: rgb(226 226 228 / .5); }
 
   @media (prefers-reduced-motion: no-preference) {

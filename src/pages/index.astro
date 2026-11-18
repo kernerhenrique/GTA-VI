@@ -4,6 +4,7 @@ import Hero from '../components/sections/Hero.astro';
 import Hub from '../components/sections/Hub.astro';
 import NewsMarquee from '../components/sections/NewsMarquee.astro';
 import ExploreGrid from '../components/sections/ExploreGrid.astro';
+import SupportBand from '../components/support/SupportBand.astro';
 import { videoGameJsonLd } from '../lib/seo';
 
 const site = Astro.site ?? new URL('https://gta6-fan-br.example');
@@ -18,4 +19,5 @@ const webSite = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'L
   <Hub />
   <NewsMarquee />
   <ExploreGrid />
+  <SupportBand />
 </Base>

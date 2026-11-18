@@ -1,0 +1,121 @@
+---
+/**
+ * Bloco de doação via Pix: chave com botão "Copiar" e passo a passo.
+ * Se nome e cidade estiverem em support.json, mostra também o QR Code e o "Pix copia e cola" (BR Code, gerado no build).
+ */
+import QRCode from 'qrcode';
+import { support } from '../../lib/data';
+import { pixPayload } from '../../lib/pix';
+
+const { key, keyType, name, city } = support.pix;
+const brcode = key && name && city ? pixPayload({ key, name, city }) : '';
+const qrSvg = brcode
+  ? await QRCode.toString(brcode, { type: 'svg', errorCorrectionLevel: 'M', margin: 1, color: { dark: '#0C0D1B', light: '#FFF9CB' } })
+  : '';
+---
+{key && (
+  <div class="pix surface" data-pix>
+    <div class="pix-head">
+      <span class="pix-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /><path d="M8.5 9.5 12 13l3.5-3.5M8.5 14.5 12 11l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+      <div>
+        <p class="pix-title">Apoie com Pix</p>
+        <p class="pix-sub">Qualquer valor ajuda · chave {keyType}</p>
+      </div>
+    </div>
+
+    <div class="pix-grid">
+      {qrSvg && (
+        <figure class="pix-qr">
+          <div class="pix-qr-img" set:html={qrSvg} role="img" aria-label="QR Code do Pix para apoiar o site" />
+          <figcaption>Aponte a câmera do app do banco</figcaption>
+        </figure>
+      )}
+      <div class="pix-copy">
+        <label class="pix-label" for="pix-key">Chave Pix</label>
+        <div class="pix-field">
+          <input id="pix-key" class="pix-input" type="text" value={key} readonly spellcheck="false" data-pix-input />
+          <button type="button" class="pix-btn" data-pix-copy={key}>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h11v11H9zM5 15H4V4h11v1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
+            <span data-pix-btn-text>Copiar chave</span>
+          </button>
+        </div>
+        {brcode && (
+          <div class="pix-field pix-field-cc">
+            <input class="pix-input" type="text" value={brcode} readonly aria-label="Pix copia e cola" spellcheck="false" />
+            <button type="button" class="pix-btn pix-btn-ghost" data-pix-copy={brcode}><span data-pix-btn-text>Copiar "copia e cola"</span></button>
+          </div>
+        )}
+        <p class="pix-status" role="status" aria-live="polite" data-pix-status></p>
+        <ol class="pix-steps">
+          <li>Copie a chave.</li>
+          <li>No app do seu banco, abra <strong>Pix → Pagar com chave</strong> (ou "Transferir").</li>
+          <li>Cole a chave, escolha o valor e confirme. O nome do recebedor aparece antes de você confirmar.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pix]').forEach((box) => {
+    const status = box.querySelector<HTMLElement>('[data-pix-status]');
+    box.querySelectorAll<HTMLButtonElement>('[data-pix-copy]').forEach((btn) => {
+      const label = btn.querySelector<HTMLElement>('[data-pix-btn-text]');
+      const original = label?.textContent ?? '';
+      btn.addEventListener('click', async () => {
+        const value = btn.dataset.pixCopy ?? '';
+        let ok = false;
+        try { await navigator.clipboard.writeText(value); ok = true; } catch { /* sem permissão: cai no fallback */ }
+        if (!ok) {
+          // sem acesso à área de transferência: deixa o texto selecionado para copiar à mão
+          const input = btn.parentElement?.querySelector<HTMLInputElement>('input');
+          input?.focus(); input?.select();
+        }
+        if (status) status.textContent = ok ? 'Chave copiada! Agora é só colar no app do banco.' : 'A chave está selecionada: copie com Ctrl+C (ou toque e segure no celular).';
+        if (label && ok) {
+          label.textContent = 'Copiado!';
+          btn.classList.add('is-done');
+          setTimeout(() => { label.textContent = original; btn.classList.remove('is-done'); }, 2500);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .pix { padding: clamp(20px, 3vw, 32px); border-color: rgb(233 99 155 / .45); box-shadow: 0 30px 80px -40px var(--vi-pink-glow); }
+  .pix-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .pix-logo { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--vi-sunset); color: var(--color-vi-night); flex: none; }
+  .pix-logo svg { width: 28px; height: 28px; }
+  .pix-title { margin: 0; font: 900 clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem)/.95 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); }
+  .pix-sub { margin: 4px 0 0; font: 600 .7rem/1.3 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--color-vi-peach); }
+  .pix-grid { display: grid; gap: 22px; }
+  @media (min-width: 720px) { .pix-grid:has(.pix-qr) { grid-template-columns: 220px 1fr; align-items: start; } }
+  .pix-qr { margin: 0; text-align: center; }
+  .pix-qr-img { background: var(--color-vi-cream); border-radius: 16px; padding: 10px; }
+  .pix-qr-img :global(svg) { display: block; width: 100%; height: auto; }
+  .pix-qr figcaption { margin-top: 8px; font-size: .78rem; color: rgb(226 226 228 / .7); }
+  .pix-label { display: block; margin-bottom: 8px; font: 600 .7rem/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: rgb(226 226 228 / .7); }
+  .pix-field { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pix-field-cc { margin-top: 10px; }
+  .pix-input {
+    flex: 1 1 100%; min-width: 0; min-height: 52px; padding: 0 14px; border-radius: 14px; text-overflow: ellipsis;
+    border: 1px solid var(--vi-line); background: rgb(12 13 27 / .85); color: var(--color-vi-cream);
+    font: 600 clamp(.78rem, .7rem + .3vw, .95rem)/1 var(--font-mono); letter-spacing: 0;
+  }
+  .pix-input:focus { outline: 2px solid var(--color-vi-pink); outline-offset: 2px; }
+  .pix-btn {
+    flex: 1 1 auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 22px; border-radius: 14px; border: 0; cursor: pointer;
+    background: var(--vi-sunset); color: var(--color-vi-night); font: 900 1.05rem/1 var(--font-display); text-transform: uppercase; letter-spacing: .06em;
+    box-shadow: 0 12px 30px -12px var(--vi-pink-glow); transition: transform .2s, box-shadow .3s;
+  }
+  .pix-btn svg { width: 18px; height: 18px; }
+  .pix-btn:hover { transform: translateY(-1px); }
+  .pix-btn.is-done { background: var(--color-vi-cream); }
+  .pix-btn-ghost { background: transparent; color: var(--color-vi-cream); border: 1px solid var(--vi-line); box-shadow: none; }
+  .pix-status { min-height: 1.4em; margin: 10px 0 0; font-size: .88rem; color: var(--color-vi-peach); }
+  .pix-steps { margin: 12px 0 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: .9rem; color: rgb(226 226 228 / .85); }
+  .pix-steps strong { color: var(--color-vi-cream); }
+</style>

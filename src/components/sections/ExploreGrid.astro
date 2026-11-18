@@ -4,7 +4,7 @@
  * Os ganchos (preço, contagens, nota) são calculados dos JSON — nada é digitado à mão aqui.
  */
 import Picture from '../ui/Picture.astro';
-import { pages, pageHref, editions, characters, regions, music, trailers, timeline, reviews, trivia, faq } from '../../lib/data';
+import { chapters as pages, pageHref, editions, characters, regions, music, trailers, timeline, reviews, trivia, faq } from '../../lib/data';
 import { formatBRL } from '../../lib/time';
 
 const minPrice = Math.min(...editions.editions.map((e) => e.priceBRL));

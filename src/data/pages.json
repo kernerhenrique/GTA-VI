@@ -1,9 +1,24 @@
 {
-  "_comment": "Cadastro das páginas do site. A ordem do array é a ordem de leitura (navegação anterior/próxima e menu do celular). 'image' é a capa da página e 'cardImage' a imagem do card no menu e na home (chaves de images.manifest.json). 'sections' cria os chips 'Nesta página' (ids das seções). 'header' define o que aparece no menu do desktop.",
+  "_comment": "Cadastro das páginas do site. A ordem do array é a ordem de leitura (navegação anterior/próxima e menu do celular). 'image' é a capa da página e 'cardImage' a imagem do card no menu e na home (chaves de images.manifest.json). 'sections' cria os chips 'Nesta página' (ids das seções). 'header' define o que aparece no menu do desktop. 'sequence: false' tira a página da numeração de capítulos, do 'anterior / próxima' e do mosaico da home (ela continua no menu, no rodapé e no sitemap).",
   "header": {
-    "game": ["historia", "leonida", "jogabilidade", "extras"],
-    "primary": ["trailers", "linha-do-tempo", "recepcao", "faq"],
-    "shortcuts": ["comprar", "linha-do-tempo", "fontes"]
+    "game": [
+      "historia",
+      "leonida",
+      "jogabilidade",
+      "extras"
+    ],
+    "primary": [
+      "trailers",
+      "linha-do-tempo",
+      "recepcao",
+      "faq"
+    ],
+    "shortcuts": [
+      "comprar",
+      "linha-do-tempo",
+      "fontes",
+      "apoie"
+    ]
   },
   "pages": [
     {
@@ -32,8 +47,14 @@
       "cardImage": "char-lucia-1",
       "cardPosition": "40% 30%",
       "sections": [
-        { "id": "historia", "label": "A história" },
-        { "id": "personagens", "label": "Personagens" }
+        {
+          "id": "historia",
+          "label": "A história"
+        },
+        {
+          "id": "personagens",
+          "label": "Personagens"
+        }
       ]
     },
     {
@@ -62,9 +83,18 @@
       "cardImage": "break-vc-gas",
       "cardPosition": "50% 50%",
       "sections": [
-        { "id": "jogabilidade", "label": "Jogabilidade" },
-        { "id": "musica", "label": "Música" },
-        { "id": "online", "label": "Online" }
+        {
+          "id": "jogabilidade",
+          "label": "Jogabilidade"
+        },
+        {
+          "id": "musica",
+          "label": "Música"
+        },
+        {
+          "id": "online",
+          "label": "Online"
+        }
       ]
     },
     {
@@ -119,8 +149,14 @@
       "cardImage": "compare-vc2026",
       "cardPosition": "50% 50%",
       "sections": [
-        { "id": "comparacoes", "label": "Antes e depois" },
-        { "id": "curiosidades", "label": "Curiosidades" }
+        {
+          "id": "comparacoes",
+          "label": "Antes e depois"
+        },
+        {
+          "id": "curiosidades",
+          "label": "Curiosidades"
+        }
       ]
     },
     {
@@ -148,6 +184,20 @@
       "imagePosition": "50% 50%",
       "cardImage": "region-mount-kalaga",
       "cardPosition": "50% 50%"
+    },
+    {
+      "slug": "apoie",
+      "label": "Apoie o site",
+      "eyebrow": "Fan site independente",
+      "title": "Apoie o Leonida BR",
+      "seoTitle": "Apoie o Leonida BR: o site de GTA VI continua depois do lançamento",
+      "description": "Ajude o Leonida BR a continuar sendo atualizado depois do lançamento de GTA VI, com detalhes do jogo, easter eggs, atualizações e descobertas dos jogadores. Pix de qualquer valor.",
+      "lead": "O lançamento é só o começo. Com o seu apoio, o site continua sendo atualizado com detalhes do jogo, easter eggs, atualizações e tudo o que os jogadores encontrarem em Leonida.",
+      "image": "break-vc-gas",
+      "imagePosition": "50% 55%",
+      "cardImage": "char-jason-1",
+      "cardPosition": "50% 40%",
+      "sequence": false
     }
   ]
 }

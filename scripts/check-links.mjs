@@ -53,7 +53,10 @@ for (const u of locals) if (!existsSync(path.join(dist, decodeURIComponent(u))))
 console.log(`Arquivos locais referenciados: ${locals.size}, ausentes: ${missing}`);
 
 const results = { ok: [], broken: [], blocked: [] };
+// a Amazon bloqueia robôs (503/403): os links de afiliado contam como "não verificáveis daqui"
+const unverifiable = (url) => /^https:\/\/www\.amazon\.com\.br\//.test(url);
 const check = async (url) => {
+  if (unverifiable(url)) { results.blocked.push(`afiliado (Amazon bloqueia robôs) ${url}`); return; }
   try {
     const opts = { redirect: 'follow', signal: AbortSignal.timeout(15000), headers: { 'user-agent': 'Mozilla/5.0 (link checker)' } };
     let r = await fetch(url, { method: 'HEAD', ...opts });

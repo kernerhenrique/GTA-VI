@@ -127,6 +127,7 @@ const state = (page) => page.evaluate(() => document.documentElement.dataset.lau
   check(await page.isVisible('[data-mobile-menu]'), 'Celular: menu abre em tela cheia');
   check(await page.$eval('[data-mobile-menu]', (d) => d.open && d.matches(':modal')), 'Celular: menu é modal (foco preso e fundo inerte)');
   check((await page.getAttribute('[data-mobile-menu] .m-list a[href="/comprar"]', 'aria-current')) === 'page', 'Celular: página atual marcada no menu');
+  check(await page.isVisible('[data-mobile-menu] a.m-support[href="/apoie"]'), 'Celular: "Apoie o site" em destaque no menu');
   await page.keyboard.press('Escape');
   await page.waitForTimeout(200);
   const closed = !(await page.$eval('[data-mobile-menu]', (d) => d.open));
@@ -138,6 +139,32 @@ const state = (page) => page.evaluate(() => document.documentElement.dataset.lau
   await page.waitForURL('**/leonida');
   check((await page.textContent('h1#page-title'))?.trim() === 'Só em Leonida', 'Celular: menu → Leonida abre a página /leonida');
   check(errors.length === 0, `Celular: sem erros de JS ${errors.join(' | ')}`);
+  await ctx.close();
+}
+// 6) Apoio via Pix e links de afiliado
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, permissions: ['clipboard-read', 'clipboard-write'] });
+  const page = await ctx.newPage();
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(String(e)));
+  await page.goto(base, { waitUntil: 'networkidle' });
+  check(await page.$('.band-support a[href="/apoie"]') !== null, 'Home: faixa "Apoiar com Pix" leva a /apoie');
+  await page.goto(base + 'apoie', { waitUntil: 'networkidle' });
+  const key = await page.inputValue('[data-pix-input]');
+  check(/^[0-9a-f-]{36}$/.test(key), `/apoie mostra a chave Pix aleatória (${key})`);
+  await page.click('[data-pix-copy]');
+  await page.waitForTimeout(300);
+  const copied = await page.evaluate(() => navigator.clipboard.readText());
+  check(copied === key, 'Botão "Copiar chave" copia a chave para a área de transferência');
+  check(/copiada/i.test((await page.textContent('[data-pix-status]')) ?? ''), 'Confirmação "Chave copiada!" anunciada (aria-live)');
+  check((await page.$$('.ap-roadmap > li')).length >= 3, '/apoie mostra a lista "O que vem por aí"');
+  check(!(await page.isVisible('.ph-chapter .ph-of')), '/apoie fica fora da numeração de capítulos');
+  await page.goto(base + 'comprar', { waitUntil: 'networkidle' });
+  const links = await page.$$eval('#comprar-amazon a.am-card', (as) => as.map((a) => ({ href: a.href, rel: a.rel })));
+  check(links.length >= 4 && links.every((l) => l.href.startsWith('https://www.amazon.com.br/s?') && /sponsored/.test(l.rel)), `/comprar: ${links.length} links da Amazon com rel="sponsored"`);
+  check(/associado da Amazon/i.test((await page.textContent('#comprar-amazon')) ?? ''), '/comprar: aviso obrigatório de afiliado visível');
+  check(await page.$('.band-support.is-compact a[href="/apoie"]') !== null, 'Páginas internas: faixa compacta de apoio antes do "anterior / próxima"');
+  check(errors.length === 0, `Apoio/afiliados: sem erros de JS ${errors.join(' | ')}`);
   await ctx.close();
 }
 await browser.close();

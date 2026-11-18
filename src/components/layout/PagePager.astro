@@ -1,7 +1,7 @@
 ---
 /** Navegação "anterior / próxima" no fim de cada página interna, na ordem de src/data/pages.json. */
 import Picture from '../ui/Picture.astro';
-import { pages, pageHref } from '../../lib/data';
+import { chapters as pages, pageHref } from '../../lib/data';
 
 interface Props { slug: string }
 const { slug } = Astro.props;

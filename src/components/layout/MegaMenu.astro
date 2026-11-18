@@ -1,13 +1,13 @@
 ---
 /** Painel do "O Jogo" no desktop: cards com imagem das páginas do jogo + atalhos. */
 import Picture from '../ui/Picture.astro';
-import { pagesFile, pageBySlug, pageHref, pages } from '../../lib/data';
+import { pagesFile, pageBySlug, pageHref, chapters } from '../../lib/data';
 
 interface Props { current: string }
 const { current } = Astro.props;
 const game = pagesFile.header.game.map(pageBySlug);
 const shortcuts = pagesFile.header.shortcuts.map(pageBySlug);
-const chapter = (slug: string) => String(pages.findIndex((p) => p.slug === slug) + 1).padStart(2, '0');
+const chapter = (slug: string) => String(chapters.findIndex((p) => p.slug === slug) + 1).padStart(2, '0');
 ---
 <div id="mega-jogo" class="mega" data-mega hidden>
   <div class="container-wide mega-grid">

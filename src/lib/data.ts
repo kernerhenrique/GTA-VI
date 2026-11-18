@@ -27,6 +27,8 @@ import triviaRaw from '../data/trivia.json';
 import comparisonsRaw from '../data/comparisons.json';
 import faqRaw from '../data/faq.json';
 import pagesRaw from '../data/pages.json';
+import supportRaw from '../data/support.json';
+import affiliateRaw from '../data/affiliate.json';
 import imageManifest from '../data/images.manifest.json';
 
 export const Status = z.enum(['confirmado', 'reportado', 'rumor']);
@@ -188,6 +190,28 @@ const ComparisonsFile = z.object({
 });
 const FaqFile = z.object({ items: z.array(z.object({ q: z.string(), a: z.string(), ...Sourced })) });
 
+const SupportFile = z.object({
+  pix: z.object({
+    key: z.string(),
+    keyType: z.string(),
+    name: z.string().max(25, 'nome do Pix: no máximo 25 caracteres'),
+    city: z.string().max(15, 'cidade do Pix: no máximo 15 caracteres'),
+  }),
+  headline: z.string(),
+  pitch: z.string(),
+  bandText: z.string(),
+  roadmap: z.array(z.object({ icon: z.string(), title: z.string(), text: z.string() })).min(1),
+  promises: z.array(z.string()),
+  updates: z.array(z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), text: z.string() })),
+});
+const AffiliateFile = z.object({
+  amazonTag: z.string().regex(/^([a-z0-9-]+-2\d)?$/, "tag da Amazon no formato 'seunome-20' (ou vazia)"),
+  disclosure: z.string().min(10),
+  disclosureSource: z.string().url(),
+  intro: z.string(),
+  items: z.array(z.object({ id: z.string(), icon: z.string(), title: z.string(), text: z.string(), query: z.string() })).min(1),
+});
+
 const imageKeys = new Set(Object.keys(imageManifest));
 const ImageKey = z.string().refine((k) => imageKeys.has(k), (k) => ({ message: `imagem '${k}' não existe em images.manifest.json` }));
 const PageSchema = z.object({
@@ -203,6 +227,8 @@ const PageSchema = z.object({
   cardImage: ImageKey,
   cardPosition: z.string().optional(),
   sections: z.array(z.object({ id: z.string(), label: z.string() })).optional(),
+  /** false = fora da numeração de capítulos, do 'anterior / próxima' e do mosaico da home */
+  sequence: z.boolean().optional(),
 });
 const PagesFile = z
   .object({
@@ -262,6 +288,18 @@ export const pageBySlug = (slug: string): PageInfo => {
 };
 /** Caminho da página: '/' para a home, '/slug' para as demais. */
 export const pageHref = (slug: string) => (slug ? `/${slug}` : '/');
+/** Páginas na ordem de leitura (capítulos numerados, "anterior / próxima", mosaico da home). */
+export const chapters = pages.filter((p) => p.sequence !== false);
+
+export const support = parse('support.json', SupportFile, supportRaw);
+export const affiliate = parse('affiliate.json', AffiliateFile, affiliateRaw);
+/** Link de busca da Amazon Brasil com a tag de afiliado (sem tag, o link funciona mas não rende comissão). */
+export function amazonUrl(query: string, tag: string = affiliate.amazonTag) {
+  const u = new URL('https://www.amazon.com.br/s');
+  u.searchParams.set('k', query);
+  if (tag) u.searchParams.set('tag', tag);
+  return u.href;
+}
 
 export type Source = z.infer<typeof SourceSchema>;
 export const sourceMap = new Map<string, Source>(sourcesFile.sources.map((s) => [s.id, s]));

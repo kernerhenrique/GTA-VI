@@ -1,0 +1,15 @@
+{
+  "_comment": "Links de afiliado da Amazon (programa Amazon Associados). Preencha 'amazonTag' com a sua tag (ex.: 'leonidabr-20'). Sem tag, os links funcionam mas não rendem comissão. Não coloque preços nem fotos da Amazon aqui: as regras do programa só permitem isso pela API oficial. 'query' é o termo de busca na Amazon.",
+  "amazonTag": "",
+  "disclosure": "Como associado da Amazon, eu recebo por compras qualificadas.",
+  "disclosureSource": "https://associados.amazon.com.br/help/node/topic/GHQNZAU6669EZS98",
+  "intro": "Os links abaixo levam à busca da Amazon Brasil. Se você comprar por eles, o site recebe uma pequena comissão — sem nenhum custo extra para você.",
+  "items": [
+    { "id": "gta6-ps5", "icon": "disc", "title": "GTA VI para PS5", "text": "Mídia física com código na caixa (o jogo é baixado pelo código).", "query": "GTA VI PS5" },
+    { "id": "gta6-xbox", "icon": "disc", "title": "GTA VI para Xbox Series X|S", "text": "Edição física para Xbox Series, também com código na caixa.", "query": "GTA VI Xbox Series" },
+    { "id": "ssd-ps5", "icon": "drive", "title": "SSD M.2 para PS5", "text": "O jogo ocupa até 212 GB. Um SSD M.2 NVMe compatível amplia o armazenamento do console — confira os requisitos da Sony.", "query": "SSD M.2 NVMe PS5 dissipador" },
+    { "id": "xbox-expansion", "icon": "drive", "title": "Cartão de expansão Xbox Series", "text": "O armazenamento extra próprio do Xbox Series X|S, para não apagar outros jogos.", "query": "cartão de expansão armazenamento Xbox Series" },
+    { "id": "dualsense", "icon": "gamepad", "title": "Controle DualSense", "text": "O controle do PS5, com resposta tátil e gatilhos adaptáveis.", "query": "controle DualSense PS5" },
+    { "id": "headset", "icon": "headphones", "title": "Headset", "text": "Para ouvir as rádios de Leonida e o áudio 3D sem incomodar ninguém.", "query": "headset gamer PS5 Xbox" }
+  ]
+}
