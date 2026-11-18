@@ -1,0 +1,15 @@
+// Cloudflare Workers: um Worker só com arquivos estáticos (o build do Astro em ./dist).
+// Deploy: `npm run build` e depois `npx wrangler deploy` (é o que o Workers Builds roda a cada push).
+// https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gta-vi",
+  "compatibility_date": "2026-10-30",
+  "assets": {
+    "directory": "./dist/",
+    // /comprar serve comprar.html; /comprar.html redireciona para /comprar
+    "html_handling": "auto-trailing-slash",
+    // endereço inexistente: serve o 404.html do site ("Você saiu do mapa") com status 404
+    "not_found_handling": "404-page"
+  }
+}

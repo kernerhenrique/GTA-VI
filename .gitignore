@@ -7,3 +7,6 @@ assets-src/
 test-results/
 screenshots/
 .lighthouseci/
+
+# Wrangler (Cloudflare) local state
+.wrangler/

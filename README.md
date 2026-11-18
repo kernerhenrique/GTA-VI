@@ -33,7 +33,7 @@ Servir o build localmente:
 npm run preview
 ```
 
-- O resultado estático fica em `dist/`. O site está hospedado na Cloudflare Pages (veja abaixo), mas funciona em qualquer serviço estático.
+- O resultado estático fica em `dist/`. O site está hospedado na Cloudflare (veja abaixo), mas funciona em qualquer serviço estático.
 - **`SITE_URL`** define as URLs absolutas de canonical, Open Graph e JSON-LD. Sem ele, o build usa um domínio de exemplo.
 
 ## Páginas
@@ -57,26 +57,42 @@ npm run preview
 - **Página nova:** crie `src/pages/<slug>.astro` com o layout `Page` e cadastre o slug em `pages.json`. O menu do celular, o rodapé, a home, o "anterior / próxima" e o `sitemap.xml` se atualizam sozinhos; para aparecer na barra do desktop, inclua o slug em `header`.
 - **Menu do desktop:** em `pages.json → header`, `game` são os cards do painel "O Jogo", `primary` os links da barra e `shortcuts` os atalhos do painel.
 
-## Publicação na Cloudflare Pages
+## Publicação na Cloudflare
 
-O site fica na **Cloudflare Pages**: o plano grátis não tem limite de tráfego e permite uso comercial, que é o caso de um site com doação via Pix e links de afiliado. O plano grátis da Vercel proíbe isso.
+O site fica na **Cloudflare**, como um Worker só de arquivos estáticos. O plano grátis não tem limite de tráfego para arquivos estáticos e permite uso comercial, que é o caso de um site com doação via Pix e links de afiliado. O plano grátis da Vercel proíbe isso.
 
-**Primeira vez (uns 2 minutos):**
-1. Entre em dash.cloudflare.com (a conta é grátis) → **Workers & Pages** → **Create** → aba **Pages** → **Connect to Git**.
-2. Autorize o GitHub e escolha o repositório `kernerhenrique/GTA-VI`.
-3. Em **Production branch**, escolha `claude/gifted-einstein-n2up3b`.
-4. Em **Framework preset**, escolha **Astro**. Confira o **Build command** `npm run build` e o **Build output directory** `dist`.
-5. Clique em **Save and Deploy**. O endereço fica `https://<nome-do-projeto>.pages.dev`.
+**Primeira vez:** dash.cloudflare.com → **Workers & Pages** → **Create** → **Import a repository** → `kernerhenrique/GTA-VI`. Preencha assim:
+
+| Campo | Valor |
+|---|---|
+| Project name | `gta-vi` (precisa ser igual ao `name` do `wrangler.jsonc`) |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Enable Preview builds | desligado (só existe uma branch) |
+| Protect with Cloudflare Access | **desligado**. Ligado, o site pede login para qualquer visitante. |
+| Path | `/` |
+| API token | **Create new token** (deixe criar automaticamente) |
+| Variáveis | nenhuma |
+
+O endereço fica `https://gta-vi.<seu-subdomínio>.workers.dev`.
 
 **Depois disso:**
-- **Publicação:** cada push na branch de produção publica o site sozinho.
+- **Publicação:** cada push na branch de produção (`claude/gifted-einstein-n2up3b`, a branch padrão do repositório) publica o site sozinho.
 - **Configuração:**
-  - `.node-version` define o Node 22;
-  - `public/_headers` define o cache das imagens e dos arquivos `/_astro`;
-  - a Cloudflare já serve `/comprar` a partir de `comprar.html` e usa o `404.html`.
-- **Endereço do site:** o canonical, o Open Graph e o sitemap usam sozinhos o domínio `*.pages.dev` do projeto. `SITE_URL` só é necessário para forçar outro domínio, por exemplo um domínio próprio.
-- **Logs:** se um deploy falhar, o motivo aparece no projeto → **Deployments** → clique no deploy → **View details**. O build roda o `astro check`, então um JSON com erro também derruba o deploy, com a mensagem dizendo o arquivo e o campo.
-- **Domínio próprio:** no projeto → **Custom domains** → **Set up a custom domain**. Depois, defina `SITE_URL` em **Settings → Variables and Secrets**.
+  - `wrangler.jsonc`:
+    - serve a pasta `dist/`;
+    - `/comprar` usa o `comprar.html`, e `/comprar.html` redireciona para `/comprar`;
+    - endereço inexistente mostra o `404.html`;
+  - `public/_headers`: cache das imagens e dos arquivos `/_astro`;
+  - `.node-version`: Node 22;
+  - o Wrangler tem versão fixa no `package.json`.
+- **Testar como na Cloudflare, no seu computador:**
+  - `npm run build` e depois `npx wrangler dev` (abre em http://localhost:8787);
+  - `npx wrangler deploy --dry-run` valida a configuração sem publicar.
+- **Endereço do site:** para o canonical, o Open Graph e o sitemap usarem o domínio certo, defina `SITE_URL` (ex.: `https://gta-vi.seunome.workers.dev`) em **Settings → Build → Variables and secrets**, ou deixe fixo no `astro.config.mjs`.
+- **Logs:** se um deploy falhar, o motivo aparece no projeto → **Deployments** → **View build log**. O build roda o `astro check`, então um JSON com erro também derruba o deploy, com a mensagem dizendo o arquivo e o campo.
+- **Domínio próprio:** no projeto → **Settings → Domains & Routes** → **Add** → **Custom domain**. Depois, troque o `SITE_URL`.
+- **Alternativa com Cloudflare Pages:** também funciona sem mudar nada. Na tela **Create**, use o link "Looking to deploy Pages? Get started", com o preset Astro, o build `npm run build` e a pasta `dist`.
 - **Vercel:** se o projeto antigo ainda estiver ligado ao repositório, apague-o ou desconecte o Git (vercel.com → projeto → **Settings → Git → Disconnect**). Senão cada push continua publicando lá também, e com o Pix isso conta como uso comercial no plano grátis.
 
 ## Apoio (Pix) e links de afiliado
@@ -112,7 +128,7 @@ Todo o conteúdo fica em **`src/data/*.json`**, separado do layout.
 | FAQ | `faq.json` | Pergunta, resposta, selo e fontes. O JSON-LD `FAQPage` é gerado automaticamente. |
 | Título, texto ou imagem da capa de uma página | `pages.json` | `title`, `lead`, `image` (chave de `images.manifest.json`). O build recusa imagem que não existe. |
 
-Depois de editar, faça commit e push: a Cloudflare Pages publica sozinha. Em outra hospedagem, rode `npm run build` e publique o `dist/`. A contagem, a troca de estado e a linha do tempo "você está aqui" rodam no navegador e não precisam de rebuild para virar no horário.
+Depois de editar, faça commit e push: a Cloudflare publica sozinha. Em outra hospedagem, rode `npm run build` e publique o `dist/`. A contagem, a troca de estado e a linha do tempo "você está aqui" rodam no navegador e não precisam de rebuild para virar no horário.
 
 ## Testar datas (antes, no momento e depois)
 
