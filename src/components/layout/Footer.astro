@@ -1,6 +1,6 @@
 ---
 import Badge from '../ui/Badge.astro';
-import { status, sourcesFile } from '../../lib/data';
+import { status, sourcesFile, pages, pageHref } from '../../lib/data';
 const updated = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle: 'short', timeZone: 'America/Sao_Paulo' }).format(Date.parse(status.updatedAt));
 ---
 <footer class="site-footer">
@@ -24,15 +24,25 @@ const updated = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle:
     <div>
       <p class="eyebrow mb-3">Atualização</p>
       <p class="muted text-sm">Dados revisados em {updated} (horário de Brasília). Fontes acessadas em {sourcesFile.accessedAtDefault.split('-').reverse().join('/')}.</p>
-      <p class="text-sm mt-3"><a href="#fontes">Ver todas as fontes</a> · <a href="#topo">Voltar ao topo</a></p>
+      <p class="text-sm mt-3"><a href="/fontes">Ver todas as fontes</a> · <a href="#conteudo">Voltar ao topo</a></p>
     </div>
+    <nav class="footer-map" aria-label="Mapa do site">
+      <p class="eyebrow mb-3">Mapa do site</p>
+      <ul>
+        <li><a href="/">Início e contagem</a></li>
+        {pages.map((p) => <li><a href={pageHref(p.slug)}>{p.label}</a></li>)}
+      </ul>
+    </nav>
   </div>
 </footer>
 
 <style>
   .site-footer { border-top: 1px solid var(--vi-line); background: rgb(12 13 27 / .9); padding: 48px 0 calc(48px + env(safe-area-inset-bottom)); }
   .footer-grid { display: grid; gap: 32px; }
-  @media (min-width: 900px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+  .footer-map ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: .88rem; }
+  .footer-map a { color: var(--color-vi-mist); text-decoration: none; }
+  .footer-map a:hover { color: var(--color-vi-cream); text-decoration: underline; text-decoration-color: var(--color-vi-pink); }
+  @media (min-width: 900px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; } .footer-map { grid-column: 1 / -1; padding-top: 24px; border-top: 1px solid var(--vi-line); } .footer-map ul { grid-template-columns: repeat(6, auto); justify-content: start; } }
   .footer-brand { font: 900 2rem/1 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: 0 0 12px; }
   .legend { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: .85rem; color: rgb(226 226 228 / .8); }
   .legend li { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }

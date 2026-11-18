@@ -3,11 +3,10 @@
 import { createRequire } from 'node:module';
 import { mkdirSync } from 'node:fs';
 const require = createRequire(import.meta.url);
-const { chromium } = require('playwright');
+const { chromium, devices } = require('playwright');
 const base = process.argv[2] || 'http://127.0.0.1:4321/';
 const out = process.argv[3] || 'screenshots';
 mkdirSync(out, { recursive: true });
-const RELEASE = Date.parse('2026-11-19T00:00:00-03:00');
 let failures = 0;
 const check = (cond, msg) => { console.log(`${cond ? '✔' : '✘'} ${msg}`); if (!cond) failures++; };
 
@@ -66,20 +65,43 @@ const state = (page) => page.evaluate(() => document.documentElement.dataset.lau
   const since = await page.textContent('[data-since]');
   check(/^6d 15h 30m/.test(since ?? ''), `DEPOIS: tempo desde o lançamento = ${since}`);
   check(await page.isVisible('text=Disponível agora'), 'DEPOIS: título "Disponível agora"');
-  const future = await page.$$eval('[data-tl-item].is-future', (els) => els.map((e) => e.getAttribute('data-date')));
-  await page.click('.site-nav a[href="#linha-do-tempo"]'); // navegação real pelo menu
-  await page.clock.runFor(3000); await page.waitForTimeout(1500);
-  const top = await page.evaluate(() => document.getElementById('linha-do-tempo').getBoundingClientRect().top);
-  check(top > -80 && top < 160, `Menu → "Linha do tempo" cai no lugar certo (topo da seção a ${Math.round(top)}px)`);
+  check((await page.textContent('.count-chip [data-mini-label]')) === 'Disponível', 'DEPOIS: contador do cabeçalho mostra "Disponível"');
+  // navegação real pelo menu para outra página
+  await page.click('.nav-list a.nav-link[href="/linha-do-tempo"]');
+  await page.waitForURL('**/linha-do-tempo');
+  await page.clock.runFor(3000); await page.waitForTimeout(1200);
+  check(new URL(page.url()).pathname === '/linha-do-tempo', 'Menu → "Linha do tempo" abre a página /linha-do-tempo');
+  check((await page.getAttribute('.nav-list a.nav-link[href="/linha-do-tempo"]', 'aria-current')) === 'page', 'Menu marca a página atual (aria-current)');
+  check(await page.isVisible('[data-tl-here]'), 'Linha do tempo: marcador "você está aqui" visível');
   const future2 = await page.$$eval('[data-tl-item].is-future', (els) => els.map((e) => e.getAttribute('data-date')));
   check(future2.length === 1 && future2[0] === '2026-12-11', `DEPOIS: linha do tempo só tem 1 evento futuro (álbum do Justice): ${JSON.stringify(future2)}`);
-  await page.click('.site-nav a[href="#faq"]');
-  await page.clock.runFor(200); await page.waitForTimeout(800);
-  const topFaq = await page.evaluate(() => document.getElementById('faq').getBoundingClientRect().top);
-  check(topFaq > -80 && topFaq < 160, `Menu → "FAQ" cai no lugar certo (topo da seção a ${Math.round(topFaq)}px)`);
+  // miniatura de trailer na linha do tempo → página de trailers, no card certo
+  const thumb = await page.$('a.tl-thumb[href^="/trailers#"]');
+  const thumbHref = await thumb.getAttribute('href');
+  await thumb.scrollIntoViewIfNeeded();
+  await thumb.click();
+  await page.waitForURL('**/trailers#*');
+  await page.clock.runFor(1000); await page.waitForTimeout(900);
+  const tid = thumbHref.split('#')[1];
+  const topT = await page.evaluate((i) => document.getElementById(i).getBoundingClientRect().top, tid);
+  check(topT > -80 && topT < 220, `Miniatura → ${thumbHref} cai no card certo (topo a ${Math.round(topT)}px)`);
+  // FAQ pelo menu
+  await page.click('.nav-list a.nav-link[href="/faq"]');
+  await page.waitForURL('**/faq');
+  check((await page.textContent('h1#page-title'))?.trim() === 'FAQ', 'Menu → "FAQ" abre a página /faq');
+  // mega menu pelo teclado
+  await page.focus('[data-mega-btn]');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(400);
+  check(await page.isVisible('[data-mega]'), 'Mega menu "O Jogo" abre pelo teclado');
+  check((await page.$$('[data-mega] a.mega-card')).length === 4, 'Mega menu mostra 4 páginas do jogo');
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(100);
+  const megaClosed = !(await page.isVisible('[data-mega]'));
+  const focusBack = await page.evaluate(() => document.activeElement?.hasAttribute('data-mega-btn'));
+  check(megaClosed && focusBack, 'Esc fecha o mega menu e devolve o foco ao botão');
   check(errors.length === 0, `DEPOIS: sem erros de JS ${errors.join(' | ')}`);
   await page.screenshot({ path: `${out}/e2e-3-depois.png` });
-  void future;
   await ctx.close();
 }
 // 4) Simulação por URL e fuso de outro país
@@ -91,6 +113,31 @@ const state = (page) => page.evaluate(() => document.documentElement.dataset.lau
   check(await page.isVisible('[data-sim-banner]'), '?agora= mostra a faixa MODO SIMULAÇÃO');
   const local = await page.textContent('[data-local-time]');
   check(/03:00/.test(local ?? ''), `Visitante em Lisboa vê o horário local 03:00 (obtido: ${local})`);
+  await ctx.close();
+}
+// 5) Celular: menu em tela cheia e navegação entre páginas
+{
+  const ctx = await browser.newContext({ ...devices['iPhone 13'] });
+  const page = await ctx.newPage();
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(String(e)));
+  await page.goto(base + 'comprar', { waitUntil: 'networkidle' });
+  await page.click('[data-menu-btn]');
+  await page.waitForTimeout(500);
+  check(await page.isVisible('[data-mobile-menu]'), 'Celular: menu abre em tela cheia');
+  check(await page.$eval('[data-mobile-menu]', (d) => d.open && d.matches(':modal')), 'Celular: menu é modal (foco preso e fundo inerte)');
+  check((await page.getAttribute('[data-mobile-menu] .m-list a[href="/comprar"]', 'aria-current')) === 'page', 'Celular: página atual marcada no menu');
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(200);
+  const closed = !(await page.$eval('[data-mobile-menu]', (d) => d.open));
+  const focusBtn = await page.evaluate(() => document.activeElement?.hasAttribute('data-menu-btn'));
+  check(closed && focusBtn, 'Celular: Esc fecha o menu e devolve o foco ao botão');
+  await page.click('[data-menu-btn]');
+  await page.waitForTimeout(400);
+  await page.click('[data-mobile-menu] .m-list a[href="/leonida"]');
+  await page.waitForURL('**/leonida');
+  check((await page.textContent('h1#page-title'))?.trim() === 'Só em Leonida', 'Celular: menu → Leonida abre a página /leonida');
+  check(errors.length === 0, `Celular: sem erros de JS ${errors.join(' | ')}`);
   await ctx.close();
 }
 await browser.close();

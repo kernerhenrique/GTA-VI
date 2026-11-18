@@ -1,0 +1,25 @@
+---
+/** Layout das páginas internas: SEO de src/data/pages.json, capa de capítulo, conteúdo e "anterior / próxima". */
+import Base from './Base.astro';
+import PageHero from '../components/layout/PageHero.astro';
+import PagePager from '../components/layout/PagePager.astro';
+import { pageBySlug, pageHref } from '../lib/data';
+import { breadcrumbJsonLd } from '../lib/seo';
+
+interface Props { slug: string; lead?: string; jsonLd?: unknown[] }
+const { slug, lead, jsonLd = [] } = Astro.props;
+const page = pageBySlug(slug);
+const site = Astro.site ?? new URL('https://gta6-fan-br.example');
+const crumbs = breadcrumbJsonLd(site, [{ name: 'Início', path: '/' }, { name: page.label, path: pageHref(slug) }]);
+---
+<Base title={page.seoTitle} description={page.description} jsonLd={[crumbs, ...jsonLd]}>
+  <PageHero page={page} lead={lead} />
+  <div class="ph-fade" aria-hidden="true"></div>
+  <slot />
+  <PagePager slug={slug} />
+</Base>
+
+<style>
+  /* emenda suave entre a capa (escura) e o céu do fundo */
+  .ph-fade { position: relative; height: 140px; margin-bottom: -140px; pointer-events: none; background: linear-gradient(180deg, var(--color-vi-night), rgb(12 13 27 / 0)); }
+</style>

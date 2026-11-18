@@ -21,10 +21,12 @@ const filters = [
 ];
 const events = timeline.events;
 let lastYear = '';
+interface Props { headless?: boolean }
+const { headless = false } = Astro.props;
 ---
-<section id="linha-do-tempo" class="section tl-section" aria-labelledby="linha-do-tempo-title">
+<section id="linha-do-tempo" class={`section tl-section${headless ? ' pt-tight' : ''}`} aria-labelledby={headless ? 'page-title' : 'linha-do-tempo-title'}>
   <div class="container-vi">
-    <SectionHeader id="linha-do-tempo-title" eyebrow="De 2022 a 2026" title="A estrada até Leonida" lead="Anúncio, vazamentos, trailers recordistas, dois adiamentos e o lançamento. Role a página: a rodovia se desenha até o ponto em que estamos hoje." />
+    {headless ? <h2 class="sr-only">A estrada até Leonida</h2> : <SectionHeader id="linha-do-tempo-title" eyebrow="De 2022 a 2026" title="A estrada até Leonida" lead="Anúncio, vazamentos, trailers recordistas, dois adiamentos e o lançamento. Role a página: a rodovia se desenha até o ponto em que estamos hoje." />}
     <div class="tl-filters reveal" role="toolbar" aria-label="Filtrar eventos por tipo">
       {filters.map((f, i) => <button type="button" class="chip" aria-pressed={i === 0 ? 'true' : 'false'} data-tl-filter={f.id}>{f.label}</button>)}
     </div>
@@ -80,7 +82,7 @@ let lastYear = '';
                   )}
                   {e.image && (
                     e.trailerId
-                      ? <a class="tl-thumb" href={`#trailer-${e.trailerId}`} aria-label={`Assistir: ${e.title}`}><Picture name={e.image} sizes="(min-width: 900px) 360px, 80vw" ratio="16/9" decorative /><span class="tl-play" aria-hidden="true">▶</span></a>
+                      ? <a class="tl-thumb" href={`/trailers#trailer-${e.trailerId}`} aria-label={`Assistir: ${e.title}`}><Picture name={e.image} sizes="(min-width: 900px) 360px, 80vw" ratio="16/9" decorative /><span class="tl-play" aria-hidden="true">▶</span></a>
                       : <div class="tl-thumb"><Picture name={e.image} sizes="(min-width: 900px) 360px, 80vw" ratio="16/9" /></div>
                   )}
                   {e.isLaunch && (

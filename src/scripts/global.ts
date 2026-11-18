@@ -1,6 +1,7 @@
 import { now, onTick, refreshLaunchState, vi } from './clock';
 import { initReveal, initScramble, initCountUp, initTilt, initLazyVideos } from './fx';
 import { timeUntil, pad2 } from '../lib/launch-state';
+import { initNav } from './nav';
 
 refreshLaunchState(true);
 
@@ -17,49 +18,52 @@ function jumpTo(hash: string) {
   }));
   return true;
 }
+const samePath = (a: string, b: string) => a.replace(/(\.html|\/)$/, '') === b.replace(/(\.html|\/)$/, '');
 document.addEventListener('click', (e) => {
-  const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
-  if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return;
-  const hash = a.getAttribute('href')!;
-  if (jumpTo(hash)) { e.preventDefault(); history.pushState(null, '', hash); }
+  const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href*="#"]');
+  if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+  const url = new URL(a.href, location.href);
+  // só links para a própria página (ex.: "#hub" ou "/#hub" estando na home)
+  if (url.origin !== location.origin || !samePath(url.pathname, location.pathname) || !url.hash) return;
+  if (jumpTo(url.hash)) { e.preventDefault(); history.pushState(null, '', url.hash); }
 });
 if (location.hash) jumpTo(location.hash);
 addEventListener('popstate', () => { if (location.hash) jumpTo(location.hash); });
 
-// Menu mobile
-const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
-const nav = document.querySelector<HTMLElement>('[data-nav]');
-btn?.addEventListener('click', () => {
-  const open = btn.getAttribute('aria-expanded') !== 'true';
-  btn.setAttribute('aria-expanded', String(open));
-  nav?.classList.toggle('is-open', open);
-});
-nav?.addEventListener('click', (e) => {
-  if ((e.target as HTMLElement).closest('a')) { btn?.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); }
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && nav?.classList.contains('is-open')) { btn?.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); btn?.focus(); }
-});
+initNav();
 
-// Faixa do modo simulação
+// Faixa do modo simulação (a simulação segue ao trocar de página; o botão encerra)
 if (vi().simulated) {
   const b = document.querySelector<HTMLElement>('[data-sim-banner]');
-  if (b) {
+  const txt = b?.querySelector<HTMLElement>('[data-sim-text]');
+  if (b && txt) {
     b.hidden = false;
     const fmt = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'America/Sao_Paulo' });
-    onTick((t) => { b.textContent = `MODO SIMULAÇÃO · ${fmt.format(t)} (Brasília) · remova ?agora= da URL para sair`; });
+    onTick((t) => { txt.textContent = `MODO SIMULAÇÃO · ${fmt.format(t)} (Brasília)`; });
+    b.querySelector('[data-sim-exit]')?.addEventListener('click', () => {
+      try { sessionStorage.removeItem('vi-sim'); } catch { /* sem storage */ }
+      location.href = location.pathname + location.hash;
+    });
   }
 }
 
-// Mini contador no cabeçalho
-const mini = document.querySelector<HTMLElement>('[data-mini-text]');
-if (mini) {
+// Contador do cabeçalho (barra e menu do celular)
+const minis = document.querySelectorAll<HTMLElement>('[data-mini-countdown]');
+if (minis.length) {
   onTick((t) => {
-    const state = document.documentElement.dataset.launch;
-    if (state === 'pre') {
+    const pre = document.documentElement.dataset.launch === 'pre';
+    let text = 'AGORA';
+    if (pre) {
       const p = timeUntil(t, vi().target);
-      mini.textContent = p.days > 0 ? `${p.days}d ${pad2(p.hours)}h ${pad2(p.minutes)}m` : `${pad2(p.hours)}:${pad2(p.minutes)}:${pad2(p.seconds)}`;
-    } else mini.textContent = 'DISPONÍVEL';
+      text = p.days > 0 ? `${p.days}d ${pad2(p.hours)}h ${pad2(p.minutes)}m` : `${pad2(p.hours)}:${pad2(p.minutes)}:${pad2(p.seconds)}`;
+    }
+    minis.forEach((m) => {
+      const label = m.querySelector('[data-mini-label]');
+      const value = m.querySelector('[data-mini-text]');
+      if (label) label.textContent = pre ? 'Faltam' : 'Disponível';
+      if (value) value.textContent = text;
+      m.classList.toggle('is-live', !pre);
+    });
   });
 }
 

@@ -8,10 +8,12 @@ const ld = {
   '@type': 'FAQPage',
   mainEntity: faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
+interface Props { headless?: boolean }
+const { headless = false } = Astro.props;
 ---
-<section id="faq" class="section cv-auto" aria-labelledby="faq-title">
+<section id="faq" class={`section cv-auto${headless ? ' pt-tight' : ''}`} aria-labelledby={headless ? 'page-title' : 'faq-title'}>
   <div class="container-vi faq-wrap">
-    <SectionHeader id="faq-title" eyebrow="Perguntas frequentes" title="FAQ" lead="As dúvidas mais comuns de quem vai jogar no lançamento." />
+    {headless ? <h2 class="sr-only">FAQ</h2> : <SectionHeader id="faq-title" eyebrow="Perguntas frequentes" title="FAQ" lead="As dúvidas mais comuns de quem vai jogar no lançamento." />}
     <div class="faq">
       {faq.items.map((f, i) => (
         <details class="faq-item reveal" open={i === 0}>

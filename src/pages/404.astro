@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Picture from '../components/ui/Picture.astro';
+import { pages, pageHref } from '../lib/data';
+---
+<Base title="Página não encontrada | Leonida BR" description="Essa página não existe no fan site Leonida BR." noindex>
+  <section class="nf" aria-labelledby="nf-title">
+    <div class="nf-art"><Picture name="region-grassrivers" sizes="100vw" priority decorative class="nf-pic" /></div>
+    <div class="nf-scrim" aria-hidden="true"></div>
+    <div class="container-vi nf-inner">
+      <p class="eyebrow">Erro 404 · Grassrivers</p>
+      <h1 id="nf-title" class="nf-title">Você saiu<br />do mapa.</h1>
+      <p class="lead">Essa página não existe — ou mudou de lugar quando o site ganhou páginas separadas. Escolha um destino:</p>
+      <ul class="nf-links" role="list">
+        <li><a class="btn btn-pill" href="/">Início e contagem</a></li>
+        {pages.map((p) => <li><a class="btn btn-ghost" href={pageHref(p.slug)}>{p.label}</a></li>)}
+      </ul>
+    </div>
+    <p class="credit nf-credit">Imagem oficial © Rockstar Games</p>
+  </section>
+</Base>
+
+<style>
+  .nf { position: relative; isolation: isolate; overflow: hidden; min-height: 100svh; display: flex; align-items: center; padding: calc(var(--header-h) + 40px) 0 64px; }
+  .nf-art { position: absolute; inset: 0; z-index: -2; }
+  .nf-art :global(.nf-pic) { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto !important; }
+  .nf-scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(12 13 27 / .94), rgb(12 13 27 / .6)); }
+  .nf-title { font: 900 clamp(3.6rem, 2rem + 9vw, 9rem)/.84 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); margin: .4rem 0 1rem; }
+  .nf-links { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; padding: 0; max-width: 900px; }
+  .nf-links .btn { min-height: 44px; padding: .6rem 1.1rem; }
+  .nf-credit { position: absolute; right: 16px; bottom: 10px; }
+</style>

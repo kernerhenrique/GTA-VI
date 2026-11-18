@@ -9,10 +9,12 @@ const groups = [
   { type: 'comunidade', label: 'Comunidade e referência' },
 ] as const;
 const access = (d?: string) => (d ?? sourcesFile.accessedAtDefault).split('-').reverse().join('/');
+interface Props { headless?: boolean }
+const { headless = false } = Astro.props;
 ---
-<section id="fontes" class="section cv-auto" aria-labelledby="fontes-title">
+<section id="fontes" class={`section cv-auto${headless ? ' pt-tight' : ''}`} aria-labelledby={headless ? 'page-title' : 'fontes-title'}>
   <div class="container-vi">
-    <SectionHeader id="fontes-title" eyebrow="Transparência" title="Fontes" lead={`Todas as ${used.size} fontes citadas no site, com data de acesso. Quando fontes discordam, vale a oficial — os conflitos aparecem marcados com ⚠ nas seções.`} />
+    {headless ? <h2 class="sr-only">Fontes</h2> : <SectionHeader id="fontes-title" eyebrow="Transparência" title="Fontes" lead={`Todas as ${used.size} fontes citadas no site, com data de acesso. Quando fontes discordam, vale a oficial — os conflitos aparecem marcados com ⚠ nas seções.`} />}
     <div class="src-groups">
       {groups.map((g) => {
         const list = sourcesFile.sources.filter((s) => s.type === g.type && used.has(s.id));

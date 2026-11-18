@@ -39,7 +39,8 @@
   --vi-glow-shadow: 0 2px 66px rgb(255 179 199 / 0.345);
   --vi-sunset: linear-gradient(0deg, #FEC497 10%, #E9639B 100%); /* oficial */
   --sky-progress: 0;
-  --header-h: 60px;
+  --header-h: 64px;
+  --header-h-compact: 64px;
   color-scheme: dark;
 }
 
@@ -115,7 +116,11 @@ a:hover { color: var(--color-vi-cream); }
 
 /* ---------- Layout ---------- */
 .container-vi { width: min(1200px, 100% - 32px); margin-inline: auto; }
+.container-wide { width: min(1360px, 100% - 32px); margin-inline: auto; }
+@media (min-width: 1080px) { :root { --header-h: 76px; } }
+
 .section { position: relative; padding-block: clamp(4rem, 3rem + 6vw, 8rem); }
+.section.pt-tight { padding-top: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
 .section-head { margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); max-width: 60ch; }
 @media (min-width: 1024px) {
   .section-head:not(.text-center) { max-width: none; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); column-gap: 48px; align-items: end; }

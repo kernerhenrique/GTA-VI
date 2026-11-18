@@ -6,10 +6,12 @@ import Badge from '../ui/Badge.astro';
 import SourceRefs from '../ui/SourceRefs.astro';
 import { regions } from '../../lib/data';
 const land = 'M2 12 L40 10 L62 9 L71 10 L75 15 L79 25 L83 37 L87 49 L91 61 L93 72 L92 81 L88 87 L82 89 L76 85 L70 78 L64 70 L59 61 L55 51 L52 41 L50 33 L46 27 L40 23 L32 21 L24 23 L16 23 L8 21 L2 18 Z';
+interface Props { headless?: boolean }
+const { headless = false } = Astro.props;
 ---
-<section id="leonida" class="section cv-auto" aria-labelledby="leonida-title">
+<section id="leonida" class={`section cv-auto${headless ? ' pt-tight' : ''}`} aria-labelledby={headless ? 'page-title' : 'leonida-title'}>
   <div class="container-vi">
-    <SectionHeader id="leonida-title" eyebrow="O jogo · o estado de Leonida" title="Só em Leonida" lead="Seis regiões, de Vice City aos pântanos e às montanhas do norte. Passe o mouse, foque com o teclado ou toque numa região." />
+    {headless ? <h2 class="sr-only">Só em Leonida</h2> : <SectionHeader id="leonida-title" eyebrow="O jogo · o estado de Leonida" title="Só em Leonida" lead="Seis regiões, de Vice City aos pântanos e às montanhas do norte. Passe o mouse, foque com o teclado ou toque numa região." />}
     <div class="map-layout">
       <div class="map-box reveal">
         <svg class="map" viewBox="0 0 100 104" role="group" aria-label="Mapa esquemático de Leonida (feito por fãs, não oficial)">

@@ -26,6 +26,8 @@ import communityRaw from '../data/community.json';
 import triviaRaw from '../data/trivia.json';
 import comparisonsRaw from '../data/comparisons.json';
 import faqRaw from '../data/faq.json';
+import pagesRaw from '../data/pages.json';
+import imageManifest from '../data/images.manifest.json';
 
 export const Status = z.enum(['confirmado', 'reportado', 'rumor']);
 export type StatusT = z.infer<typeof Status>;
@@ -186,6 +188,40 @@ const ComparisonsFile = z.object({
 });
 const FaqFile = z.object({ items: z.array(z.object({ q: z.string(), a: z.string(), ...Sourced })) });
 
+const imageKeys = new Set(Object.keys(imageManifest));
+const ImageKey = z.string().refine((k) => imageKeys.has(k), (k) => ({ message: `imagem '${k}' não existe em images.manifest.json` }));
+const PageSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9-]+$/, 'slug só com letras minúsculas, números e hífen'),
+  label: z.string(),
+  eyebrow: z.string(),
+  title: z.string(),
+  seoTitle: z.string().max(80),
+  description: z.string().max(240),
+  lead: z.string(),
+  image: ImageKey,
+  imagePosition: z.string().optional(),
+  cardImage: ImageKey,
+  cardPosition: z.string().optional(),
+  sections: z.array(z.object({ id: z.string(), label: z.string() })).optional(),
+});
+const PagesFile = z
+  .object({
+    header: z.object({ game: z.array(z.string()), primary: z.array(z.string()), shortcuts: z.array(z.string()) }),
+    pages: z.array(PageSchema).min(1),
+  })
+  .superRefine((f, ctx) => {
+    const slugs = new Set<string>();
+    f.pages.forEach((p, i) => {
+      if (slugs.has(p.slug)) ctx.addIssue({ code: 'custom', path: ['pages', i, 'slug'], message: `slug repetido: '${p.slug}'` });
+      slugs.add(p.slug);
+    });
+    (['game', 'primary', 'shortcuts'] as const).forEach((k) =>
+      f.header[k].forEach((s, i) => {
+        if (!slugs.has(s)) ctx.addIssue({ code: 'custom', path: ['header', k, i], message: `página '${s}' não existe em pages` });
+      }),
+    );
+  });
+
 function parse<T extends z.ZodTypeAny>(name: string, schema: T, raw: unknown): z.infer<T> {
   const r = schema.safeParse(raw);
   if (!r.success) {
@@ -216,6 +252,16 @@ export const community = parse('community.json', CommunityFile, communityRaw);
 export const trivia = parse('trivia.json', TriviaFile, triviaRaw);
 export const comparisons = parse('comparisons.json', ComparisonsFile, comparisonsRaw);
 export const faq = parse('faq.json', FaqFile, faqRaw);
+export const pagesFile = parse('pages.json', PagesFile, pagesRaw);
+export type PageInfo = z.infer<typeof PageSchema>;
+export const pages = pagesFile.pages;
+export const pageBySlug = (slug: string): PageInfo => {
+  const p = pages.find((x) => x.slug === slug);
+  if (!p) throw new Error(`[páginas] '${slug}' não existe em src/data/pages.json`);
+  return p;
+};
+/** Caminho da página: '/' para a home, '/slug' para as demais. */
+export const pageHref = (slug: string) => (slug ? `/${slug}` : '/');
 
 export type Source = z.infer<typeof SourceSchema>;
 export const sourceMap = new Map<string, Source>(sourcesFile.sources.map((s) => [s.id, s]));

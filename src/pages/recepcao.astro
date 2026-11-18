@@ -1,0 +1,12 @@
+---
+import Page from '../layouts/Page.astro';
+import Reception from '../components/sections/Reception.astro';
+import { reviews } from '../lib/data';
+const hasScores = reviews.aggregates.some((a) => a.score !== null);
+const lead = hasScores
+  ? 'Notas agregadas, trechos das reviews e o que a comunidade está dizendo.'
+  : 'As reviews ainda não saíram. Esta página é atualizada assim que o embargo cair.';
+---
+<Page slug="recepcao" lead={lead}>
+  <Reception headless />
+</Page>

@@ -2,45 +2,17 @@
 import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import { launch, story, editions, trailers, ratings } from '../lib/data';
+import { launch } from '../lib/data';
+import { canonicalPath } from '../lib/seo';
 
-interface Props { title: string; description: string }
-const { title, description } = Astro.props;
+interface Props { title: string; description: string; jsonLd?: unknown[]; noindex?: boolean }
+const { title, description, jsonLd = [], noindex = false } = Astro.props;
 const site = Astro.site ?? new URL('https://gta6-fan-br.example');
-const canonical = new URL(Astro.url.pathname, site).href;
+const canonical = new URL(canonicalPath(Astro.url.pathname), site).href;
 const ogImage = new URL('/og.jpg', site).href;
 const releaseMs = Date.parse(launch.releaseISO);
 const windowMs = launch.launchAnimationSeconds * 1000;
 const localDate = launch.localMidnightDate;
-const launchTrailer = trailers.items.find((t) => t.id === 'launch');
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'VideoGame',
-  name: launch.gameTitle,
-  alternateName: ['GTA VI', 'GTA 6'],
-  description: story.synopsis,
-  url: canonical,
-  sameAs: ['https://www.rockstargames.com/VI'],
-  image: ogImage,
-  datePublished: '2026-11-19',
-  gamePlatform: launch.platforms,
-  applicationCategory: 'Game',
-  genre: ['Ação', 'Aventura', 'Mundo aberto'],
-  playMode: 'SinglePlayer',
-  publisher: { '@type': 'Organization', name: 'Rockstar Games', url: 'https://www.rockstargames.com' },
-  author: { '@type': 'Organization', name: 'Rockstar Games' },
-  contentRating: `ClassInd ${ratings.ratings.find((r) => r.id === 'classind')?.rating ?? '18'}`,
-  offers: editions.editions.map((e) => ({ '@type': 'Offer', name: e.name, price: e.priceBRL.toFixed(2), priceCurrency: 'BRL', url: 'https://store.playstation.com/pt-br/concept/10000730', seller: { '@type': 'Organization', name: 'PlayStation Store Brasil' } })),
-  trailer: launchTrailer && {
-    '@type': 'VideoObject',
-    name: `Grand Theft Auto VI — ${launchTrailer.title}`,
-    description: launchTrailer.description,
-    uploadDate: launchTrailer.date,
-    thumbnailUrl: `https://i.ytimg.com/vi/${launchTrailer.youtubeId}/maxresdefault.jpg`,
-    embedUrl: `https://www.youtube-nocookie.com/embed/${launchTrailer.youtubeId}`,
-  },
-};
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -50,6 +22,8 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="sitemap" href="/sitemap.xml" />
     <meta name="theme-color" content="#0C0D1B" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
@@ -74,9 +48,16 @@ const jsonLd = {
         d.classList.add('js');
         var sim = null;
         try {
+          // ?agora=ISO simula outra data; a simulação continua ao trocar de página (sessionStorage)
           var q = new URLSearchParams(location.search);
           var raw = q.get('agora') || q.get('now');
-          if (raw) { var t = Date.parse(raw); if (isFinite(t)) sim = t; }
+          if (raw) {
+            var t = Date.parse(raw);
+            if (isFinite(t)) { sim = t; sessionStorage.setItem('vi-sim', JSON.stringify({ t: t, at: Date.now() })); }
+          } else {
+            var s = JSON.parse(sessionStorage.getItem('vi-sim') || 'null');
+            if (s && isFinite(s.t) && isFinite(s.at)) sim = s.t + (Date.now() - s.at);
+          }
         } catch (e) {}
         var off = sim !== null ? sim - Date.now() : 0;
         var target = releaseMs;
@@ -92,13 +73,17 @@ const jsonLd = {
         if (sim !== null) d.dataset.sim = '1';
       })();
     </script>
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {jsonLd.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
   </head>
   <body>
+    <div class="top-sentinel" aria-hidden="true" data-top-sentinel></div>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="sky" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
-    <div class="sim-banner" data-sim-banner hidden role="status"></div>
+    <div class="sim-banner" data-sim-banner hidden>
+      <span role="status" data-sim-text></span>
+      <button type="button" class="sim-exit" data-sim-exit>Sair da simulação</button>
+    </div>
     <Header />
     <main id="conteudo" tabindex="-1">
       <slot />
@@ -111,10 +96,17 @@ const jsonLd = {
 </html>
 
 <style is:global>
+  .top-sentinel { position: absolute; top: 0; left: 0; width: 1px; height: 24px; pointer-events: none; }
   .sim-banner {
     position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 70;
     background: var(--color-vi-cream); color: var(--color-vi-plum-deep);
     font: 700 .78rem/1.2 var(--font-mono); letter-spacing: .06em; padding: .6rem 1rem; border-radius: 999px;
     box-shadow: 0 10px 40px rgb(0 0 0 / .4); max-width: calc(100% - 24px); text-align: center;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 12px;
+  }
+  .sim-banner[hidden] { display: none; }
+  .sim-exit {
+    font: inherit; color: var(--color-vi-cream); background: var(--color-vi-plum-deep); border: 0; border-radius: 999px;
+    padding: .35rem .75rem; cursor: pointer; min-height: 32px;
   }
 </style>

@@ -5,10 +5,12 @@ import Badge from '../ui/Badge.astro';
 import SourceRefs from '../ui/SourceRefs.astro';
 import { trailers } from '../../lib/data';
 import { formatDate } from '../../lib/time';
+interface Props { headless?: boolean }
+const { headless = false } = Astro.props;
 ---
-<section id="trailers" class="section cv-auto" aria-labelledby="trailers-title">
+<section id="trailers" class={`section cv-auto${headless ? ' pt-tight' : ''}`} aria-labelledby={headless ? 'page-title' : 'trailers-title'}>
   <div class="container-vi">
-    <SectionHeader id="trailers-title" eyebrow="Vídeos oficiais" title="Trailers" lead="Os vídeos só carregam o player do YouTube quando você clica — a página continua leve." />
+    {headless ? <h2 class="sr-only">Trailers</h2> : <SectionHeader id="trailers-title" eyebrow="Vídeos oficiais" title="Trailers" lead="Os vídeos só carregam o player do YouTube quando você clica — a página continua leve." />}
     <ul class="tr-grid" role="list">
       {trailers.items.map((t, i) => (
         <li id={`trailer-${t.id}`} class={`tr card reveal ${i === trailers.items.length - 1 ? 'tr-feature' : ''}`}>

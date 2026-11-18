@@ -1,0 +1,153 @@
+{
+  "_comment": "Cadastro das páginas do site. A ordem do array é a ordem de leitura (navegação anterior/próxima e menu do celular). 'image' é a capa da página e 'cardImage' a imagem do card no menu e na home (chaves de images.manifest.json). 'sections' cria os chips 'Nesta página' (ids das seções). 'header' define o que aparece no menu do desktop.",
+  "header": {
+    "game": ["historia", "leonida", "jogabilidade", "extras"],
+    "primary": ["trailers", "linha-do-tempo", "recepcao", "faq"],
+    "shortcuts": ["comprar", "linha-do-tempo", "fontes"]
+  },
+  "pages": [
+    {
+      "slug": "comprar",
+      "label": "Edições e preços",
+      "eyebrow": "Onde e como comprar",
+      "title": "Edições, preços e plataformas",
+      "seoTitle": "GTA VI: edições, preços no Brasil e plataformas | Leonida BR",
+      "description": "Quanto custa GTA VI no Brasil: Standard e Ultimate em R$ e US$, o que vem em cada edição, bônus de pré-venda, Collector's Box, mídia física, plataformas, classificação, idiomas e espaço em disco.",
+      "lead": "Preços oficiais das lojas brasileiras (PS Store e Xbox), o que vem em cada edição, mídia física, classificação e idiomas.",
+      "image": "cover-art",
+      "imagePosition": "50% 45%",
+      "cardImage": "edition-ultimate",
+      "cardPosition": "50% 30%"
+    },
+    {
+      "slug": "historia",
+      "label": "História e personagens",
+      "eyebrow": "O jogo",
+      "title": "História e personagens",
+      "seoTitle": "GTA VI: história, Jason, Lucia e personagens | Leonida BR",
+      "description": "A trama de GTA VI, os temas e o tom, e quem é quem em Leonida: Jason Duval, Lucia Caminos, Cal, Boobie, Dre'Quan, Real Dimez, Raul e Brian — com textos oficiais traduzidos.",
+      "lead": "Quem são Jason e Lucia, o que move a trama e quem cruza o caminho dos dois em Leonida.",
+      "image": "break-jl-motel",
+      "imagePosition": "50% 40%",
+      "cardImage": "char-lucia-1",
+      "cardPosition": "40% 30%",
+      "sections": [
+        { "id": "historia", "label": "A história" },
+        { "id": "personagens", "label": "Personagens" }
+      ]
+    },
+    {
+      "slug": "leonida",
+      "label": "Leonida",
+      "eyebrow": "O jogo · o estado de Leonida",
+      "title": "Só em Leonida",
+      "seoTitle": "GTA VI: mapa de Leonida, Vice City e as 6 regiões | Leonida BR",
+      "description": "Mapa interativo (esquemático) de Leonida em GTA VI: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia e Mount Kalaga, com textos oficiais e o tamanho do mapa.",
+      "lead": "Seis regiões, de Vice City aos pântanos e às montanhas do norte. Passe o mouse, foque com o teclado ou toque numa região.",
+      "image": "break-vc-marina",
+      "imagePosition": "50% 55%",
+      "cardImage": "postcard-vice-city",
+      "cardPosition": "50% 50%"
+    },
+    {
+      "slug": "jogabilidade",
+      "label": "Jogabilidade e música",
+      "eyebrow": "O jogo",
+      "title": "Jogabilidade, música e online",
+      "seoTitle": "GTA VI: jogabilidade, parte técnica, rádios e online | Leonida BR",
+      "description": "Mecânicas de GTA VI mostradas pela Rockstar e pela imprensa, desempenho em PS5, PS5 Pro e Xbox Series, as rádios de Leonida, o álbum e a trilha, e o que se sabe do GTA Online.",
+      "lead": "Os sistemas mostrados pela Rockstar e pela imprensa, a parte técnica por console, as rádios de Leonida e o que se sabe do multiplayer.",
+      "image": "break-vc-twilight",
+      "imagePosition": "50% 50%",
+      "cardImage": "break-vc-gas",
+      "cardPosition": "50% 50%",
+      "sections": [
+        { "id": "jogabilidade", "label": "Jogabilidade" },
+        { "id": "musica", "label": "Música" },
+        { "id": "online", "label": "Online" }
+      ]
+    },
+    {
+      "slug": "trailers",
+      "label": "Trailers",
+      "eyebrow": "Vídeos oficiais",
+      "title": "Trailers",
+      "seoTitle": "GTA VI: todos os trailers oficiais | Leonida BR",
+      "description": "Os trailers oficiais de GTA VI — Trailer 1, Trailer 2, An Extended Look e o Launch Trailer — com recordes de visualização e fontes.",
+      "lead": "Os vídeos só carregam o player do YouTube quando você clica — a página continua leve.",
+      "image": "break-vc-night",
+      "imagePosition": "50% 50%",
+      "cardImage": "thumb-launch",
+      "cardPosition": "50% 50%"
+    },
+    {
+      "slug": "linha-do-tempo",
+      "label": "Linha do tempo",
+      "eyebrow": "De 2022 a 2026",
+      "title": "A estrada até Leonida",
+      "seoTitle": "GTA VI: linha do tempo de 2022 ao lançamento | Leonida BR",
+      "description": "Linha do tempo animada de GTA VI: anúncio, vazamentos, trailers recordistas, os dois adiamentos, a pré-venda e o lançamento em 19/11/2026.",
+      "lead": "Anúncio, vazamentos, trailers recordistas, dois adiamentos e o lançamento. Role a página: a rodovia se desenha até o ponto em que estamos hoje.",
+      "image": "break-jl-rooftop",
+      "imagePosition": "50% 40%",
+      "cardImage": "break-jl-rooftop",
+      "cardPosition": "50% 40%"
+    },
+    {
+      "slug": "recepcao",
+      "label": "Recepção",
+      "eyebrow": "Crítica e comunidade",
+      "title": "Recepção",
+      "seoTitle": "GTA VI: notas da crítica, reviews e comunidade | Leonida BR",
+      "description": "Notas de GTA VI no Metacritic e no OpenCritic, trechos curtos das reviews com link, prós e contras e o que a comunidade está dizendo.",
+      "lead": "Notas agregadas, trechos das reviews e o que a comunidade está dizendo.",
+      "image": "region-vice-city",
+      "imagePosition": "50% 50%",
+      "cardImage": "break-jl-robbery",
+      "cardPosition": "50% 40%"
+    },
+    {
+      "slug": "extras",
+      "label": "Comparações e curiosidades",
+      "eyebrow": "Para os detalhistas",
+      "title": "Comparações e curiosidades",
+      "seoTitle": "GTA VI: Vice City 2002 x 2026, GTA V x VI e curiosidades | Leonida BR",
+      "description": "Vice City de 2002 contra a de 2026 lado a lado, GTA V contra GTA VI em números e curiosidades e easter eggs de GTA VI, com fontes.",
+      "lead": "Vice City em 2002 e em 2026 lado a lado, GTA V contra GTA VI e curiosidades e easter eggs para os detalhistas.",
+      "image": "region-port-gellhorn",
+      "imagePosition": "50% 50%",
+      "cardImage": "compare-vc2026",
+      "cardPosition": "50% 50%",
+      "sections": [
+        { "id": "comparacoes", "label": "Antes e depois" },
+        { "id": "curiosidades", "label": "Curiosidades" }
+      ]
+    },
+    {
+      "slug": "faq",
+      "label": "FAQ",
+      "eyebrow": "Perguntas frequentes",
+      "title": "FAQ",
+      "seoTitle": "GTA VI: perguntas frequentes (horário, preço, PC, PT-BR) | Leonida BR",
+      "description": "Que horas libera GTA VI no Brasil, quanto custa, se tem versão de PC, se é dublado, quanto espaço ocupa e outras dúvidas comuns — com fontes.",
+      "lead": "As dúvidas mais comuns de quem vai jogar no lançamento.",
+      "image": "region-leonida-keys",
+      "imagePosition": "50% 50%",
+      "cardImage": "region-leonida-keys",
+      "cardPosition": "50% 50%"
+    },
+    {
+      "slug": "fontes",
+      "label": "Fontes",
+      "eyebrow": "Transparência",
+      "title": "Fontes",
+      "seoTitle": "Fontes de todas as informações | Leonida BR",
+      "description": "Todas as fontes citadas no fan site Leonida BR — Rockstar, Take-Two, PlayStation, Xbox, imprensa e comunidade —, com data de acesso.",
+      "lead": "Todas as fontes citadas no site, com data de acesso. Quando fontes discordam, vale a oficial — os conflitos aparecem marcados com ⚠ nas seções.",
+      "image": "region-mount-kalaga",
+      "imagePosition": "50% 50%",
+      "cardImage": "region-mount-kalaga",
+      "cardPosition": "50% 50%"
+    }
+  ]
+}

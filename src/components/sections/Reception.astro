@@ -6,10 +6,12 @@ import LoopClip from '../ui/LoopClip.astro';
 import { reviews, community } from '../../lib/data';
 const updated = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: 'America/Sao_Paulo' }).format(Date.parse(reviews.updatedAt));
 const hasScores = reviews.aggregates.some((a) => a.score !== null);
+interface Props { headless?: boolean }
+const { headless = false } = Astro.props;
 ---
-<section id="recepcao" class="section cv-auto" aria-labelledby="recepcao-title">
+<section id="recepcao" class={`section cv-auto${headless ? ' pt-tight' : ''}`} aria-labelledby={headless ? 'page-title' : 'recepcao-title'}>
   <div class="container-vi">
-    <SectionHeader id="recepcao-title" eyebrow="Crítica e comunidade" title="Recepção" lead={hasScores ? 'Notas agregadas, trechos das reviews e o que a comunidade está dizendo.' : 'As reviews ainda não saíram. Esta seção é atualizada assim que o embargo cair.'} />
+    {headless ? <h2 class="sr-only">Recepção</h2> : <SectionHeader id="recepcao-title" eyebrow="Crítica e comunidade" title="Recepção" lead={hasScores ? 'Notas agregadas, trechos das reviews e o que a comunidade está dizendo.' : 'As reviews ainda não saíram. Esta seção é atualizada assim que o embargo cair.'} />}
 
     <div class="rc-top">
       <div class="rc-scores">

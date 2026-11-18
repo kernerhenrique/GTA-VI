@@ -1,0 +1,81 @@
+---
+/** Painel do "O Jogo" no desktop: cards com imagem das páginas do jogo + atalhos. */
+import Picture from '../ui/Picture.astro';
+import { pagesFile, pageBySlug, pageHref, pages } from '../../lib/data';
+
+interface Props { current: string }
+const { current } = Astro.props;
+const game = pagesFile.header.game.map(pageBySlug);
+const shortcuts = pagesFile.header.shortcuts.map(pageBySlug);
+const chapter = (slug: string) => String(pages.findIndex((p) => p.slug === slug) + 1).padStart(2, '0');
+---
+<div id="mega-jogo" class="mega" data-mega hidden>
+  <div class="container-wide mega-grid">
+    <ul class="mega-cards" role="list">
+      {game.map((p) => (
+        <li>
+          <a class="mega-card" href={pageHref(p.slug)} data-astro-prefetch aria-current={current === pageHref(p.slug) ? 'page' : undefined}>
+            <Picture name={p.cardImage} sizes="260px" ratio="16/10" decorative position={p.cardPosition} class="mega-pic" />
+            <span class="mega-num" aria-hidden="true">{chapter(p.slug)}</span>
+            <span class="mega-title">{p.label}</span>
+            <span class="mega-desc">{p.lead}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="mega-side">
+      <p class="eyebrow">Atalhos</p>
+      <ul role="list">
+        {shortcuts.map((p) => (
+          <li><a href={pageHref(p.slug)} data-astro-prefetch aria-current={current === pageHref(p.slug) ? 'page' : undefined}>{p.label}<span aria-hidden="true">→</span></a></li>
+        ))}
+      </ul>
+      <p class="mega-note">Todo dado do site tem selo (confirmado, reportado ou rumor) e fonte.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mega {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: #0e0f1f; border-bottom: 1px solid var(--vi-line);
+    box-shadow: 0 40px 80px -30px rgb(0 0 0 / .85);
+    padding: 22px 0 26px;
+  }
+  .mega[hidden] { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .mega:not([hidden]) { animation: mega-in .28s var(--ease-out-expo); }
+    .mega:not([hidden]) .mega-cards li { animation: mega-card-in .45s var(--ease-out-expo) both; }
+    .mega:not([hidden]) .mega-cards li:nth-child(2) { animation-delay: .04s; }
+    .mega:not([hidden]) .mega-cards li:nth-child(3) { animation-delay: .08s; }
+    .mega:not([hidden]) .mega-cards li:nth-child(4) { animation-delay: .12s; }
+  }
+  @keyframes mega-in { from { opacity: 0; transform: translateY(-8px); } }
+  @keyframes mega-card-in { from { opacity: 0; transform: translateY(12px); } }
+
+  .mega-grid { display: grid; grid-template-columns: 1fr 240px; gap: 28px; align-items: start; }
+  .mega-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .mega-card {
+    position: relative; display: grid; gap: 6px; text-decoration: none; color: var(--color-vi-mist);
+    padding: 8px 8px 14px; border-radius: 18px; border: 1px solid transparent; transition: border-color .25s, background .25s;
+  }
+  .mega-card:hover, .mega-card:focus-visible { border-color: rgb(233 99 155 / .5); background: rgb(36 49 82 / .35); color: var(--color-vi-mist); }
+  .mega-card[aria-current="page"] { border-color: var(--vi-line); }
+  .mega-card :global(.mega-pic) { border-radius: 12px; overflow: hidden; }
+  .mega-card :global(.mega-pic img) { transition: transform .6s var(--ease-out-expo); }
+  .mega-card:hover :global(.mega-pic img) { transform: scale(1.06); }
+  .mega-num { position: absolute; top: 16px; left: 16px; font: 700 .7rem/1 var(--font-mono); letter-spacing: .12em; color: var(--color-vi-night); background: var(--color-vi-cream); padding: 4px 7px; border-radius: 999px; }
+  .mega-title { margin-top: 6px; padding: 0 4px; font: 900 1.35rem/.95 var(--font-display); text-transform: uppercase; color: var(--color-vi-cream); }
+  .mega-desc { padding: 0 4px; font-size: .8rem; line-height: 1.4; color: rgb(226 226 228 / .7); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .mega-side { padding: 10px 0 0 24px; border-left: 1px solid var(--vi-line); }
+  .mega-side ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 2px; }
+  .mega-side a {
+    display: flex; justify-content: space-between; align-items: center; padding: 11px 4px; text-decoration: none;
+    font: 800 1.05rem/1 var(--font-display); text-transform: uppercase; letter-spacing: .04em; color: var(--color-vi-mist);
+    border-bottom: 1px solid rgb(204 194 245 / .1);
+  }
+  .mega-side a span { color: var(--color-vi-pink); transition: transform .25s; }
+  .mega-side a:hover { color: var(--color-vi-cream); }
+  .mega-side a:hover span { transform: translateX(4px); }
+  .mega-note { margin: 16px 0 0; font-size: .74rem; line-height: 1.45; color: rgb(226 226 228 / .6); }
+</style>

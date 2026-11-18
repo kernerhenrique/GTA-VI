@@ -1,0 +1,9 @@
+---
+import Page from '../layouts/Page.astro';
+import Sources from '../components/sections/Sources.astro';
+import { usedSourceIds } from '../lib/data';
+const lead = `Todas as ${usedSourceIds().size} fontes citadas no site, com data de acesso. Quando fontes discordam, vale a oficial — os conflitos aparecem marcados com ⚠ nas páginas.`;
+---
+<Page slug="fontes" lead={lead}>
+  <Sources headless />
+</Page>

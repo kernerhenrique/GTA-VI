@@ -1,0 +1,97 @@
+---
+/** Capa de capítulo das páginas internas: imagem oficial, breadcrumb, número do capítulo, h1 e lead. */
+import Picture from '../ui/Picture.astro';
+import { pages, type PageInfo } from '../../lib/data';
+
+interface Props { page: PageInfo; lead?: string }
+const { page, lead = page.lead } = Astro.props;
+const index = pages.findIndex((p) => p.slug === page.slug);
+const chapter = String(index + 1).padStart(2, '0');
+const total = String(pages.length).padStart(2, '0');
+---
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="ph-art">
+    <Picture name={page.image} sizes="100vw" priority class="ph-pic" position={page.imagePosition} decorative />
+  </div>
+  <div class="ph-scrim" aria-hidden="true"></div>
+  <div class="container-vi ph-inner">
+    <nav aria-label="Você está em" class="ph-crumbs">
+      <ol>
+        <li><a href="/" data-astro-prefetch>Início</a></li>
+        <li aria-current="page">{page.label}</li>
+      </ol>
+    </nav>
+    <p class="ph-chapter"><span class="ph-num">Capítulo {chapter}</span><span class="ph-of" aria-hidden="true"> / {total}</span><span class="ph-eyebrow"> · {page.eyebrow}</span></p>
+    <h1 id="page-title" class="ph-title">{page.title}</h1>
+    <p class="ph-lead">{lead}</p>
+    {page.sections && page.sections.length > 1 && (
+      <nav class="ph-toc" aria-label="Nesta página">
+        <span class="ph-toc-label">Nesta página</span>
+        <ul>
+          {page.sections.map((s) => <li><a href={`#${s.id}`}>{s.label}</a></li>)}
+        </ul>
+      </nav>
+    )}
+  </div>
+  <p class="credit ph-credit">Imagem oficial © Rockstar Games</p>
+</section>
+
+<style>
+  .page-hero {
+    position: relative; isolation: isolate; overflow: hidden;
+    min-height: clamp(420px, 62svh, 640px); display: flex; align-items: flex-end;
+    padding: calc(var(--header-h) + 40px) 0 clamp(36px, 5vw, 64px);
+  }
+  .ph-art { position: absolute; inset: 0; z-index: -2; }
+  .ph-art :global(.ph-pic) { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto !important; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ph-art :global(.ph-pic img) { animation: ph-zoom 18s ease-out both; }
+  }
+  @keyframes ph-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+  .ph-scrim {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(0deg, var(--color-vi-night) 2%, rgb(12 13 27 / .78) 34%, rgb(12 13 27 / .25) 70%, rgb(12 13 27 / .55) 100%),
+      linear-gradient(90deg, rgb(12 13 27 / .75), transparent 70%);
+  }
+  @media (max-width: 699px) {
+    .ph-scrim { background: linear-gradient(0deg, var(--color-vi-night) 4%, rgb(12 13 27 / .84) 45%, rgb(12 13 27 / .62) 100%); }
+  }
+  .ph-inner { position: relative; }
+  .ph-crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; padding: 0; font: 600 .74rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+  .ph-crumbs li { color: rgb(226 226 228 / .7); }
+  .ph-crumbs li + li::before { content: "/"; margin-right: 6px; color: var(--color-vi-pink); }
+  .ph-crumbs a { color: var(--color-vi-lavender); text-decoration: none; }
+  .ph-crumbs a:hover { color: var(--color-vi-cream); }
+  .ph-chapter { margin: 0; font: 600 .78rem/1.3 var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--color-vi-peach); }
+  .ph-of { color: rgb(226 226 228 / .5); }
+  .ph-eyebrow { color: rgb(226 226 228 / .8); }
+  .ph-title {
+    margin: .75rem 0 .9rem; max-width: 16ch;
+    font: 900 clamp(2.9rem, 1.6rem + 6vw, 6.4rem)/.9 var(--font-display); text-transform: uppercase; letter-spacing: -.005em;
+    color: var(--color-vi-cream); text-wrap: balance;
+    text-shadow: 0 6px 40px rgb(12 13 27 / .6);
+  }
+  .ph-title::after {
+    content: ""; display: block; width: 96px; height: 4px; margin-top: 18px; border-radius: 4px;
+    background: linear-gradient(90deg, var(--color-vi-peach), var(--color-vi-pink));
+    box-shadow: 0 0 18px var(--vi-pink-glow);
+  }
+  .ph-lead { max-width: 60ch; margin: 0; font-size: clamp(1.02rem, .95rem + .4vw, 1.22rem); line-height: 1.55; color: var(--color-vi-mist); }
+  .ph-toc { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: 24px; }
+  .ph-toc-label { font: 600 .66rem/1 var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: rgb(226 226 228 / .6); }
+  .ph-toc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+  .ph-toc a {
+    display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; text-decoration: none;
+    background: rgb(12 13 27 / .7); border: 1px solid var(--vi-line); color: var(--color-vi-cream); font-weight: 700; font-size: .9rem;
+  }
+  .ph-toc a:hover { border-color: var(--color-vi-pink); color: var(--color-vi-cream); }
+  .ph-credit { position: absolute; right: 16px; bottom: 10px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ph-chapter, .ph-title, .ph-lead, .ph-toc { animation: ph-rise .7s cubic-bezier(.16, 1, .3, 1) both; }
+    .ph-title { animation-delay: .06s; }
+    .ph-lead { animation-delay: .14s; }
+    .ph-toc { animation-delay: .2s; }
+  }
+  @keyframes ph-rise { from { opacity: 0; transform: translateY(18px); } }
+</style>
