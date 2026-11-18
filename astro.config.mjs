@@ -2,20 +2,10 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-// Endereço público do site (canonical, Open Graph, JSON-LD e sitemap):
-// 1) SITE_URL, se definido (ex.: SITE_URL=https://seusite.com.br npm run build);
-// 2) na Cloudflare Pages, o domínio do projeto: CF_PAGES_URL é o endereço do deploy
-//    (https://<hash>.<projeto>.pages.dev); tirando o primeiro subdomínio sobra https://<projeto>.pages.dev;
-// 3) na Vercel, o domínio de produção do projeto (VERCEL_PROJECT_PRODUCTION_URL);
-// 4) senão, um domínio de exemplo.
-function cloudflareSite() {
-  const url = process.env.CF_PAGES_URL;
-  if (!url) return '';
-  const host = new URL(url).hostname.split('.');
-  return host.length === 4 && host.slice(-2).join('.') === 'pages.dev' ? `https://${host.slice(1).join('.')}` : `https://${host.join('.')}`;
-}
-const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-const site = process.env.SITE_URL || cloudflareSite() || (vercelHost ? `https://${vercelHost}` : '') || 'https://gta6-fan-br.example';
+// Endereço público do site (canonical, Open Graph, JSON-LD e sitemap).
+// SITE_URL substitui o padrão (ex.: quando houver domínio próprio: SITE_URL=https://seusite.com.br npm run build).
+export const PRODUCTION_URL = 'https://gta-vi.leonidabr.workers.dev';
+const site = process.env.SITE_URL || PRODUCTION_URL;
 
 export default defineConfig({
   site,

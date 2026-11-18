@@ -7,7 +7,7 @@ import ExploreGrid from '../components/sections/ExploreGrid.astro';
 import SupportBand from '../components/support/SupportBand.astro';
 import { videoGameJsonLd } from '../lib/seo';
 
-const site = Astro.site ?? new URL('https://gta6-fan-br.example');
+const site = Astro.site!;
 const webSite = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Leonida BR', inLanguage: 'pt-BR', url: new URL('/', site).href };
 ---
 <Base

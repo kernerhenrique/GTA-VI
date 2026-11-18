@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 import { pages, pageHref, status } from '../lib/data';
 
 export const GET: APIRoute = ({ site }) => {
-  const base = site ?? new URL('https://gta6-fan-br.example');
+  const base = site!;
   const lastmod = status.updatedAt.slice(0, 10);
   const urls = ['', ...pages.map((p) => p.slug)].map((slug) =>
     `  <url><loc>${new URL(pageHref(slug), base).href}</loc><lastmod>${lastmod}</lastmod><priority>${slug ? '0.8' : '1.0'}</priority></url>`,

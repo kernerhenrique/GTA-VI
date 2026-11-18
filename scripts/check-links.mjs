@@ -7,7 +7,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dist = path.join(root, 'dist');
-const site = process.env.SITE_URL || 'https://gta6-fan-br.example';
+const site = process.env.SITE_URL || 'https://gta-vi.leonidabr.workers.dev';
 
 const htmlFiles = readdirSync(dist).filter((f) => f.endsWith('.html'));
 const routeOf = (f) => (f === 'index.html' ? '/' : '/' + f.replace(/\.html$/, ''));

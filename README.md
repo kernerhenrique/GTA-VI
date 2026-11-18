@@ -24,7 +24,7 @@ npm run dev
 Gerar o site de produção (roda `astro check` antes do build):
 
 ```bash
-SITE_URL=https://seu-dominio.com.br npm run build
+npm run build
 ```
 
 Servir o build localmente:
@@ -34,7 +34,7 @@ npm run preview
 ```
 
 - O resultado estático fica em `dist/`. O site está hospedado na Cloudflare (veja abaixo), mas funciona em qualquer serviço estático.
-- **`SITE_URL`** define as URLs absolutas de canonical, Open Graph e JSON-LD. Sem ele, o build usa um domínio de exemplo.
+- **Endereço do site:** canonical, Open Graph, JSON-LD e sitemap usam https://gta-vi.leonidabr.workers.dev (`PRODUCTION_URL` em `astro.config.mjs`). Para outro domínio, use `SITE_URL=https://seu-dominio.com.br npm run build`.
 
 ## Páginas
 
@@ -74,7 +74,7 @@ O site fica na **Cloudflare**, como um Worker só de arquivos estáticos. O plan
 | API token | **Create new token** (deixe criar automaticamente) |
 | Variáveis | nenhuma |
 
-O endereço fica `https://gta-vi.<seu-subdomínio>.workers.dev`.
+O endereço do site é **https://gta-vi.leonidabr.workers.dev** (o subdomínio `leonidabr` se troca em Workers & Pages → Account details → Subdomain).
 
 **Depois disso:**
 - **Publicação:** cada push na branch de produção (`claude/gifted-einstein-n2up3b`, a branch padrão do repositório) publica o site sozinho.
@@ -89,7 +89,7 @@ O endereço fica `https://gta-vi.<seu-subdomínio>.workers.dev`.
 - **Testar como na Cloudflare, no seu computador:**
   - `npm run build` e depois `npx wrangler dev` (abre em http://localhost:8787);
   - `npx wrangler deploy --dry-run` valida a configuração sem publicar.
-- **Endereço do site:** para o canonical, o Open Graph e o sitemap usarem o domínio certo, defina `SITE_URL` (ex.: `https://gta-vi.seunome.workers.dev`) em **Settings → Build → Variables and secrets**, ou deixe fixo no `astro.config.mjs`.
+- **Endereço do site:** o canonical, o Open Graph e o sitemap usam o `PRODUCTION_URL` do `astro.config.mjs`. Se o endereço mudar (outro subdomínio ou domínio próprio), troque ali ou defina `SITE_URL` em **Settings → Build → Variables and secrets**.
 - **Logs:** se um deploy falhar, o motivo aparece no projeto → **Deployments** → **View build log**. O build roda o `astro check`, então um JSON com erro também derruba o deploy, com a mensagem dizendo o arquivo e o campo.
 - **Domínio próprio:** no projeto → **Settings → Domains & Routes** → **Add** → **Custom domain**. Depois, troque o `SITE_URL`.
 - **Alternativa com Cloudflare Pages:** também funciona sem mudar nada. Na tela **Create**, use o link "Looking to deploy Pages? Get started", com o preset Astro, o build `npm run build` e a pasta `dist`.

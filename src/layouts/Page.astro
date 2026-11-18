@@ -10,7 +10,7 @@ import { breadcrumbJsonLd } from '../lib/seo';
 interface Props { slug: string; lead?: string; jsonLd?: unknown[] }
 const { slug, lead, jsonLd = [] } = Astro.props;
 const page = pageBySlug(slug);
-const site = Astro.site ?? new URL('https://gta6-fan-br.example');
+const site = Astro.site!;
 const crumbs = breadcrumbJsonLd(site, [{ name: 'Início', path: '/' }, { name: page.label, path: pageHref(slug) }]);
 ---
 <Base title={page.seoTitle} description={page.description} jsonLd={[crumbs, ...jsonLd]}>
